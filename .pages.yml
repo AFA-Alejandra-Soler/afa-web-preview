@@ -24,6 +24,7 @@ content:
     type: collection
     path: content/extraescolars
     format: yaml
+    filename: "{primary}.yml"
     view:
       primary: nom
       sort: nom
@@ -139,6 +140,7 @@ content:
     type: collection
     path: content/junta
     format: yaml
+    filename: "{primary}.yml"
     exclude: ["_comissions.yml"]
     view:
       primary: nom
@@ -200,6 +202,7 @@ content:
     type: collection
     path: content/blog
     format: yaml
+    filename: "{year}-{month}-{day}-{primary}.yml"
     view:
       primary: titol
       sort: data
@@ -283,6 +286,7 @@ content:
     type: collection
     path: content/pagines
     format: yaml
+    filename: "{primary}.yml"
     operations:
       create: false
       delete: false
