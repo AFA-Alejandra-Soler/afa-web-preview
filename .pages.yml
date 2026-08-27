@@ -139,7 +139,7 @@ content:
     type: collection
     path: content/junta
     format: yaml
-    exclude: ["_comissions.yaml"]
+    exclude: ["_comissions.yml"]
     view:
       primary: nom
       sort: ordre
@@ -177,7 +177,7 @@ content:
   - name: comissions
     label: Comissions de l'AFA
     type: file
-    path: content/junta/_comissions.yaml
+    path: content/junta/_comissions.yml
     format: yaml
     fields:
       - name: comissions
@@ -251,7 +251,7 @@ content:
   - name: places-lliures
     label: "Places lliures (calendari mensual)"
     type: file
-    path: content/places-lliures.yaml
+    path: content/places-lliures.yml
     format: yaml
     fields:
       - name: mes_label

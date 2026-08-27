@@ -54,13 +54,13 @@ def load_yaml(relpath):
 
 
 def load_collection(subdir):
-    """Carrega tots els .yaml d'una carpeta (ignora els que comencen per _,
-    p. ex. _comissions.yaml, que és un fitxer de suport, no una fitxa)."""
+    """Carrega tots els .yml d'una carpeta (ignora els que comencen per _,
+    p. ex. _comissions.yml, que és un fitxer de suport, no una fitxa)."""
     dirpath = os.path.join(CONTENT, subdir)
     items = []
     for fitxer in sorted(os.listdir(dirpath)):
-        if fitxer.endswith(".yaml") and not fitxer.startswith("_"):
-            slug = fitxer[:-len(".yaml")]
+        if fitxer.endswith(".yml") and not fitxer.startswith("_"):
+            slug = fitxer[:-len(".yml")]
             data = load_yaml(os.path.join(subdir, fitxer))
             data["_slug"] = slug
             items.append(data)
@@ -347,11 +347,11 @@ def pagina_home():
 
 
 # --------------------------------------------------------------------------
-# Pàgines estàtiques (content/pagines/*.yaml)
+# Pàgines estàtiques (content/pagines/*.yml)
 # --------------------------------------------------------------------------
 
 def pagina_estatica(slug):
-    d = load_yaml(f"pagines/{slug}.yaml")
+    d = load_yaml(f"pagines/{slug}.yml")
     body = f"""
 <div class="page-hero"><div class="wrap"><h1>{d['titol']}</h1><p>{d['subtitol']}</p></div></div>
 <div class="wrap">
@@ -367,13 +367,13 @@ def pagina_estatica(slug):
 
 
 # --------------------------------------------------------------------------
-# Junta (content/junta/*.yaml)
+# Junta (content/junta/*.yml)
 # --------------------------------------------------------------------------
 
 def pagina_junta():
     membres = load_collection("junta")
     membres.sort(key=lambda m: m.get("ordre", 999))
-    comissions = load_yaml("junta/_comissions.yaml")["comissions"]
+    comissions = load_yaml("junta/_comissions.yml")["comissions"]
 
     membres_html = []
     for m in membres:
@@ -418,7 +418,7 @@ contacte amb les persones responsables. Anima't! La teua ajuda és molt valuosa.
 
 
 # --------------------------------------------------------------------------
-# Blog (content/blog/*.yaml)
+# Blog (content/blog/*.yml)
 # --------------------------------------------------------------------------
 
 def pagina_blog_index(posts):
@@ -519,7 +519,7 @@ def pagina_galeria():
 
 
 # --------------------------------------------------------------------------
-# Extraescolars (content/extraescolars/*.yaml — inclou activitats-municipals)
+# Extraescolars (content/extraescolars/*.yml — inclou activitats-municipals)
 # --------------------------------------------------------------------------
 
 def _clau_alfabetica(nom):
@@ -731,7 +731,7 @@ quota (formulari de baix).</p>
 
 
 def pagina_places_lliures():
-    d = load_yaml("places-lliures.yaml")
+    d = load_yaml("places-lliures.yml")
     img_href = local_asset_href(1, d["imatge"])
     body = f"""
 <div class="wrap">
