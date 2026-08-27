@@ -1,0 +1,542 @@
+/* ==========================================================================
+   AFA CEIP Alejandra Soler — estil compartit
+   Un sol full d'estils per a tot el lloc. Sense frameworks ni build step.
+   ========================================================================== */
+
+:root {
+  --morado: #6B4E9B;
+  --morado-oscuro: #503A78;
+  --lila: #EFEAF6;
+  --papel: #FCFBF9;
+  --tinta: #2B2530;
+  --tinta-suave: #5C5563;
+  --linea: #DDD6E4;
+  --verde: #2E7D5B;
+  --verde-fondo: #E8F3EE;
+  --rojo: #C0392B;
+  --rojo-fondo: #F9ECEA;
+  --naranja: #A9631A;
+  --naranja-fondo: #FBEFE0;
+  --font-titulos: 'Avenir Next', Avenir, Seravek, 'Segoe UI', system-ui, sans-serif;
+  --font-texto: Charter, 'Bitstream Charter', Georgia, 'Times New Roman', serif;
+  --radio: 10px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--font-texto);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, nav, .eyebrow, button, .boton {
+  font-family: var(--font-titulos);
+}
+
+h1 { font-size: 2rem; font-weight: 700; line-height: 1.2; margin: 0 0 .5rem; color: var(--morado-oscuro); }
+h2 { font-size: 1.4rem; font-weight: 700; margin: 1.6rem 0 .6rem; color: var(--morado-oscuro); }
+h3 { font-size: 1.1rem; font-weight: 700; margin: 1.2rem 0 .4rem; }
+p { margin: .7rem 0; }
+a { color: var(--morado); }
+a:hover { color: var(--morado-oscuro); }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .35rem 0; }
+
+.wrap { max-width: 62rem; margin: 0 auto; padding: 0 1.2rem; }
+.wrap-estret { max-width: 42rem; margin: 0 auto; padding: 0 1.2rem; }
+
+/* ---------- Cabecera ---------- */
+.site-header {
+  background: var(--papel);
+  border-bottom: 1px solid var(--linea);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: .6rem;
+  padding-bottom: .6rem;
+  max-width: 72rem;
+}
+.marca {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  text-decoration: none;
+  color: var(--tinta);
+  font-weight: 700;
+}
+.marca img { height: 44px; width: auto; display: block; }
+.marca span { font-size: .95rem; line-height: 1.15; }
+.marca small { display: block; font-weight: 400; color: var(--tinta-suave); font-size: .75rem; }
+
+nav.menu-principal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .2rem 1rem;
+  align-items: center;
+}
+nav.menu-principal a {
+  text-decoration: none;
+  color: var(--tinta);
+  font-size: .92rem;
+  font-weight: 600;
+  padding: .3rem .1rem;
+  border-bottom: 2px solid transparent;
+}
+nav.menu-principal a:hover,
+nav.menu-principal a.actiu {
+  color: var(--morado);
+  border-bottom-color: var(--morado);
+}
+
+/* ---------- Menú desplegable (AFA, Notícies, Projectes) ---------- */
+.menu-item-parent { position: relative; }
+.menu-toggle {
+  background: none;
+  border: none;
+  font-family: var(--font-titulos);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  color: var(--tinta);
+  font-size: .92rem;
+  font-weight: 600;
+  padding: .3rem .1rem;
+  border-bottom: 2px solid transparent;
+}
+.menu-toggle:hover, .menu-toggle.actiu { color: var(--morado); border-bottom-color: var(--morado); }
+.menu-toggle .caret { display: inline-flex; align-items: center; margin-left: .25rem; transition: transform .15s ease; }
+.menu-item-parent:hover .caret, .menu-item-parent:focus-within .caret, .menu-toggle[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.submenu { list-style: none; margin: 0; padding: 0; }
+
+@media (min-width: 781px) {
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid var(--linea);
+    border-radius: 8px;
+    min-width: 190px;
+    box-shadow: 0 6px 18px rgba(43,37,48,.12);
+    padding: .4rem;
+    display: none;
+    z-index: 60;
+  }
+  .menu-item-parent:hover .submenu,
+  .menu-item-parent:focus-within .submenu,
+  .submenu.obert { display: block; }
+  .submenu li { margin: 0; }
+  .submenu-item {
+    display: block;
+    padding: .5rem .6rem;
+    border-radius: 6px;
+    font-size: .9rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--tinta);
+    white-space: nowrap;
+  }
+  .submenu-item:hover, .submenu-item.actiu { background: var(--lila); color: var(--morado-oscuro); }
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--linea);
+  border-radius: 6px;
+  padding: .4rem .6rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+@media (max-width: 780px) {
+  nav.menu-principal {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: .5rem 0 .8rem;
+    border-top: 1px solid var(--linea);
+    margin-top: .5rem;
+  }
+  nav.menu-principal.obert { display: flex; }
+  nav.menu-principal a { padding: .55rem 0; width: 100%; border-bottom: 1px solid var(--linea); }
+  .nav-toggle { display: inline-flex; }
+  .site-header .wrap { flex-wrap: wrap; }
+  .menu-item-parent { width: 100%; }
+  .menu-toggle { width: 100%; justify-content: space-between; padding: .55rem 0; border-bottom: 1px solid var(--linea); }
+  .submenu {
+    display: block !important;
+    padding-left: 1rem;
+    border-left: 2px solid var(--linea);
+    margin: .2rem 0 .3rem .2rem;
+  }
+  .submenu li { margin: 0; }
+  .submenu-item {
+    display: block;
+    padding: .45rem 0;
+    color: var(--tinta-suave);
+    font-size: .9rem;
+    text-decoration: none;
+  }
+  .submenu-item.actiu { color: var(--morado); font-weight: 700; }
+}
+
+/* ---------- Hero / cabeceras de página ---------- */
+.hero {
+  background: linear-gradient(160deg, var(--lila), var(--papel) 70%);
+  padding: 2.4rem 0 2rem;
+  border-bottom: 1px solid var(--linea);
+}
+.hero .eyebrow {
+  display: block;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--morado);
+  margin-bottom: .4rem;
+}
+.hero h1 { margin-bottom: .6rem; }
+.hero p.lead { font-size: 1.05rem; color: var(--tinta-suave); max-width: 40rem; }
+.page-hero {
+  background: var(--lila);
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--linea);
+}
+.page-hero h1 { margin: 0; }
+.page-hero p { color: var(--tinta-suave); margin: .4rem 0 0; }
+
+/* ---------- Contenido ---------- */
+main { padding: 2.2rem 0 3rem; }
+section + section { margin-top: 2rem; }
+
+.caja {
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: 1.3rem 1.4rem;
+}
+.caja-lila { background: var(--lila); border: none; }
+
+.boton {
+  display: inline-block;
+  background: var(--morado);
+  color: #fff;
+  font-weight: 700;
+  font-size: .92rem;
+  text-decoration: none;
+  padding: .65rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+}
+.boton:hover { background: var(--morado-oscuro); color: #fff; }
+.boton-secundari {
+  background: transparent;
+  color: var(--morado);
+  border: 2px solid var(--morado);
+}
+.boton-secundari:hover { background: var(--lila); color: var(--morado-oscuro); }
+.boton-petit { font-size: .82rem; padding: .45rem .9rem; }
+
+.botonera { display: flex; flex-wrap: wrap; gap: .6rem; margin: .8rem 0; }
+
+/* ---------- Grid d'accions a la home ---------- */
+.grid-accions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+.accio {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: 1.1rem 1.2rem;
+}
+.accio:hover { border-color: var(--morado); box-shadow: 0 2px 10px rgba(107,78,155,.12); }
+.accio h3 { margin: 0 0 .3rem; color: var(--morado-oscuro); }
+.accio p { margin: 0; font-size: .92rem; color: var(--tinta-suave); }
+
+/* ---------- Grid d'extraescolars ---------- */
+.grid-extraescolars {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+.card-extra {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+.card-extra:hover { border-color: var(--morado); box-shadow: 0 2px 10px rgba(107,78,155,.12); }
+.card-extra .placeholder-img {
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--font-titulos);
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: .02em;
+}
+/* Imatge il·lustrativa real (extreta del dossier PDF) quan n'hi ha una bona
+   — ocupa el mateix espai que el placeholder de color que substitueix */
+.card-extra > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+/* Logo d'empresa (acting-in-english, judo, ball-modern) en compte de foto:
+   amb cover es retallaria el logo — cal veure'l sencer (contain) sobre un
+   fons clar amb marge, mateix espai que la resta de targetes. */
+.card-extra > img.portada-logo {
+  object-fit: contain;
+  background: var(--lila);
+  padding: 1.1rem;
+  box-sizing: border-box;
+}
+.card-extra .nom {
+  padding: .7rem .8rem .9rem;
+  font-weight: 700;
+  font-size: .95rem;
+  color: var(--morado-oscuro);
+}
+
+/* Colors deterministes per als placeholders d'imatge (sense fotos reals) */
+.ph-1 { background: linear-gradient(135deg, var(--morado), var(--morado-oscuro)); }
+.ph-2 { background: linear-gradient(135deg, #8E7BB5, var(--morado)); }
+.ph-3 { background: linear-gradient(135deg, var(--verde), #1F5C43); }
+.ph-4 { background: linear-gradient(135deg, #B98CC7, var(--morado-oscuro)); }
+.ph-5 { background: linear-gradient(135deg, var(--naranja), #7A480F); }
+.ph-6 { background: linear-gradient(135deg, #5C5563, var(--tinta)); }
+
+/* ---------- Horaris per nivell/curs (extraescolars) ---------- */
+.grid-horaris {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+.horari-item {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  overflow: hidden;
+  text-align: center;
+}
+.horari-item:hover { border-color: var(--morado); box-shadow: 0 2px 10px rgba(107,78,155,.12); }
+.horari-item img { display: block; width: 100%; max-width: 100%; height: auto; }
+.horari-item span {
+  display: block;
+  padding: .5rem .4rem;
+  font-weight: 700;
+  font-size: .85rem;
+  color: var(--morado-oscuro);
+}
+/* Variant d'una sola imatge gran i ampliable (places lliures) */
+.horari-item-gran { max-width: 640px; margin: 1rem 0 0; }
+
+/* ---------- Galeria (fotos d'instal·lacions) ---------- */
+.grid-galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+.galeria-item {
+  display: block;
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  overflow: hidden;
+  line-height: 0;
+}
+.galeria-item:hover { border-color: var(--morado); box-shadow: 0 2px 10px rgba(107,78,155,.12); }
+.galeria-item img { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+
+/* ---------- Fitxa d'activitat ---------- */
+.fitxa-cap {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.fitxa-cap .placeholder-img {
+  width: 96px; height: 96px; border-radius: var(--radio);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-family: var(--font-titulos); font-weight: 700; font-size: 1.6rem;
+  flex: 0 0 auto;
+}
+.fitxa-cap > img {
+  width: 96px; height: 96px; border-radius: var(--radio);
+  object-fit: cover; flex: 0 0 auto;
+}
+/* Logo d'empresa en compte de foto (mateix criteri que .card-extra > img.portada-logo) */
+.fitxa-cap > img.portada-logo {
+  object-fit: contain;
+  background: var(--lila);
+  padding: .55rem;
+  box-sizing: border-box;
+}
+.fitxa-meta { font-size: .88rem; color: var(--tinta-suave); }
+.recursos { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1.1rem 0; }
+.recurs {
+  display: flex; align-items: center; gap: .5rem;
+  background: #fff; border: 1px solid var(--linea); border-radius: 8px;
+  padding: .6rem .9rem; text-decoration: none; color: var(--tinta); font-size: .92rem; font-weight: 600;
+}
+.recurs:hover { border-color: var(--morado); color: var(--morado-oscuro); }
+.recurs .icona { font-size: 1.1rem; }
+.pendent-badge {
+  display: inline-block; font-size: .68rem; font-weight: 700; letter-spacing: .04em;
+  text-transform: uppercase; background: var(--naranja-fondo); color: var(--naranja);
+  border-radius: 4px; padding: .1rem .4rem; margin-left: .4rem; vertical-align: middle;
+}
+
+/* ---------- Avisos i notes ---------- */
+.avis {
+  background: var(--rojo-fondo);
+  border-left: 4px solid var(--rojo);
+  border-radius: 0 8px 8px 0;
+  padding: .9rem 1.1rem;
+  margin: 1rem 0;
+}
+.avis p:first-child { margin-top: 0; }
+.avis p:last-child { margin-bottom: 0; }
+.nota {
+  font-size: .88rem;
+  color: var(--tinta-suave);
+}
+.pendent {
+  background: var(--lila);
+  border-radius: 8px;
+  padding: .9rem 1.1rem;
+  font-size: .92rem;
+}
+
+/* Traducció al castellà, més xicoteta i suau (contacte) */
+.trad-cast {
+  font-size: .8rem;
+  color: var(--tinta-suave);
+  font-style: italic;
+  margin: -.3rem 0 .6rem;
+}
+
+/* ---------- Blog ---------- */
+.post-llista { display: flex; flex-direction: column; gap: 1rem; margin: 1.2rem 0; }
+.post-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: 1rem 1.2rem;
+}
+.post-card:hover { border-color: var(--morado); box-shadow: 0 2px 10px rgba(107,78,155,.12); }
+.post-card time { font-size: .8rem; color: var(--tinta-suave); font-family: var(--font-titulos); }
+.post-card h3 { margin: .2rem 0 0; color: var(--morado-oscuro); }
+.post-cos { margin: 1rem 0; }
+.separador { border: none; border-top: 1px solid var(--linea); margin: 1.4rem 0; }
+
+/* Chips de semàfor de places — reservats per a quan hi haja dades reals (fase B) */
+.semaforo { display: inline-block; border-radius: 4px; padding: .05rem .5rem; font-size: .85rem; font-weight: 700; font-family: var(--font-titulos); }
+.s-verde { background: var(--verde-fondo); color: var(--verde); }
+.s-naranja { background: var(--naranja-fondo); color: var(--naranja); }
+.s-rojo { background: var(--rojo-fondo); color: var(--rojo); }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .92rem; }
+th { text-align: left; font-size: .75rem; letter-spacing: .05em; text-transform: uppercase; color: var(--morado-oscuro); background: var(--lila); padding: .5rem .7rem; }
+td { padding: .55rem .7rem; border-bottom: 1px solid var(--linea); vertical-align: top; }
+
+.imatge-doc { max-width: 100%; border: 1px solid var(--linea); border-radius: 8px; }
+.descripcio {
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-radius: 8px;
+  padding: .9rem 1.1rem;
+  margin: 1rem 0;
+  font-size: .95rem;
+}
+
+/* ---------- Junta AFA ---------- */
+.junta-llista { display: flex; flex-direction: column; gap: 1.1rem; margin: 1.3rem 0; }
+.wp-media-text {
+  display: flex; align-items: center; gap: 1rem;
+  border-bottom: 1px solid var(--linea);
+  padding-bottom: 1.1rem;
+}
+.wp-media-text img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex: 0 0 auto; }
+.wp-media-text p { margin: 0; }
+.wp-media-text .fitxa-meta { margin-top: .2rem; }
+
+/* ---------- Peu ---------- */
+.site-footer {
+  background: var(--morado-oscuro);
+  color: #EFEAF6;
+  margin-top: 3rem;
+  padding: 2.4rem 0 1.6rem;
+  font-size: .9rem;
+}
+.site-footer a { color: #fff; }
+.site-footer .cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.4rem;
+}
+.site-footer h4 {
+  font-family: var(--font-titulos);
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #C9B8E0;
+  margin: 0 0 .6rem;
+}
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer li { margin: .35rem 0; }
+.site-footer .avall {
+  margin-top: 1.8rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(255,255,255,.18);
+  font-size: .8rem;
+  color: #C9B8E0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1.2rem;
+  justify-content: space-between;
+}
+
+/* ---------- Comentaris TODO visibles al inspeccionar (no es mostren, però queden al font) ---------- */
+.marca-pendent { display: none; }
+
+@media print {
+  .site-header, .site-footer, .no-imprimir { display: none !important; }
+}
