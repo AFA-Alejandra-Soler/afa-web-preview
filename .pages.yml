@@ -1,0 +1,324 @@
+# Configuració de Pages CMS (pagescms.org) — ADR 002.
+#
+# La junta MAI veu HTML ni YAML en cru: només els formularis que definix este
+# fitxer. Cada canvi que guarden ("Commit") dispara el build automàtic
+# (.github/workflows/build.yml), que regenera la web i la publica.
+#
+# Els fitxers pujats des del CMS (una foto nova, un dossier nou) es guarden a
+# `assets/uploads/cms/` — una carpeta A PART de `assets/uploads/YYYY/MM/`
+# (que és la migració de la web anterior, no es toca a mà).
+
+media:
+  - name: cms
+    label: Fitxers pujats des de l'editor
+    input: assets/uploads/cms
+    output: /assets/uploads/cms
+    rename: safe
+
+content:
+  # --------------------------------------------------------------------
+  # Extraescolars — una fitxa per activitat (inclou "Activitats municipals").
+  # --------------------------------------------------------------------
+  - name: extraescolars
+    label: Extraescolars
+    type: collection
+    path: content/extraescolars
+    format: yaml
+    view:
+      primary: nom
+      sort: nom
+    fields:
+      - name: nom
+        label: Nom de l'activitat
+        type: string
+        required: true
+
+      - name: activa
+        label: Activa (visible a la web)
+        type: boolean
+        default: true
+        # Camp clau (ADR 002): posar-lo en "No" equival a llevar l'activitat
+        # de la web — desapareix de la llista i de la seua pròpia pàgina,
+        # sense haver d'esborrar el fitxer ni tocar cap altra pàgina.
+
+      - name: imatge
+        label: "Imatge de portada (foto o logo)"
+        type: image
+        options:
+          media: cms
+        description: "Si no es puja cap imatge, la fitxa mostra un color de reserva amb les inicials."
+
+      - name: dossier
+        label: "Dossier — fitxer PDF"
+        type: file
+        options:
+          media: cms
+          extensions: [pdf]
+
+      - name: dossier2
+        label: "Dossier alternatiu (opcional, només si n'hi ha dos)"
+        type: file
+        required: false
+        options:
+          media: cms
+          extensions: [pdf]
+
+      - name: form
+        label: "Enllaç al formulari d'inscripció (Google Forms)"
+        type: string
+        required: true
+
+      - name: form2
+        label: "Enllaç a un segon formulari (opcional)"
+        type: string
+        required: false
+
+      - name: descripcio
+        label: "Descripció de l'activitat"
+        type: rich-text
+        required: false
+        options:
+          format: html
+          media: false
+          switcher: false
+
+      - name: nota
+        label: "Nota destacada (opcional — horari especial, ubicació...)"
+        type: rich-text
+        required: false
+        options:
+          format: html
+          media: false
+          switcher: false
+
+      - name: ph
+        label: "Color de reserva (tècnic, no cal tocar-lo)"
+        type: string
+        hidden: true
+
+      - name: es_municipal
+        label: "És el bloc d'activitats municipals (tècnic, no cal tocar-lo)"
+        type: boolean
+        hidden: true
+
+      - name: llista
+        label: "Llista d'activitats municipals (només per a la fitxa FDM)"
+        type: string
+        list: true
+        required: false
+
+      - name: inscripcio_pdf
+        label: "Full d'inscripció — PDF (només FDM)"
+        type: file
+        required: false
+        options:
+          media: cms
+          extensions: [pdf]
+
+      - name: bonificacio
+        label: "Sol·licitud de bonificació — PDF (només FDM)"
+        type: file
+        required: false
+        options:
+          media: cms
+          extensions: [pdf]
+
+      - name: info_preus
+        label: "Preus i cursos — PDF (només FDM)"
+        type: file
+        required: false
+        options:
+          media: cms
+          extensions: [pdf]
+
+  # --------------------------------------------------------------------
+  # Junta AFA — una fitxa per membre.
+  # --------------------------------------------------------------------
+  - name: junta
+    label: Junta AFA
+    type: collection
+    path: content/junta
+    format: yaml
+    exclude: ["_comissions.yaml"]
+    view:
+      primary: nom
+      sort: ordre
+    fields:
+      - name: nom
+        label: Nom i cognoms
+        type: string
+        required: true
+
+      - name: ordre
+        label: "Orde d'aparició (1 = primer/a)"
+        type: number
+        default: 99
+
+      - name: carrec
+        label: Càrrec
+        type: string
+        required: true
+
+      - name: email
+        label: "Email de contacte (opcional)"
+        type: string
+        required: false
+
+      - name: imatge
+        label: Fotografia
+        type: image
+        required: false
+        options:
+          media: cms
+
+  # --------------------------------------------------------------------
+  # Comissions de l'AFA — fitxer únic (llista compartida, no és per membre).
+  # --------------------------------------------------------------------
+  - name: comissions
+    label: Comissions de l'AFA
+    type: file
+    path: content/junta/_comissions.yaml
+    format: yaml
+    fields:
+      - name: comissions
+        label: Comissions
+        type: object
+        list: true
+        fields:
+          - name: nom
+            label: Nom de la comissió
+            type: string
+          - name: contacte
+            label: Persona/es de contacte
+            type: string
+
+  # --------------------------------------------------------------------
+  # Blog — Notícies i avisos.
+  # --------------------------------------------------------------------
+  - name: blog
+    label: Blog
+    type: collection
+    path: content/blog
+    format: yaml
+    view:
+      primary: titol
+      sort: data
+      order: desc
+    fields:
+      - name: titol
+        label: Títol de l'entrada
+        type: string
+        required: true
+
+      - name: data
+        label: Data de publicació
+        type: date
+        required: true
+
+      - name: data_label
+        label: "Data en text (com es mostra a la web, p. ex. «4 de juny de 2026»)"
+        type: string
+        required: true
+
+      - name: cos_valencia
+        label: "Text en valencià"
+        type: rich-text
+        options:
+          format: html
+          media: cms
+          path: assets/uploads/cms
+          switcher: false
+
+      - name: cos_castella
+        label: "Text en castellà"
+        type: rich-text
+        options:
+          format: html
+          media: cms
+          path: assets/uploads/cms
+          switcher: false
+
+      - name: imatge
+        label: "Imatge (opcional)"
+        type: image
+        required: false
+        options:
+          media: cms
+
+  # --------------------------------------------------------------------
+  # Places lliures — fitxer únic (imatge mensual del calendari).
+  # --------------------------------------------------------------------
+  - name: places-lliures
+    label: "Places lliures (calendari mensual)"
+    type: file
+    path: content/places-lliures.yaml
+    format: yaml
+    fields:
+      - name: mes_label
+        label: "Mes publicat (text, p. ex. «curs 2025-26 (juny)»)"
+        type: string
+        required: true
+
+      - name: imatge
+        label: "Imatge del calendari de places"
+        type: image
+        required: true
+        options:
+          media: cms
+
+      - name: pdf
+        label: "PDF del calendari (opcional, si n'hi ha en compte de foto)"
+        type: file
+        required: false
+        options:
+          media: cms
+          extensions: [pdf]
+
+  # --------------------------------------------------------------------
+  # Pàgines estàtiques — qui-som, fes-te-de-lafa, contacte, mes-que-verd,
+  # estatuts. NO inclou "index" (portada) ni "galeria": fora d'abast v1.
+  # --------------------------------------------------------------------
+  - name: pagines
+    label: "Pàgines (Qui som, Fes-te membre, Contacte...)"
+    type: collection
+    path: content/pagines
+    format: yaml
+    operations:
+      create: false
+      delete: false
+      rename: false
+    # Estes 5 pàgines ja existixen i no se n'han d'afegir ni llevar —
+    # només editar el seu contingut (per això es bloquegen les operacions).
+    view:
+      primary: titol
+    fields:
+      - name: titol
+        label: "Títol (H1 de la pàgina)"
+        type: string
+        required: true
+
+      - name: titol_pestanya
+        label: "Títol de la pestanya del navegador (opcional, si ha de ser diferent del H1)"
+        type: string
+        required: false
+
+      - name: subtitol
+        label: Subtítol
+        type: string
+        required: true
+
+      - name: meta_desc
+        label: "Descripció curta per a cercadors (SEO)"
+        type: text
+        required: true
+        options:
+          maxlength: 300
+
+      - name: cos
+        label: "Contingut de la pàgina"
+        type: rich-text
+        options:
+          format: html
+          media: cms
+          path: assets/uploads/cms
+          switcher: false

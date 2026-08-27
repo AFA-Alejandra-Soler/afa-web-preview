@@ -1,0 +1,62 @@
+name: Build i publica a GitHub Pages
+
+# Cada volta que algú (la junta via Pages CMS, o algú tocant el repo a mà)
+# fa un push a main, este workflow regenera la web des de content/ + assets/
+# i la publica amb el mètode oficial de GitHub Pages. La junta MAI executa
+# res manualment: guarden en el CMS i el "Commit" ja dispara açò.
+#
+# PREVIEW=1: este repositori és el PILOT de proves (afa-web-preview), no el
+# de l'AFA. Al repositori definitiu del AFA, elimina la línia "env: PREVIEW"
+# (o posa-la a "0") perquè es publique amb el domini propi (CNAME) i sense
+# noindex.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Evita que dos builds se solapen si arriben dos pushos seguits.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configura Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instal·la dependències
+        run: pip install -r build/requirements.txt
+
+      - name: Genera el lloc (dist/)
+        env:
+          PREVIEW: "1" # ⚠️ repo pilot — llevar/posar a "0" al repo del AFA
+        run: python3 build/generar.py
+
+      - name: Prepara l'artifact de Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publica a GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
