@@ -99,7 +99,8 @@ fer-se soci/sòcia de l'AFA abans del 30 de setembre —
   <span class="filtre-compte" id="filtre-compte" aria-live="polite"></span>
 </div>
 <script>
-(function () {
+// S'executa quan el DOM està carregat: el <script> va ABANS del grid i, si no, el grid encara no existix (bug 28-ago).
+document.addEventListener('DOMContentLoaded', function () {
   var sel = document.getElementById('filtre-curs');
   var grid = document.querySelector('.grid-extraescolars');
   var compte = document.getElementById('filtre-compte');
@@ -123,7 +124,7 @@ fer-se soci/sòcia de l'AFA abans del 30 de setembre —
     llista.forEach(function (c) { grid.appendChild(c); });
   }
   sel.addEventListener('change', aplica);
-})();
+});
 </script>
 <div class="grid-extraescolars">
 <!-- ══ ACTIVITAT: Acting — per a LLEVAR-LA de la web: esborra

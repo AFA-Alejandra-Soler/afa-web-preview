@@ -137,6 +137,14 @@ d'atribució per a les CC BY):
 - ExpresArte — «Prints», bfick (Flickr), CC BY 2.0
 - CreActivitat — «Labyrinthine circuit board lines», quapan (Flickr/Wikimedia Commons), CC BY 2.0
 - Anglès (Acting in English) — composició tipogràfica pròpia
+- Escacs — «Chess pieces close up», Aaaatu (Wikimedia Commons), CC BY-SA 4.0
+- Voleibol — «Beach volleyball ball», Thue (Wikimedia Commons), domini públic
+- Esgrima — «Buckley fencing masks», U.S. Air Force (Wikimedia Commons), domini públic
+- Hoquei — «Argentinische Rückhand», Sigma1981 (Wikimedia Commons), domini públic
+- Bàsquet — «BasketBall - score», j9sk9s (Flickr), CC BY 2.0
+- Pre-esport — «bokeh ball», BPPrice (Flickr), CC BY 2.0
+- Gimnàstica Rítmica (FDM) — composició amb cliparts d'aparells (dossier de The Hub)
+- Activitat Física Base (AFB) — composició tipogràfica pròpia
 
 ## Què NO inclou esta versió (és Opció B, fora d'abast)
 
