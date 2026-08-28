@@ -188,29 +188,23 @@ def ordre_edat(codes):
 
 
 def filtre_cursos_html():
-    """Desplegable "Mostrar només: <curs>" + "Ordena" de la landing. Filtra
+    """Desplegable "Mostrar: <curs>" de la landing (orde sempre alfabètic, decisió Jorge 28-ago). Filtra
     i reordena les tarjetes en el navegador (sense recarregar) a partir dels
     atributs data-cursos / data-nom / data-ordre-edat de cada tarjeta. Les
     tarjetes amb data-cursos="*" (bloc municipal, o activitat que no declara
     cursos) es veuen sempre; el bloc municipal es queda sempre a l'últim."""
     opts = "\n".join(f'    <option value="{c}">{l}</option>' for c, l in NIVELLS)
     return f"""<div class="filtre-cursos">
-  <label for="filtre-curs">Mostrar només:</label>
+  <label for="filtre-curs">Mostrar:</label>
   <select id="filtre-curs">
     <option value="">Totes les extraescolars</option>
 {opts}
-  </select>
-  <label for="ordre-cards">Ordena:</label>
-  <select id="ordre-cards">
-    <option value="az">Per nom (A → Z)</option>
-    <option value="edat">Per edat (de menuts a majors)</option>
   </select>
   <span class="filtre-compte" id="filtre-compte" aria-live="polite"></span>
 </div>
 <script>
 (function () {{
   var sel = document.getElementById('filtre-curs');
-  var ord = document.getElementById('ordre-cards');
   var grid = document.querySelector('.grid-extraescolars');
   var compte = document.getElementById('filtre-compte');
   if (!sel || !grid) return;
@@ -228,17 +222,11 @@ def filtre_cursos_html():
     llista.sort(function (a, b) {{
       var fa = a.hasAttribute('data-fixa-final') ? 1 : 0, fb = b.hasAttribute('data-fixa-final') ? 1 : 0;
       if (fa !== fb) return fa - fb;
-      if (ord && ord.value === 'edat') {{
-        var da = parseInt(a.getAttribute('data-ordre-edat') || '99', 10);
-        var db = parseInt(b.getAttribute('data-ordre-edat') || '99', 10);
-        if (da !== db) return da - db;
-      }}
       return a.getAttribute('data-nom') < b.getAttribute('data-nom') ? -1 : 1;
     }});
     llista.forEach(function (c) {{ grid.appendChild(c); }});
   }}
   sel.addEventListener('change', aplica);
-  if (ord) ord.addEventListener('change', aplica);
 }})();
 </script>"""
 

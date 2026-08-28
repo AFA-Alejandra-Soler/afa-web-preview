@@ -61,7 +61,7 @@ en un document sense codi. Demaneu-lo si no el teniu.
 l'activitat es veu a la web (llista i fitxa pròpia) o no. No cal esborrar cap fitxer.
 
 **Camps afegits el 28-08-2026 (curs 2026-27)**: `cursos` (llista de codis I3/I4/I5 =
-3/4/5 anys, P1..P6 = Primària — alimenta el desplegable «Mostrar només» de la landing i
+3/4/5 anys, P1..P6 = Primària — alimenta el desplegable «Mostrar» de la landing i
 la línia «Cursos» de la fitxa; buit = es veu sempre), `dossier_label`/`dossier2_label`
 (text del botó quan hi ha dos dossiers, p. ex. Juegamáticas), i `form` pot quedar buit
 (la fitxa mostra «Formulari d'inscripció: pendent de publicar»). Els dossiers 26-27
