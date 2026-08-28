@@ -118,7 +118,7 @@ Tots els dossiers en PDF i les imatges de calendari es van descarregar el 26-08-
 del repositori, a `material/dossiers-2026-27/` del projecte). Ja no hi ha cap dossier a Google
 Drive: tots són locals. Els formularis són els del PDF «Formularis inscripció 26-27» del AFA.
 
-## Desplegable «Mostrar» de la pàgina d'extraescolars
+## Desplegable «Filtrar per curs» de la pàgina d'extraescolars
 
 Cada tarjeta porta els cursos de l'activitat (`data-cursos="I4 I5 P1 ..."`, llegits del
 dossier). El desplegable filtra i reordena al navegador, sense servidor. Si una activitat no
