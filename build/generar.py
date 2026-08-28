@@ -673,7 +673,7 @@ HORARIS_NIVELL = [
 ]
 
 
-def pagina_extraescolars_landing(activitats, municipals):
+def pagina_extraescolars_landing(activitats):
     def _card(a, fixa_final=False):
         img_html = portada_img_html(1, a.get("imatge"), alt=a["nom"])
         # El bloc municipal mostra "FDM" (com el clon original), no les inicials
@@ -689,7 +689,6 @@ def pagina_extraescolars_landing(activitats, municipals):
     # clon fiel del comportament original. El desplegable de la landing pot
     # reordenar-les per edat al navegador (vore filtre_cursos_html).
     cards = [_card(a) for a in sorted(activitats, key=lambda a: _clau_alfabetica(a["nom"]))]
-    cards.append(_card(municipals, fixa_final=True))
     grid = "\n".join(cards)
 
     horaris_grid = "\n".join(
@@ -764,7 +763,15 @@ def pagina_activitat(a):
     resources = [asset_link(a["dossier"], a.get("dossier_label") or "Dossier", depth=1)]
     if a.get("dossier2"):
         resources.append(asset_link(a["dossier2"], a.get("dossier2_label") or "Dossier (alternatiu)", depth=1))
-    resources.append(form_link_html(a.get("form"), "Formulari d'inscripció"))
+    # Activitats municipals (FDM): la inscripció és per PDF (full + bonificació + preus),
+    # no hi ha Google Form → no es mostra «pendent de publicar».
+    for camp, etiqueta in (("inscripcio_pdf", "Full d'inscripció (PDF)"),
+                           ("bonificacio", "Sol·licitud de bonificació"),
+                           ("info_preus", "Preus i cursos")):
+        if a.get(camp):
+            resources.append(asset_link(a[camp], etiqueta, depth=1))
+    if a.get("form") or not a.get("inscripcio_pdf"):
+        resources.append(form_link_html(a.get("form"), "Formulari d'inscripció"))
     if a.get("form2"):
         resources.append(form_link_html(a["form2"], "Formulari alternatiu"))
     resources_html = "\n".join(resources)
@@ -806,62 +813,6 @@ def pagina_activitat(a):
         depth=1, active_href="extraescolars/index.html",
         title=a["nom"],
         meta_desc=f"{a['nom']} — extraescolar del CEIP Alejandra Soler, curs 2026-27. Dossier i inscripció.",
-        body_html=body,
-    )
-
-
-def pagina_municipals(a):
-    llista_html = "\n".join(f"<li>{x}</li>" for x in a["llista"])
-    resources_html = "\n".join([
-        asset_link(a["dossier"], "Dossier", depth=1),
-        asset_link(a["inscripcio_pdf"], "Full d'inscripció (PDF)", depth=1),
-        asset_link(a["bonificacio"], "Sol·licitud de bonificació", depth=1),
-        asset_link(a["info_preus"], "Preus i cursos", depth=1),
-    ])
-    fitxa_img_html = portada_img_html(1, a.get("imatge"), alt=a["nom"])
-    fitxa_visual = fitxa_img_html if fitxa_img_html else '<div class="placeholder-img ph-6">FDM</div>'
-
-    body = f"""
-<div class="wrap">
-<section>
-<div class="fitxa-cap">
-  {fitxa_visual}
-  <div>
-    <h1>{a['nom']}</h1>
-    <p class="fitxa-meta">Fundació Esportiva Municipal · convocatòria gener-maig</p>
-  </div>
-</div>
-
-<p>Activitats facilitades per la
-<a href="https://www.fdmvalencia.es/es/" target="_blank" rel="noreferrer noopener">Fundació Esportiva Municipal</a>,
-amb duració anual i preu reduït. No tenen panell propi d'empresa: les gestiona la FDM/l'AFA.</p>
-
-<ul>{llista_html}</ul>
-
-<p>El pagament es fa en dos terminis, el primer a l'inici d'octubre i el segon a finals de
-gener, excepte si eres una família beneficiaria de la beca del menjador, quan el preu encara
-és més reduït i el pagament es fa en un únic termini.</p>
-
-<h3>Com inscriure's</h3>
-<p>Cal omplir un formulari d'inscripció per activitat i enviar-lo junt amb el justificant de
-pagament a <a href="mailto:extraescolarsalejandrasoler@gmail.com">extraescolarsalejandrasoler@gmail.com</a>.
-En cas de ser beneficiari/ària de la beca de menjador, es pot optar a una bonificació en la
-quota (formulari de baix).</p>
-
-<div class="recursos">
-{resources_html}
-</div>
-
-<div class="botonera">
-  <a class="boton boton-secundari boton-petit" href="index.html">← Totes les extraescolars</a>
-</div>
-</section>
-</div>
-"""
-    return render_page(
-        depth=1, active_href="extraescolars/index.html",
-        title=a["nom"],
-        meta_desc="Activitats extraescolars municipals (FDM) del CEIP Alejandra Soler.",
         body_html=body,
     )
 
@@ -936,12 +887,10 @@ def main():
 
     activitats_totes = load_collection("extraescolars")
     activitats_actives = [a for a in activitats_totes if a.get("activa", True)]
-    municipals = next(a for a in activitats_actives if a.get("es_municipal"))
-    activitats = [a for a in activitats_actives if not a.get("es_municipal")]
+    activitats = activitats_actives   # les municipals són fitxes normals (es_municipal: true)
 
-    write("extraescolars/index.html", pagina_extraescolars_landing(activitats, municipals))
+    write("extraescolars/index.html", pagina_extraescolars_landing(activitats))
     write("extraescolars/places-lliures.html", pagina_places_lliures())
-    write(f"extraescolars/{municipals['_slug']}.html", pagina_municipals(municipals))
     for a in activitats:
         write(f"extraescolars/{a['_slug']}.html", pagina_activitat(a))
 

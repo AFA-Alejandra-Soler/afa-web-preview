@@ -145,18 +145,12 @@ content:
         hidden: true
 
       - name: es_municipal
-        label: "És el bloc d'activitats municipals (tècnic, no cal tocar-lo)"
+        label: "És una activitat municipal (FDM): inscripció per PDF, no per Google Form"
         type: boolean
         hidden: true
 
-      - name: llista
-        label: "Llista d'activitats municipals (només per a la fitxa FDM)"
-        type: string
-        list: true
-        required: false
-
       - name: inscripcio_pdf
-        label: "Full d'inscripció — PDF (només FDM)"
+        label: "Full d'inscripció — PDF (només activitats municipals)"
         type: file
         required: false
         options:
@@ -164,7 +158,7 @@ content:
           extensions: [pdf]
 
       - name: bonificacio
-        label: "Sol·licitud de bonificació — PDF (només FDM)"
+        label: "Sol·licitud de bonificació — PDF (només activitats municipals)"
         type: file
         required: false
         options:
@@ -172,7 +166,7 @@ content:
           extensions: [pdf]
 
       - name: info_preus
-        label: "Preus i cursos — PDF (només FDM)"
+        label: "Preus i cursos — PDF (només activitats municipals)"
         type: file
         required: false
         options:
