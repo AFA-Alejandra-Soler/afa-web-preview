@@ -203,7 +203,8 @@ def filtre_cursos_html():
   <span class="filtre-compte" id="filtre-compte" aria-live="polite"></span>
 </div>
 <script>
-(function () {{
+// S'executa quan el DOM està carregat: el <script> va ABANS del grid i, si no, el grid encara no existix (bug 28-ago).
+document.addEventListener('DOMContentLoaded', function () {{
   var sel = document.getElementById('filtre-curs');
   var grid = document.querySelector('.grid-extraescolars');
   var compte = document.getElementById('filtre-compte');
@@ -227,7 +228,7 @@ def filtre_cursos_html():
     llista.forEach(function (c) {{ grid.appendChild(c); }});
   }}
   sel.addEventListener('change', aplica);
-}})();
+}});
 </script>"""
 
 
