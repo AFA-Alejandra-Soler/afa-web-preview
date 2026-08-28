@@ -83,7 +83,7 @@ fer-se soci/sòcia de l'AFA abans del 30 de setembre —
 
 <section>
 <div class="filtre-cursos">
-  <label for="filtre-curs">Mostrar només:</label>
+  <label for="filtre-curs">Mostrar:</label>
   <select id="filtre-curs">
     <option value="">Totes les extraescolars</option>
     <option value="I3">3 anys</option>
@@ -96,17 +96,11 @@ fer-se soci/sòcia de l'AFA abans del 30 de setembre —
     <option value="P5">5é de Primària</option>
     <option value="P6">6é de Primària</option>
   </select>
-  <label for="ordre-cards">Ordena:</label>
-  <select id="ordre-cards">
-    <option value="az">Per nom (A → Z)</option>
-    <option value="edat">Per edat (de menuts a majors)</option>
-  </select>
   <span class="filtre-compte" id="filtre-compte" aria-live="polite"></span>
 </div>
 <script>
 (function () {
   var sel = document.getElementById('filtre-curs');
-  var ord = document.getElementById('ordre-cards');
   var grid = document.querySelector('.grid-extraescolars');
   var compte = document.getElementById('filtre-compte');
   if (!sel || !grid) return;
@@ -124,17 +118,11 @@ fer-se soci/sòcia de l'AFA abans del 30 de setembre —
     llista.sort(function (a, b) {
       var fa = a.hasAttribute('data-fixa-final') ? 1 : 0, fb = b.hasAttribute('data-fixa-final') ? 1 : 0;
       if (fa !== fb) return fa - fb;
-      if (ord && ord.value === 'edat') {
-        var da = parseInt(a.getAttribute('data-ordre-edat') || '99', 10);
-        var db = parseInt(b.getAttribute('data-ordre-edat') || '99', 10);
-        if (da !== db) return da - db;
-      }
       return a.getAttribute('data-nom') < b.getAttribute('data-nom') ? -1 : 1;
     });
     llista.forEach(function (c) { grid.appendChild(c); });
   }
   sel.addEventListener('change', aplica);
-  if (ord) ord.addEventListener('change', aplica);
 })();
 </script>
 <div class="grid-extraescolars">

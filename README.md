@@ -113,8 +113,30 @@ Tots els dossiers en PDF i les imatges de calendari es van descarregar el 26-08-
 `wp-content/uploads/` de la web anterior. El fitxer `ASSETS_PENDIENTES.tsv` es manté buit
 (només capçalera) com a registre històric — no cal tocar-lo.
 
-Els pocs dossiers allotjats a Google Drive (algunes empreses no els pengen a la web) es
-mantenen com a enllaç extern, tal com feia la web anterior.
+**Curs 2026-27 (28-08-2026)**: els dossiers nous de cada empresa estan a
+`assets/uploads/2026/08/<activitat>-2026-27.pdf` (comprimits per a web; els originals, fora
+del repositori, a `material/dossiers-2026-27/` del projecte). Ja no hi ha cap dossier a Google
+Drive: tots són locals. Els formularis són els del PDF «Formularis inscripció 26-27» del AFA.
+
+## Desplegable «Mostrar» de la pàgina d'extraescolars
+
+Cada tarjeta porta els cursos de l'activitat (`data-cursos="I4 I5 P1 ..."`, llegits del
+dossier). El desplegable filtra i reordena al navegador, sense servidor. Si una activitat no
+declara cursos (`data-cursos="*"`) es veu sempre. Per a canviar els cursos d'una activitat sense
+l'editor: modifica eixe atribut a la tarjeta d'`extraescolars/index.html` i la línia «Cursos:»
+de la seua fitxa.
+
+## Crèdits d'imatges (portades d'extraescolars)
+
+Les portades ixen del dossier de cada activitat, excepte estes, d'ús lliure (obligació
+d'atribució per a les CC BY):
+
+- Acting in English — «Assortment of theatre masks», virtusincertus (Flickr), CC BY 2.0
+- Cor (Acting in English) — «Chorus sheet music», David Beale (Unsplash/Wikimedia Commons), CC0
+- Breaking — «Le breakdance», Daniel Wehner (Flickr), CC BY 2.0
+- ExpresArte — «Prints», bfick (Flickr), CC BY 2.0
+- CreActivitat — «Labyrinthine circuit board lines», quapan (Flickr/Wikimedia Commons), CC BY 2.0
+- Anglès (Acting in English) — composició tipogràfica pròpia
 
 ## Què NO inclou esta versió (és Opció B, fora d'abast)
 
