@@ -57,8 +57,16 @@ un text, com pujar una foto, com donar de baixa una extraescolar) es documenta a
 en un document sense codi. Demaneu-lo si no el teniu.
 
 **Activar/desactivar una extraescolar sense l'editor** (via emergència, tècnica): a
-`content/extraescolars/<activitat>.yaml`, el camp `activa: true/false` decideix si
+`content/extraescolars/<activitat>.yml`, el camp `activa: true/false` decideix si
 l'activitat es veu a la web (llista i fitxa pròpia) o no. No cal esborrar cap fitxer.
+
+**Camps afegits el 28-08-2026 (curs 2026-27)**: `cursos` (llista de codis I3/I4/I5 =
+3/4/5 anys, P1..P6 = Primària — alimenta el desplegable «Mostrar només» de la landing i
+la línia «Cursos» de la fitxa; buit = es veu sempre), `dossier_label`/`dossier2_label`
+(text del botó quan hi ha dos dossiers, p. ex. Juegamáticas), i `form` pot quedar buit
+(la fitxa mostra «Formulari d'inscripció: pendent de publicar»). Els dossiers 26-27
+estan a `assets/uploads/2026/08/`. Crèdits de les portades genèriques: vore
+`sitio/README.md` del projecte (§ Crèdits d'imatges).
 
 ## Diferències conegudes amb el clon original (`sitio/`, `preview-github/`)
 
