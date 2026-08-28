@@ -144,7 +144,7 @@ d'atribució per a les CC BY):
 - Bàsquet — «BasketBall - score», j9sk9s (Flickr), CC BY 2.0
 - Pre-esport — «bokeh ball», BPPrice (Flickr), CC BY 2.0
 - Gimnàstica Rítmica (FDM) — composició amb cliparts d'aparells (dossier de The Hub)
-- Activitat Física Base (AFB) — composició tipogràfica pròpia
+- Activitat Física Base (AFB) — il·lustració aportada per l'AFA (Jorge, 29-08-2026)
 
 ## Què NO inclou esta versió (és Opció B, fora d'abast)
 
