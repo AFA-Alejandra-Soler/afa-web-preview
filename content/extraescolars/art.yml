@@ -1,8 +1,18 @@
 nom: Art / Arte
 activa: true
+cursos:
+- I3
+- I4
+- I5
+- P1
+- P2
+- P3
+- P4
+- P5
+- P6
 ph: ph-4
 imatge: assets/img/portades/art.jpg
-dossier: https://ampaalejandrasoler.es/wp-content/uploads/2025/06/Dossier-arte.pdf
-form: https://docs.google.com/forms/d/e/1FAIpQLSczpyGxn5vJOChMywBKuUItbQCvFIHqg44dcFp5_b7g74VSBA/viewform
+dossier: assets/uploads/2026/08/art-maria-barrachina-2026-27.pdf
+form: https://forms.gle/b6Km4mS4SaTbJf3Q7
 descripcio: |-
-  Taller Laboratorio de creatividad y experimentación artística impartido por María Barrachina, artista, ilustradora y veterinaria. Las niñas y niños prueban múltiples materiales, técnicas y procedimientos (dibujo, pintura, volumen, encuadernación, estampación, origami, collage, barro) a lo largo de ocho meses, con grupos diferenciados de Infantil y Primaria adaptados a cada etapa. El objetivo es potenciar la creatividad utilizando el juego, la diversión y la libertad de expresión como elementos principales del aprendizaje.
+  Taller Laboratorio de creatividad y experimentación artística impartido por María Barrachina, artista, ilustradora y veterinaria. Las niñas y niños prueban múltiples materiales, técnicas y procedimientos (dibujo, pintura, volumen, encuadernación, estampación, origami, collage, barro) a lo largo de ocho meses, con grupos diferenciados de Infantil y Primaria adaptados a cada etapa. El objetivo es potenciar la creatividad utilizando el juego, la diversión y la libertad de expresión como elementos principales del aprendizaje. Se imparte a mediodía, un día a la semana, de octubre a mayo, en grupos de 8 a 10 por niveles de edad.

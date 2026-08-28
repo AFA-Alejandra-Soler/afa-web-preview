@@ -1,10 +1,20 @@
 nom: Teles Aèries
 activa: true
+cursos:
+- I3
+- I4
+- I5
+- P1
+- P2
+- P3
+- P4
+- P5
+- P6
 ph: ph-3
 imatge: assets/img/portades/teles-aeries.jpg
-dossier: https://ampaalejandrasoler.es/wp-content/uploads/2025/06/Dossier-Revolution.pdf
-form: https://docs.google.com/forms/d/e/1FAIpQLSeD3r4bCI7YnP1JEXixONHGvKSzbO1vS0CuNoglYOMHTm4V8g/viewform
+dossier: assets/uploads/2026/08/revolution-school-2026-27.pdf
+form: https://forms.gle/J4buiPL92qf6EcNs9
 nota: |-
-  Aquesta activitat la imparteix <strong>Revolution School</strong> (C/ Dénia, 1). Comparteix dossier i formulari d'inscripció amb Escalada, Parkour i Teles Aèries — són la mateixa empresa, tres activitats.
+  Aquesta activitat la imparteix <strong>R-evolution School</strong> (C/ Dénia, 1). Comparteix dossier i formulari d'inscripció amb Escalada, Parkour i Teles Aèries — són la mateixa empresa, tres activitats.
 descripcio: |-
   Las telas aéreas son el resultado de un proceso de transformación de distintas disciplinas artísticas y deportivas que combinan la danza con las artes circenses y que se complementa con la música. Se realiza principalmente suspendido en el aire. Exige una relación corporal, mental y espiritual, así como una rigurosa disciplina y constancia, pues combina la estética de la danza con la fuerza física y la preparación mental para su desarrollo.

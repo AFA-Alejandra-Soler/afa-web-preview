@@ -130,6 +130,142 @@ def initials(text):
     return (words[0][0] + words[1][0]).upper()
 
 
+
+# --------------------------------------------------------------------------
+# Cursos / nivells (28-08-2026): cada fitxa porta `cursos` = llista de codis
+# (I3/I4/I5 = Infantil 3/4/5 anys; P1..P6 = Primària), llegida del dossier
+# de cada activitat. La landing els usa per al desplegable "Mostrar només".
+# --------------------------------------------------------------------------
+NIVELLS = [
+    ("I3", "3 anys"), ("I4", "4 anys"), ("I5", "5 anys"),
+    ("P1", "1r de Primària"), ("P2", "2n de Primària"), ("P3", "3r de Primària"),
+    ("P4", "4t de Primària"), ("P5", "5é de Primària"), ("P6", "6é de Primària"),
+]
+INFANTIL = ["I3", "I4", "I5"]
+PRIMARIA = ["P1", "P2", "P3", "P4", "P5", "P6"]
+TOTS_ELS_CURSOS = INFANTIL + PRIMARIA
+_ORDINALS = {"P1": "1r", "P2": "2n", "P3": "3r", "P4": "4t", "P5": "5é", "P6": "6é"}
+
+
+def format_cursos(codes):
+    """Text compacte per a la fitxa: '4 i 5 anys · 1r a 3r de Primària'.
+    Buit si la fitxa no declara cursos (el dossier no els especifica)."""
+    if not codes:
+        return ""
+    ordre = [c for c, _ in NIVELLS]
+    codes = [c for c in ordre if c in codes]
+    inf = [c for c in codes if c.startswith("I")]
+    pri = [c for c in codes if c.startswith("P")]
+    parts = []
+    if inf:
+        anys = [c[1] for c in inf]
+        if len(anys) == 3:
+            parts.append("Infantil (3, 4 i 5 anys)")
+        elif len(anys) == 2:
+            parts.append(f"{anys[0]} i {anys[1]} anys")
+        else:
+            parts.append(f"{anys[0]} anys")
+    if pri:
+        idx = [int(c[1]) for c in pri]
+        consecutius = idx == list(range(idx[0], idx[-1] + 1))
+        if len(idx) == 6:
+            parts.append("tota la Primària (1r a 6é)")
+        elif len(idx) == 1:
+            parts.append(f"{_ORDINALS[pri[0]]} de Primària")
+        elif consecutius:
+            parts.append(f"{_ORDINALS[pri[0]]} a {_ORDINALS[pri[-1]]} de Primària")
+        else:
+            parts.append(", ".join(_ORDINALS[c] for c in pri[:-1]) + f" i {_ORDINALS[pri[-1]]} de Primària")
+    return " · ".join(parts)
+
+
+def ordre_edat(codes):
+    """Índex del curs més menut de la fitxa (0 = 3 anys ... 8 = 6é); 99 si no
+    declara cursos — així "Ordena per edat" les deixa al final."""
+    ordre = [c for c, _ in NIVELLS]
+    idx = [ordre.index(c) for c in (codes or []) if c in ordre]
+    return min(idx) if idx else 99
+
+
+def filtre_cursos_html():
+    """Desplegable "Mostrar només: <curs>" + "Ordena" de la landing. Filtra
+    i reordena les tarjetes en el navegador (sense recarregar) a partir dels
+    atributs data-cursos / data-nom / data-ordre-edat de cada tarjeta. Les
+    tarjetes amb data-cursos="*" (bloc municipal, o activitat que no declara
+    cursos) es veuen sempre; el bloc municipal es queda sempre a l'últim."""
+    opts = "\n".join(f'    <option value="{c}">{l}</option>' for c, l in NIVELLS)
+    return f"""<div class="filtre-cursos">
+  <label for="filtre-curs">Mostrar només:</label>
+  <select id="filtre-curs">
+    <option value="">Totes les extraescolars</option>
+{opts}
+  </select>
+  <label for="ordre-cards">Ordena:</label>
+  <select id="ordre-cards">
+    <option value="az">Per nom (A → Z)</option>
+    <option value="edat">Per edat (de menuts a majors)</option>
+  </select>
+  <span class="filtre-compte" id="filtre-compte" aria-live="polite"></span>
+</div>
+<script>
+(function () {{
+  var sel = document.getElementById('filtre-curs');
+  var ord = document.getElementById('ordre-cards');
+  var grid = document.querySelector('.grid-extraescolars');
+  var compte = document.getElementById('filtre-compte');
+  if (!sel || !grid) return;
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.card-extra'));
+  function aplica() {{
+    var v = sel.value, n = 0;
+    cards.forEach(function (c) {{
+      var cursos = (c.getAttribute('data-cursos') || '').split(' ');
+      var visible = !v || cursos.indexOf('*') !== -1 || cursos.indexOf(v) !== -1;
+      c.hidden = !visible;
+      if (visible) n++;
+    }});
+    compte.textContent = v ? n + ' extraescolar' + (n === 1 ? '' : 's') : '';
+    var llista = cards.slice();
+    llista.sort(function (a, b) {{
+      var fa = a.hasAttribute('data-fixa-final') ? 1 : 0, fb = b.hasAttribute('data-fixa-final') ? 1 : 0;
+      if (fa !== fb) return fa - fb;
+      if (ord && ord.value === 'edat') {{
+        var da = parseInt(a.getAttribute('data-ordre-edat') || '99', 10);
+        var db = parseInt(b.getAttribute('data-ordre-edat') || '99', 10);
+        if (da !== db) return da - db;
+      }}
+      return a.getAttribute('data-nom') < b.getAttribute('data-nom') ? -1 : 1;
+    }});
+    llista.forEach(function (c) {{ grid.appendChild(c); }});
+  }}
+  sel.addEventListener('change', aplica);
+  if (ord) ord.addEventListener('change', aplica);
+}})();
+</script>"""
+
+
+def card_attrs(a, clau, fixa_final=False):
+    """Atributs data-* d'una tarjeta de la landing (vore filtre_cursos_html)."""
+    cursos = a.get("cursos") or []
+    data_cursos = " ".join(cursos) if (cursos and not fixa_final) else "*"
+    attrs = f' data-cursos="{data_cursos}" data-nom="{clau}" data-ordre-edat="{ordre_edat(cursos)}"'
+    if fixa_final:
+        attrs += ' data-fixa-final="1"'
+    return attrs
+
+
+def cursos_html(a):
+    txt = format_cursos(a.get("cursos"))
+    return f'<p class="fitxa-cursos"><strong>Cursos:</strong> {txt}</p>' if txt else ""
+
+
+def form_link_html(url, label):
+    if url:
+        return (f'<a class="recurs" href="{url}" target="_blank" rel="noreferrer noopener">'
+                f'<span class="icona">📝</span> {label}</a>')
+    return (f'<span class="recurs recurs-pendent"><span class="icona">📝</span> {label}: '
+            f'pendent de publicar</span>')
+
+
 # --------------------------------------------------------------------------
 # Menú i plantilla comuna (idèntics als del clon original — no és contingut
 # editable per la junta, viu ací com a codi).
@@ -318,7 +454,7 @@ def pagina_home():
 <section>
   <div class="grid-accions">
     <a class="accio" href="extraescolars/index.html">
-      <h3>Extraescolars 2025-26</h3>
+      <h3>Extraescolars 2026-27</h3>
       <p>Totes les activitats, els seus dossiers i l'enllaç d'inscripció.</p>
     </a>
     <a class="accio" href="blog/index.html">
@@ -545,19 +681,22 @@ HORARIS_NIVELL = [
 
 
 def pagina_extraescolars_landing(activitats, municipals):
-    def _card(a):
+    def _card(a, fixa_final=False):
         img_html = portada_img_html(1, a.get("imatge"), alt=a["nom"])
-        visual = img_html if img_html else f'<div class="placeholder-img {a["ph"]}">{initials(a["nom"])}</div>'
-        return f"""<a class="card-extra" href="{a['_slug']}.html">
+        # El bloc municipal mostra "FDM" (com el clon original), no les inicials
+        inicials = "FDM" if fixa_final else initials(a["nom"])
+        visual = img_html if img_html else f'<div class="placeholder-img {a["ph"]}">{inicials}</div>'
+        return f"""<a class="card-extra" href="{a['_slug']}.html"{card_attrs(a, _clau_alfabetica(a['nom']), fixa_final=fixa_final)}>
   {visual}
   <div class="nom">{a['nom']}</div>
 </a>"""
 
     # Les activitats es mostren per orde alfabètic; "Activitats municipals
     # (FDM)" es queda sempre AL FINAL (no és una empresa, és un bloc apart),
-    # clon fiel del comportament original.
+    # clon fiel del comportament original. El desplegable de la landing pot
+    # reordenar-les per edat al navegador (vore filtre_cursos_html).
     cards = [_card(a) for a in sorted(activitats, key=lambda a: _clau_alfabetica(a["nom"]))]
-    cards.append(_card(municipals))
+    cards.append(_card(municipals, fixa_final=True))
     grid = "\n".join(cards)
 
     horaris_grid = "\n".join(
@@ -568,19 +707,19 @@ def pagina_extraescolars_landing(activitats, municipals):
     )
 
     body = f"""
-<div class="page-hero"><div class="wrap"><h1>Extraescolars 2025-2026</h1>
+<div class="page-hero"><div class="wrap"><h1>Extraescolars 2026-2027</h1>
 <p>Tria l'activitat per a vore el seu dossier i inscriure't</p></div></div>
 <div class="wrap">
 <section>
-<p>Extraescolars per al curs 2025-26: activitats des d'Infantil a Primària perquè les nostres
+<p>Extraescolars per al curs 2026-27: activitats des d'Infantil a Primària perquè les nostres
 criatures gaudeixen, practiquen esport, continuen desenvolupant les seues habilitats i
 capacitats, i també perquè ajuden a conciliar a les famílies de l'escola.</p>
 <p>Com sempre, tindrem extraescolars privades, impartides per empreses o professionals, i
 extraescolars municipals, facilitades per la
 <a href="https://www.fdmvalencia.es/es/" target="_blank" rel="noreferrer noopener">Fundació Esportiva Municipal</a>,
 amb duració anual i preu reduït.</p>
-<p>Les extraescolars es desenvoluparan de l'1 d'octubre al 29 de maig tant en horari de menjador
-com de vesprada de 16.30 h a 17.30 h o de 17.30 h a 18.30 h, i els divendres de 15 h a 16.30 h.</p>
+<p>Les extraescolars es desenvolupen d'octubre a maig, tant en horari de menjador com de
+vesprada de 16.30 h a 17.30 h o de 17.30 h a 18.30 h, i els divendres de 15 h a 16.30 h.</p>
 <p>Per poder participar en les activitats extraescolars privades sense pagar matrícula, cal
 fer-se soci/sòcia de l'AFA abans del 30 de setembre —
 <a href="https://www.aulazon.es/categoria-producto/colegios/ceip-alejandra-soler/ampa-afa-ceip-alejandra-soler/" target="_blank" rel="noreferrer noopener">a través d'Aulazon</a>.</p>
@@ -590,6 +729,7 @@ fer-se soci/sòcia de l'AFA abans del 30 de setembre —
 </section>
 
 <section>
+{filtre_cursos_html()}
 <div class="grid-extraescolars">
 {grid}
 </div>
@@ -597,6 +737,7 @@ fer-se soci/sòcia de l'AFA abans del 30 de setembre —
 
 <section>
 <h2>Horaris per curs</h2>
+<p class="nota">Horaris del curs 2025-26. Els del curs 2026-27 es publicaran ací quan estiguen tancats.</p>
 <div class="recursos">
 """ + asset_link(HORARI_GENERAL, "Horari general", depth=1) + """
 """ + asset_link(PREUS_MUNICIPALS, "Preus activitats municipals", depth=1) + """
@@ -621,18 +762,18 @@ L'admissió es fa per ordre d'inscripció.</p>
     return render_page(
         depth=1, active_href="extraescolars/index.html",
         title="Extraescolars",
-        meta_desc="Extraescolars del CEIP Alejandra Soler curs 2025-26: activitats, dossiers i inscripció.",
+        meta_desc="Extraescolars del CEIP Alejandra Soler curs 2026-27: activitats, dossiers i inscripció.",
         body_html=body,
     )
 
 
 def pagina_activitat(a):
-    resources = [asset_link(a["dossier"], "Dossier", depth=1)]
+    resources = [asset_link(a["dossier"], a.get("dossier_label") or "Dossier", depth=1)]
     if a.get("dossier2"):
-        resources.append(asset_link(a["dossier2"], "Dossier (alternatiu)", depth=1))
-    resources.append(f'<a class="recurs" href="{a["form"]}" target="_blank" rel="noreferrer noopener"><span class="icona">📝</span> Formulari d\'inscripció</a>')
+        resources.append(asset_link(a["dossier2"], a.get("dossier2_label") or "Dossier (alternatiu)", depth=1))
+    resources.append(form_link_html(a.get("form"), "Formulari d'inscripció"))
     if a.get("form2"):
-        resources.append(f'<a class="recurs" href="{a["form2"]}" target="_blank" rel="noreferrer noopener"><span class="icona">📝</span> Formulari alternatiu</a>')
+        resources.append(form_link_html(a["form2"], "Formulari alternatiu"))
     resources_html = "\n".join(resources)
 
     nota_html = f'<div class="avis">{cos_html(a["nota"])}</div>' if a.get("nota") else ""
@@ -648,7 +789,8 @@ def pagina_activitat(a):
   {fitxa_visual}
   <div>
     <h1>{a['nom']}</h1>
-    <p class="fitxa-meta">Extraescolar curs 2025-26 · CEIP Alejandra Soler</p>
+    <p class="fitxa-meta">Extraescolar curs 2026-27 · CEIP Alejandra Soler</p>
+    {cursos_html(a)}
   </div>
 </div>
 
@@ -669,7 +811,7 @@ def pagina_activitat(a):
     return render_page(
         depth=1, active_href="extraescolars/index.html",
         title=a["nom"],
-        meta_desc=f"{a['nom']} — extraescolar del CEIP Alejandra Soler, curs 2025-26. Dossier i inscripció.",
+        meta_desc=f"{a['nom']} — extraescolar del CEIP Alejandra Soler, curs 2026-27. Dossier i inscripció.",
         body_html=body,
     )
 

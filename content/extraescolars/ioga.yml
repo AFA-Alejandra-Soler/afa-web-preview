@@ -1,5 +1,11 @@
 nom: Ioga / Yoga
-activa: true
+activa: false
+cursos:
+- I3
+- I4
+- I5
+- P1
+- P2
 ph: ph-2
 imatge: assets/img/portades/ioga.jpg
 dossier: https://ampaalejandrasoler.es/wp-content/uploads/2026/01/Propuesta-Yoga-Infantil-y-1-ciclo.pdf

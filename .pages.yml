@@ -42,6 +42,35 @@ content:
         # de la web — desapareix de la llista i de la seua pròpia pàgina,
         # sense haver d'esborrar el fitxer ni tocar cap altra pàgina.
 
+      - name: cursos
+        label: "Cursos als quals va dirigida"
+        type: select
+        list: true
+        required: false
+        description: "Marca tots els cursos que apareixen al dossier. Si no en marques cap, l'activitat es veu sempre al desplegable «Mostrar només» de la web."
+        options:
+          creatable: false
+          multiple: true
+          values:
+            - value: I3
+              label: "3 anys"
+            - value: I4
+              label: "4 anys"
+            - value: I5
+              label: "5 anys"
+            - value: P1
+              label: "1r de Primària"
+            - value: P2
+              label: "2n de Primària"
+            - value: P3
+              label: "3r de Primària"
+            - value: P4
+              label: "4t de Primària"
+            - value: P5
+              label: "5é de Primària"
+            - value: P6
+              label: "6é de Primària"
+
       - name: imatge
         label: "Imatge de portada (foto o logo)"
         type: image
@@ -56,6 +85,11 @@ content:
           media: cms
           extensions: [pdf]
 
+      - name: dossier_label
+        label: "Text del botó del dossier (opcional; per defecte «Dossier»)"
+        type: string
+        required: false
+
       - name: dossier2
         label: "Dossier alternatiu (opcional, només si n'hi ha dos)"
         type: file
@@ -64,10 +98,16 @@ content:
           media: cms
           extensions: [pdf]
 
+      - name: dossier2_label
+        label: "Text del botó del segon dossier (opcional)"
+        type: string
+        required: false
+
       - name: form
         label: "Enllaç al formulari d'inscripció (Google Forms)"
         type: string
-        required: true
+        required: false
+        description: "Si es deixa buit, la fitxa mostra «Formulari d'inscripció: pendent de publicar»."
 
       - name: form2
         label: "Enllaç a un segon formulari (opcional)"

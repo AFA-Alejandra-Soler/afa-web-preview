@@ -1,8 +1,20 @@
 nom: Música
 activa: true
+cursos:
+- I3
+- I4
+- I5
+- P1
+- P2
+- P3
+- P4
+- P5
+- P6
 ph: ph-2
 imatge: assets/img/portades/musica.jpg
-dossier: https://drive.google.com/file/d/1WnURxFUJGDdh-OwwwkigFR7pCWK_etv2/view?usp=share_link
-form: https://docs.google.com/forms/d/e/1FAIpQLSe3xXQZAVo7B6FJxQSSZRcLsqV0ZtTYivZ0yZh8ARGx8_lhqA/viewform
+dossier: assets/uploads/2026/08/kid-pam-pum-musica-peketeka-2026-27.pdf
+form: null
+nota: |-
+  Aquesta activitat la imparteix <strong>Kid Pam Pum — La Casita Musical</strong> (C/ Gibraltar, 31): recullen l'alumnat al col·legi i les famílies el repleguen a la Casita Musical. Comparteix dossier amb Música i Peke-teka — són la mateixa escola, dos activitats.
 descripcio: |-
-  Aprender música mediante instrumentos (batería, piano, guitarra, bajo, ukelele), voz y cuerpo. En Infantil se usan sonidos del propio cuerpo y percusión, no hace falta traer instrumento (la escuela lo proporciona). A partir de Primaria se trabaja la ejecución en instrumento; se recomienda pero no es obligatorio traerlo. También se puede traer instrumentos reciclados/construidos en casa. Al igual que no se necesita tener talento para aprender a hablar, tampoco es necesario para aprender música.
+  La extraescolar de música del colegio, ahora en La Casita Musical Kid Pam Pum, en su 7º año con el cole. En la clase de música aprendemos juntos a través de nuestro repertorio: canciones que nos inspiran y enseñan, con instrumentos profesionales y tecnología (batería acústica, guitarras, bajo, pianos y teclado, tecnología para crear y grabar), desarrollando la creatividad, la escucha y la improvisación; un maestro/a acompaña a cada grupo de 6-7 niños y el tiempo en la zona de juego es limitado para mantener el enfoque en la música. Infantil (3, 4 y 5 años): martes; Primaria: jueves. Recogida en el colegio por parte de Kid Pam Pum a las 16:30 y recogida de las familias en la Casita Musical a las 18:00.

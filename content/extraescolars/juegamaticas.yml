@@ -1,8 +1,18 @@
 nom: Juegamáticas
 activa: true
+cursos:
+- P1
+- P2
+- P3
+- P4
+- P5
+- P6
 ph: ph-1
 imatge: assets/img/portades/juegamaticas.jpg
-dossier: https://drive.google.com/file/d/1ioHCHSJBnP0yxqzrfdsfVevb4e569EbX/view?usp=share_link
-form: https://docs.google.com/forms/d/e/1FAIpQLSdxfNc-X0soLBV4CrtKAVD27A4ibD-E1kZ-A1zZ-e-v_f5E6w/viewform
+dossier: assets/uploads/2026/08/juegamaticas-2026-27.pdf
+dossier_label: Dossier JUEGAmáticas (1r a 4t)
+dossier2: assets/uploads/2026/08/juegamaticas-evolution-2026-27.pdf
+dossier2_label: Dossier JUEGAmáticas-EVOLUTION (5é i 6é)
+form: https://docs.google.com/forms/d/e/1FAIpQLSfeAF321Zga9HlRtQK66cbxGrv9yxhhfVELxo657s1rqXZrjA/viewform?usp=dialog
 descripcio: |-
-  Un espacio para acercarse a las matemáticas de una forma lúdica y creativa. A través de experiencias divertidas, se busca despertar la curiosidad de los niños para investigar problemas matemáticos cotidianos. Partiendo de la experimentación, usa el JUEGO para aprender matemáticas mediante 5 ejes: Jugar, Crear, Experimentar, Leer e Investigar. Dirigido a niñ@s de 1º a 6º de Primaria, en grupos reducidos (máximo 8 alumnos).
+  Un espacio para acercarse a las matemáticas de una forma lúdica y creativa. A través de experiencias divertidas, se busca despertar la curiosidad de los niños para investigar problemas matemáticos cotidianos; partiendo de la experimentación, usa el JUEGO para aprender matemáticas mediante 5 ejes: Jugar, Crear, Experimentar, Leer e Investigar. Imparte Beatriz Cabrera (arquitecta y Máster en Profesorado de Secundaria, especialidad Matemáticas). Dos actividades: <strong>JUEGAmáticas</strong>, para 1º a 4º de Primaria (grupos reducidos, máximo 8), y <strong>JUEGAmáticas-EVOLUTION</strong>, para 5º y 6º, donde el juego deja espacio al reto con la resolución de problemas abiertos y creativos (metodología «Building Thinking Classrooms», Peter Liljedahl). Un día a la semana, según grupo.

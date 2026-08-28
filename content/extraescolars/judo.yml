@@ -1,8 +1,18 @@
 nom: Judo
 activa: true
+cursos:
+- I3
+- I4
+- I5
+- P1
+- P2
+- P3
+- P4
+- P5
+- P6
 ph: ph-6
-imatge: assets/img/portades/judo.png
-dossier: https://ampaalejandrasoler.es/wp-content/uploads/2025/06/Dossier-judo.pdf
-form: https://docs.google.com/forms/d/e/1FAIpQLSf5MWt40YmX0jXrZ86_LXJ7OT0T3QsTyFNx3OWiz1xcVNkzSg/viewform
+imatge: assets/img/portades/judo.jpg
+dossier: assets/uploads/2026/08/judo-2026-27.pdf
+form: https://forms.gle/ByKNVYWkRXYEMCs88
 descripcio: |-
-  El Judo es un deporte olímpico recomendado por la UNESCO como la mejor actividad deportiva para el desarrollo motriz en la infancia. El club JUDOKAN VALENCIA tiene una dilatada experiencia integrado en el barrio de Russafa desde hace 40 años, trabaja con más de 500 niños entre sus sedes y colegios, y desarrolla proyectos sociales e inclusivos (ONCE, fundación Vicente Ferrer). Imparten Jorge Moral (licenciado en CAFD, Maestro Nacional de Judo, cinturón negro 5º DAN) y Marcos Mora (cinturón negro 1º DAN, monitor y árbitro regional) los viernes.
+  El Judo es un deporte olímpico recomendado por la UNESCO como la mejor actividad deportiva para el desarrollo motriz en la infancia. El club JUDOKAN VALENCIA tiene una dilatada experiencia integrado en el barrio de Russafa desde hace 40 años, trabaja con más de 1000 niños entre sus sedes y colegios, es referente en toda España a nivel competitivo y desarrolla proyectos sociales e inclusivos (ONCE, fundación Vicente Ferrer). Imparten Jorge Moral (licenciado en CAFD, diplomado en Fisioterapia, Maestro Nacional de Judo, cinturón negro 5º DAN) y Marcos Mora (cinturón negro 1º DAN, monitor y árbitro regional, profesor de Judo en la edad de Infantil).

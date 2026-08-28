@@ -1,10 +1,20 @@
 nom: Peke-teka
 activa: true
+cursos:
+- I3
+- I4
+- I5
+- P1
+- P2
+- P3
+- P4
+- P5
+- P6
 ph: ph-1
 imatge: assets/img/portades/peke-teka.jpg
-dossier: https://drive.google.com/file/d/1WnURxFUJGDdh-OwwwkigFR7pCWK_etv2/view?usp=share_link
-form: https://docs.google.com/forms/d/e/1FAIpQLSe3xXQZAVo7B6FJxQSSZRcLsqV0ZtTYivZ0yZh8ARGx8_lhqA/viewform
-dossier2: https://ampaalejandrasoler.es/wp-content/uploads/2026/01/DOSSIE_2.pdf
-form2: https://docs.google.com/forms/d/1bbwEnXIdO7M5vLdUsmAQTa6fM1bGfSfdXPJ_rQGAhCM/viewform?edit_requested=true
+dossier: assets/uploads/2026/08/kid-pam-pum-musica-peketeka-2026-27.pdf
+form: null
+nota: |-
+  Aquesta activitat la imparteix <strong>Kid Pam Pum — La Casita Musical</strong> (C/ Gibraltar, 31): recullen l'alumnat al col·legi i les famílies el repleguen a la Casita Musical. Comparteix dossier amb Música i Peke-teka — són la mateixa escola, dos activitats.
 descripcio: |-
-  La Peketeka es una fiesta creativa a través de la cual fomentamos la libertad de elección, el trabajo en equipo y la mezcla de edades. En la Peketeka, el esfuerzo siempre es valorado con algo tangible que pueden llevar a casa. Los retos que proponemos incluyen bailes, escritura a dos manos, canto de ritmos o melodías, juegos deportivos con integración rítmica, y percusión corporal, con una lista de música cuidadosamente seleccionada. Este año se ha incluido a los cursos de 1º, 2º y 3º de Primaria (antes solo Infantil); alumnos de Primaria pueden traer su instrumento, los de Infantil es mejor que no.
+  La Peketeka de Kid Pam Pum: tú eliges, tú decides, tú disfrutas. Aquí los niños deciden todo el tiempo lo que quieren hacer: interpretamos sus canciones favoritas y juegan, crean y se divierten sin límites — elegimos y tocamos sus canciones favoritas, acceso ilimitado a la zona de juego (cama elástica, juegos y más), y si tocan música ganan Sonrisas que pueden usar en el Mercadillo para elegir juguetes, clases especiales y sorpresas. Libertad, creatividad y diversión en un ambiente seguro. Viernes, para Infantil y Primaria: recogida en el colegio por parte de Kid Pam Pum a las 15:00 y recogida de las familias en la Casita Musical a las 16:45.
