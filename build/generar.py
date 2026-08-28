@@ -733,7 +733,7 @@ fer-se soci/sòcia de l'AFA abans del 30 de setembre —
 <p class="nota">Horaris del curs 2025-26. Els del curs 2026-27 es publicaran ací quan estiguen tancats.</p>
 <div class="recursos">
 """ + asset_link(HORARI_GENERAL, "Horari general", depth=1) + """
-""" + asset_link(PREUS_MUNICIPALS, "Preus activitats municipals", depth=1) + """
+""" + asset_link(PREUS_MUNICIPALS, "Horaris activitats municipals", depth=1) + """
 </div>
 <p class="nota">**Les activitats amb dos asteriscs, signifiquen que son activitats municipals, i
 per tant, el preu és més reduït.</p>
