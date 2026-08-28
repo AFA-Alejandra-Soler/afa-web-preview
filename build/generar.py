@@ -195,7 +195,7 @@ def filtre_cursos_html():
     cursos) es veuen sempre; el bloc municipal es queda sempre a l'últim."""
     opts = "\n".join(f'    <option value="{c}">{l}</option>' for c, l in NIVELLS)
     return f"""<div class="filtre-cursos">
-  <label for="filtre-curs">Mostrar:</label>
+  <label for="filtre-curs">Filtrar per curs:</label>
   <select id="filtre-curs">
     <option value="">Totes les extraescolars</option>
 {opts}
