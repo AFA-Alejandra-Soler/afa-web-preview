@@ -34,6 +34,12 @@ content:
         type: string
         required: true
 
+      - name: empresa
+        label: "Empresa o professional que la imparteix"
+        type: string
+        required: false
+        description: "Es mostra davall del nom a la llista i com «Impartida per: …» a la fitxa."
+
       - name: activa
         label: Activa (visible a la web)
         type: boolean

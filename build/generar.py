@@ -246,6 +246,11 @@ def cursos_html(a):
     return f'<p class="fitxa-cursos"><strong>Cursos:</strong> {txt}</p>' if txt else ""
 
 
+def empresa_html(a):
+    e = a.get("empresa")
+    return f'<p class="fitxa-empresa">Impartida per: <strong>{e}</strong></p>' if e else ""
+
+
 def form_link_html(url, label):
     if url:
         return (f'<a class="recurs" href="{url}" target="_blank" rel="noreferrer noopener">'
@@ -676,7 +681,7 @@ def pagina_extraescolars_landing(activitats, municipals):
         visual = img_html if img_html else f'<div class="placeholder-img {a["ph"]}">{inicials}</div>'
         return f"""<a class="card-extra" href="{a['_slug']}.html"{card_attrs(a, _clau_alfabetica(a['nom']), fixa_final=fixa_final)}>
   {visual}
-  <div class="nom">{a['nom']}</div>
+  <div class="nom">{a['nom']}<small class="empresa">{a.get('empresa') or ''}</small></div>
 </a>"""
 
     # Les activitats es mostren per orde alfabètic; "Activitats municipals
@@ -778,6 +783,7 @@ def pagina_activitat(a):
   <div>
     <h1>{a['nom']}</h1>
     <p class="fitxa-meta">Extraescolar curs 2026-27 · CEIP Alejandra Soler</p>
+    {empresa_html(a)}
     {cursos_html(a)}
   </div>
 </div>
