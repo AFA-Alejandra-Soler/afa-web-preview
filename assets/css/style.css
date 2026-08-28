@@ -557,3 +557,10 @@ td { padding: .55rem .7rem; border-bottom: 1px solid var(--linea); vertical-alig
 .fitxa-cursos { margin: .3rem 0 0; font-size: .92rem; color: var(--tinta-suave); }
 /* Formulari encara no publicat per l'empresa: mateix aspecte que un recurs, però apagat */
 .recurs-pendent { color: var(--tinta-suave); border-style: dashed; font-weight: 500; cursor: default; }
+
+/* ---------- Empresa que imparteix (28-08-2026) ---------- */
+.card-extra .nom small.empresa {
+  display: block; font-weight: 400; font-size: .8rem; color: var(--tinta-suave); margin-top: .15rem;
+}
+.fitxa-empresa { margin: .25rem 0 0; font-size: .95rem; color: var(--tinta); }
+.fitxa-empresa strong { color: var(--morado-oscuro); }
