@@ -540,3 +540,20 @@ td { padding: .55rem .7rem; border-bottom: 1px solid var(--linea); vertical-alig
 @media print {
   .site-header, .site-footer, .no-imprimir { display: none !important; }
 }
+
+/* ---------- Filtre per curs a la landing d'extraescolars (28-08-2026) ---------- */
+.filtre-cursos {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .8rem;
+  margin: 1rem 0 .2rem; font-size: .92rem;
+}
+.filtre-cursos label { font-weight: 700; color: var(--morado-oscuro); }
+.filtre-cursos select {
+  font: inherit; padding: .45rem .7rem; border: 1px solid var(--linea); border-radius: 8px;
+  background: #fff; color: var(--tinta); max-width: 100%;
+}
+.filtre-cursos select:focus { outline: 2px solid var(--morado); outline-offset: 1px; }
+.filtre-compte { color: var(--tinta-suave); }
+.card-extra[hidden] { display: none; }
+.fitxa-cursos { margin: .3rem 0 0; font-size: .92rem; color: var(--tinta-suave); }
+/* Formulari encara no publicat per l'empresa: mateix aspecte que un recurs, però apagat */
+.recurs-pendent { color: var(--tinta-suave); border-style: dashed; font-weight: 500; cursor: default; }
