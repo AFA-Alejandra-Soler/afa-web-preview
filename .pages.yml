@@ -45,11 +45,12 @@ content:
       - name: cursos
         label: "Cursos als quals va dirigida"
         type: select
-        list: true
         required: false
         description: "Marca tots els cursos que apareixen al dossier. Si no en marques cap, l'activitat es veu sempre al desplegable «Mostrar només» de la web."
+        # Verificat al codi font de Pages CMS (fields/core/select/index.tsx, 28-08-2026):
+        # `options.multiple: true` guarda una llista de cadenes (el que llig generar.py).
+        # NO posar `list: true` — faria una llista de llistes.
         options:
-          creatable: false
           multiple: true
           values:
             - value: I3
