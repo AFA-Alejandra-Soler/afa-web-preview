@@ -76,6 +76,7 @@ T = {
         "nav_junta": "Junta AFA",
         "nav_estatuts": "Estatuts AFA",
         "nav_extraescolars": "Extraescolars",
+        "nav_conciliacio": "Conciliació",
         "nav_noticies": "Notícies",
         "nav_blog": "Blog",
         "nav_galeria": "Galeria",
@@ -215,6 +216,7 @@ T = {
         "nav_junta": "Junta AFA",
         "nav_estatuts": "Estatutos AFA",
         "nav_extraescolars": "Extraescolares",
+        "nav_conciliacio": "Conciliación",
         "nav_noticies": "Noticias",
         "nav_blog": "Blog",
         "nav_galeria": "Galería",
@@ -636,6 +638,7 @@ NAV = [
         ("estatuts.html", "nav_estatuts"),
     ]},
     {"key": "nav_extraescolars", "href": "extraescolars/index.html"},
+    {"key": "nav_conciliacio", "href": "conciliacio.html"},
     {"key": "nav_noticies", "children": [
         ("blog/index.html", "nav_blog"),
         ("galeria.html", "nav_galeria"),
@@ -783,6 +786,7 @@ def render_page(*, lang, depth, page_path, active_href, title, meta_desc, body_h
         <ul>
           <li><a href="{rel(depth, 'qui-som.html')}">{t(lang, "nav_lafa")}</a></li>
           <li><a href="{rel(depth, 'extraescolars/index.html')}">{t(lang, "nav_extraescolars")}</a></li>
+          <li><a href="{rel(depth, 'conciliacio.html')}">{t(lang, "nav_conciliacio")}</a></li>
           {footer_extra}
         </ul>
       </div>
@@ -1307,7 +1311,7 @@ def main():
         prefix = "" if lang == "va" else "es/"
 
         write(f"{prefix}index.html", pagina_home(lang))
-        for slug in ("qui-som", "fes-te-de-lafa", "contacte", "mes-que-verd", "estatuts"):
+        for slug in ("qui-som", "fes-te-de-lafa", "contacte", "mes-que-verd", "estatuts", "conciliacio"):
             write(f"{prefix}{slug}.html", pagina_estatica(slug, lang))
         write(f"{prefix}junta.html", pagina_junta(lang))
         write(f"{prefix}galeria.html", pagina_galeria(lang))
