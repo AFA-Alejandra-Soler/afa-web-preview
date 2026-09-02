@@ -1,24 +1,42 @@
-nom: Acting
+nom: Acting in English
 empresa: Acting in English (Michael Lee)
 activa: true
 cursos:
-- I4
-- I5
-- P1
-- P2
-- P3
-- P4
-- P5
-- P6
-ph: ph-2
+  - I4
+  - I5
+  - P1
+  - P2
+  - P3
+  - P4
+  - P5
+  - P6
 imatge: assets/img/portades/acting.jpg
 dossier: assets/uploads/2026/08/acting-in-english-2026-27.pdf
 form: https://forms.gle/uG21btMLS4DMgbxK7
-nota: |-
-  Aquesta activitat la imparteix l'acadèmia <strong>Acting in English</strong>. Comparteix dossier i formulari d'inscripció amb Acting, Cor i Anglès — són la mateixa acadèmia, tres activitats.
-nota_es: |-
-  Esta actividad la imparte la academia <strong>Acting in English</strong>. Comparte dossier y formulario de inscripción con Acting, Cor y Anglès — son la misma academia, tres actividades.
-descripcio: |-
-  Aprendre anglés a través del teatre. Les classes d'Acting utilitzen el teatre com a ferramenta per a desenvolupar la comunicació, la imaginació i la confiança: jocs teatrals, improvisacions, expressió corporal, creació de personatges, mímica, storytelling, treball amb escenes i xicotetes representacions adaptades a cada edat; en Primària es treballa, a més, amb textos i personatges, desenvolupant tècniques d'interpretació i d'expressió oral. A diferència d'una classe tradicional, l'idioma s'utilitza per a actuar, col·laborar, crear històries i resoldre situacions reals. Programa d'Acting in English (des de 2018) amb actuacions de Nadal i d'estiu davant de les famílies. Infantil (4 i 5 anys) els dimarts i Primària els dimecres, a migdia.
-descripcio_es: |-
-  Aprender inglés a través del teatro. Las clases de Acting utilizan el teatro como herramienta para desarrollar la comunicación, la imaginación y la confianza: juegos teatrales, improvisaciones, expresión corporal, creación de personajes, mímica, storytelling, trabajo con escenas y pequeñas representaciones adaptadas a cada edad; en Primaria se trabaja, además, con textos y personajes, desarrollando técnicas de interpretación y de expresión oral. A diferencia de una clase tradicional, el idioma se utiliza para actuar, colaborar, crear historias y resolver situaciones reales. Programa de Acting in English (desde 2018) con actuaciones de Navidad y de verano ante las familias. Infantil (4 y 5 años) los martes y Primaria los miércoles, al mediodía.
+descripcio: "<p>Aprendre anglès a través del teatre. Les classes d'Acting
+  utilitzen el teatre com a ferramenta per a desenvolupar la comunicació, la
+  imaginació i la confiança: jocs teatrals, improvisacions, expressió corporal,
+  creació de personatges, mímica, storytelling, treball amb escenes i xicotetes
+  representacions adaptades a cada edat; en Primària es treballa, a més, amb
+  textos i personatges, desenvolupant tècniques d'interpretació i d'expressió
+  oral. A diferència d'una classe tradicional, l'idioma s'utilitza per a actuar,
+  col·laborar, crear històries i resoldre situacions reals. Aquesta extraescolar
+  realitza actuacions de nadal i de final de curs davant de les famílies.</p>"
+descripcio_es: "<p>Aprender inglés a través del teatro. Las clases de Acting
+  utilizan el teatro como herramienta para desarrollar la comunicación, la
+  imaginación y la confianza: juegos teatrales, improvisaciones, expresión
+  corporal, creación de personajes, mímica, storytelling, trabajo con escenas y
+  pequeñas representaciones adaptadas a cada edad; en Primaria se trabaja,
+  además, con textos y personajes, desarrollando técnicas de interpretación y de
+  expresión oral. A diferencia de una clase tradicional, el idioma se utiliza
+  para actuar, colaborar, crear historias y resolver situaciones reales. Esta
+  extraescolar realiza actuaciones de Navidad y fin de curso ante las
+  familias.</p>"
+nota: <p>Aquesta activitat la imparteix l'acadèmia <strong>Acting in
+  English</strong>. Comparteix dossier i formulari d'inscripció amb Acting, Cor
+  i Anglès — són la mateixa acadèmia, tres activitats.</p>
+nota_es: <p>Esta actividad la imparte la academia <strong>Acting in
+  English</strong>. Comparte dossier y formulario de inscripción con Acting, Cor
+  y Anglès — son la misma academia, tres actividades.</p>
+ph: ph-2
+es_municipal: false
