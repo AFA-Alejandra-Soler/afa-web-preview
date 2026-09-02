@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head><meta name="robots" content="noindex, nofollow">
+<script>(function(){try{var p=localStorage.getItem('afa-lang');if(p&&p!=='va')location.replace('../es/extraescolars/index.html');}catch(e){}})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Extraescolars · AFA CEIP Alejandra Soler</title>
 <meta name="description" content="Extraescolars del CEIP Alejandra Soler curs 2026-27: activitats, dossiers i inscripció.">
 <link rel="icon" href="../assets/img/logo-afa.png">
+<link rel="alternate" hreflang="ca" href="https://afaalejandrasoler.es/extraescolars/index.html">
+<link rel="alternate" hreflang="es" href="https://afaalejandrasoler.es/es/extraescolars/index.html">
+<link rel="alternate" hreflang="x-default" href="https://afaalejandrasoler.es/extraescolars/index.html">
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
@@ -16,6 +20,11 @@
       <img src="../assets/img/logo-afa.png" alt="Logo AFA CEIP Alejandra Soler" width="44" height="74">
       <span>AFA CEIP Alejandra Soler<small>Russafa · València</small></span>
     </a>
+    <div class="lang-switch">
+      <a href="#" class="lang-link actiu">VAL</a>
+      <span class="lang-sep" aria-hidden="true">|</span>
+      <a href="../es/extraescolars/index.html" class="lang-link" onclick="try{localStorage.setItem('afa-lang','es')}catch(e){}">CAST</a>
+    </div>
     <button class="nav-toggle" aria-expanded="false" aria-controls="menu-principal" onclick="
       var n=document.getElementById('menu-principal');
       var obert = n.classList.toggle('obert');
@@ -64,18 +73,10 @@
 <p>Tria l'activitat per a vore el seu dossier i inscriure't</p></div></div>
 <div class="wrap">
 <section>
-<p>Extraescolars per al curs 2026-27: activitats des d'Infantil a Primària perquè les nostres
-criatures gaudeixen, practiquen esport, continuen desenvolupant les seues habilitats i
-capacitats, i també perquè ajuden a conciliar a les famílies de l'escola.</p>
-<p>Com sempre, tindrem extraescolars privades, impartides per empreses o professionals, i
-extraescolars municipals, facilitades per la
-<a href="https://www.fdmvalencia.es/es/" target="_blank" rel="noreferrer noopener">Fundació Esportiva Municipal</a>,
-amb duració anual i preu reduït.</p>
-<p>Les extraescolars es desenvolupen d'octubre a maig, tant en horari de menjador com de
-vesprada de 16.30 h a 17.30 h o de 17.30 h a 18.30 h, i els divendres de 15 h a 16.30 h.</p>
-<p>Per poder participar en les activitats extraescolars privades sense pagar matrícula, cal
-fer-se soci/sòcia de l'AFA abans del 30 de setembre —
-<a href="https://www.aulazon.es/categoria-producto/colegios/ceip-alejandra-soler/ampa-afa-ceip-alejandra-soler/" target="_blank" rel="noreferrer noopener">a través d'Aulazon</a>.</p>
+<p>Extraescolars per al curs 2026-27: activitats des d'Infantil a Primària perquè les nostres criatures gaudeixen, practiquen esport, continuen desenvolupant les seues habilitats i capacitats, i també perquè ajuden a conciliar a les famílies de l'escola.</p>
+<p>Com sempre, tindrem extraescolars privades, impartides per empreses o professionals, i extraescolars municipals, facilitades per la <a href="https://www.fdmvalencia.es/es/" target="_blank" rel="noreferrer noopener">Fundació Esportiva Municipal</a>, amb duració anual i preu reduït.</p>
+<p>Les extraescolars es desenvolupen d'octubre a maig, tant en horari de menjador com de vesprada de 16.30 h a 17.30 h o de 17.30 h a 18.30 h, i els divendres de 15 h a 16.30 h.</p>
+<p>Per poder participar en les activitats extraescolars privades sense pagar matrícula, cal fer-se soci/sòcia de l'AFA abans del 30 de setembre — <a href="https://www.aulazon.es/categoria-producto/colegios/ceip-alejandra-soler/ampa-afa-ceip-alejandra-soler/" target="_blank" rel="noreferrer noopener">a través d'Aulazon</a>.</p>
 <div class="botonera">
   <a class="boton boton-secundari boton-petit" href="places-lliures.html">Vore places lliures del mes</a>
 </div>
@@ -114,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
       c.hidden = !visible;
       if (visible) n++;
     });
-    compte.textContent = v ? n + ' extraescolar' + (n === 1 ? '' : 's') : '';
+    compte.textContent = v ? (n + ' ' + (n === 1 ? 'extraescolar' : 'extraescolars')) : '';
     var llista = cards.slice();
     llista.sort(function (a, b) {
       var fa = a.hasAttribute('data-fixa-final') ? 1 : 0, fb = b.hasAttribute('data-fixa-final') ? 1 : 0;
@@ -127,270 +128,138 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 <div class="grid-extraescolars">
-<!-- ══ ACTIVITAT: Acting — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Acting» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/acting.html ══ -->
 <a class="card-extra" href="acting.html" data-cursos="I4 I5 P1 P2 P3 P4 P5 P6" data-nom="acting" data-ordre-edat="1">
   <img src="../assets/img/portades/acting.jpg" alt="Acting" loading="lazy">
   <div class="nom">Acting<small class="empresa">Acting in English (Michael Lee)</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Acting ══ -->
-<!-- ══ ACTIVITAT: Activitat Física Base (AFB) — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Activitat Física Base (AFB)» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/afb.html ══ -->
 <a class="card-extra" href="afb.html" data-cursos="I3 I4 I5" data-nom="activitat fisica base (afb)" data-ordre-edat="0">
-  <img src="../assets/img/portades/afb.jpg" alt="Activitat Física Base (AFB)" loading="lazy">
+  <img src="..//assets/uploads/cms/afb.jpg" alt="Activitat Física Base (AFB)" loading="lazy">
   <div class="nom">Activitat Física Base (AFB)<small class="empresa">Fundació Esportiva Municipal (Escoles Esportives)</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Activitat Física Base (AFB) ══ -->
-<!-- ══ ACTIVITAT: Anglès (Acting in English) — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Anglès (Acting in English)» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/angles-acting-in-english.html ══ -->
 <a class="card-extra" href="angles-acting-in-english.html" data-cursos="P1 P2 P3 P4 P5 P6" data-nom="angles (acting in english)" data-ordre-edat="3">
   <img src="../assets/img/portades/angles-acting-in-english.jpg" alt="Anglès (Acting in English)" loading="lazy">
   <div class="nom">Anglès (Acting in English)<small class="empresa">Acting in English (Michael Lee)</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Anglès (Acting in English) ══ -->
-<!-- ══ ACTIVITAT: Anglès (Loops Academy) — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Anglès (Loops Academy)» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/angles.html ══ -->
 <a class="card-extra" href="angles.html" data-cursos="I3 I4 I5 P1 P2 P3 P4 P5 P6" data-nom="angles (loops academy)" data-ordre-edat="0">
   <img src="../assets/img/portades/angles.jpg" alt="Anglès (Loops Academy)" loading="lazy">
   <div class="nom">Anglès (Loops Academy)<small class="empresa">Loops Academy</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Anglès (Loops Academy) ══ -->
-<!-- ══ ACTIVITAT: Art / Arte — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Art / Arte» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/art.html ══ -->
 <a class="card-extra" href="art.html" data-cursos="I3 I4 I5 P1 P2 P3 P4 P5 P6" data-nom="art / arte" data-ordre-edat="0">
   <img src="../assets/img/portades/art.jpg" alt="Art / Arte" loading="lazy">
   <div class="nom">Art / Arte<small class="empresa">Maria Barrachina</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Art / Arte ══ -->
-<!-- ══ ACTIVITAT: Atelier de Pintura — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Atelier de Pintura» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/atelier-de-pintura.html ══ -->
 <a class="card-extra" href="atelier-de-pintura.html" data-cursos="I3 I4 I5 P1 P2 P3 P4 P5 P6" data-nom="atelier de pintura" data-ordre-edat="0">
   <img src="../assets/img/portades/atelier-de-pintura.jpg" alt="Atelier de Pintura" loading="lazy">
   <div class="nom">Atelier de Pintura<small class="empresa">Elena Maroto</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Atelier de Pintura ══ -->
-<!-- ══ ACTIVITAT: Ball Modern — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Ball Modern» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/ball-modern.html ══ -->
 <a class="card-extra" href="ball-modern.html" data-cursos="*" data-nom="ball modern" data-ordre-edat="99">
   <img src="../assets/img/portades/ball-modern.jpg" alt="Ball Modern" loading="lazy">
   <div class="nom">Ball Modern<small class="empresa">The Hub — Danza, Música y Arte</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Ball Modern ══ -->
-<!-- ══ ACTIVITAT: Bàsquet — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Bàsquet» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/basquet.html ══ -->
 <a class="card-extra" href="basquet.html" data-cursos="P3 P4 P5 P6" data-nom="basquet" data-ordre-edat="5">
   <img src="../assets/img/portades/basquet.jpg" alt="Bàsquet" loading="lazy">
   <div class="nom">Bàsquet<small class="empresa">Fundació Esportiva Municipal (Escoles Esportives)</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Bàsquet ══ -->
-<!-- ══ ACTIVITAT: Breaking — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Breaking» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/breaking.html ══ -->
 <a class="card-extra" href="breaking.html" data-cursos="P1 P2 P3 P4 P5 P6" data-nom="breaking" data-ordre-edat="3">
   <img src="../assets/img/portades/breaking.jpg" alt="Breaking" loading="lazy">
   <div class="nom">Breaking<small class="empresa">Let's Grow School</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Breaking ══ -->
-<!-- ══ ACTIVITAT: Cor (Acting in English) — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Cor (Acting in English)» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/cor-acting-in-english.html ══ -->
 <a class="card-extra" href="cor-acting-in-english.html" data-cursos="I4 I5 P1 P2 P3 P4 P5 P6" data-nom="cor (acting in english)" data-ordre-edat="1">
   <img src="../assets/img/portades/cor-acting-in-english.jpg" alt="Cor (Acting in English)" loading="lazy">
   <div class="nom">Cor (Acting in English)<small class="empresa">Acting in English (Michael Lee)</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Cor (Acting in English) ══ -->
-<!-- ══ ACTIVITAT: CreActivitat — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: CreActivitat» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/creactivitat.html ══ -->
 <a class="card-extra" href="creactivitat.html" data-cursos="P1 P2 P3 P4" data-nom="creactivitat" data-ordre-edat="3">
   <img src="../assets/img/portades/creactivitat.jpg" alt="CreActivitat" loading="lazy">
   <div class="nom">CreActivitat<small class="empresa">nube7</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: CreActivitat ══ -->
-<!-- ══ ACTIVITAT: Escacs — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Escacs» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/escacs.html ══ -->
 <a class="card-extra" href="escacs.html" data-cursos="I5 P1 P2 P3 P4 P5 P6" data-nom="escacs" data-ordre-edat="2">
   <img src="../assets/img/portades/escacs.jpg" alt="Escacs" loading="lazy">
   <div class="nom">Escacs<small class="empresa">Fundació Esportiva Municipal (Escoles Esportives)</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Escacs ══ -->
-<!-- ══ ACTIVITAT: Escalada — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Escalada» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/escalada.html ══ -->
 <a class="card-extra" href="escalada.html" data-cursos="I3 I4 I5 P1 P2 P3 P4 P5 P6" data-nom="escalada" data-ordre-edat="0">
   <img src="../assets/img/portades/escalada.jpg" alt="Escalada" loading="lazy">
   <div class="nom">Escalada<small class="empresa">R-evolution School</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Escalada ══ -->
-<!-- ══ ACTIVITAT: Esgrima — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Esgrima» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/esgrima.html ══ -->
 <a class="card-extra" href="esgrima.html" data-cursos="P3 P4 P5 P6" data-nom="esgrima" data-ordre-edat="5">
   <img src="../assets/img/portades/esgrima.jpg" alt="Esgrima" loading="lazy">
   <div class="nom">Esgrima<small class="empresa">Fundació Esportiva Municipal (Escoles Esportives)</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Esgrima ══ -->
-<!-- ══ ACTIVITAT: ExpresArte — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: ExpresArte» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/expresarte.html ══ -->
 <a class="card-extra" href="expresarte.html" data-cursos="I3 I4 I5" data-nom="expresarte" data-ordre-edat="0">
   <img src="../assets/img/portades/expresarte.jpg" alt="ExpresArte" loading="lazy">
   <div class="nom">ExpresArte<small class="empresa">Let's Grow School</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: ExpresArte ══ -->
-<!-- ══ ACTIVITAT: Expressió Corporal — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Expressió Corporal» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/expressio-corporal.html ══ -->
 <a class="card-extra" href="expressio-corporal.html" data-cursos="I3 I4 I5 P1 P2" data-nom="expressio corporal" data-ordre-edat="0">
   <img src="../assets/img/portades/expressio-corporal.jpg" alt="Expressió Corporal" loading="lazy">
   <div class="nom">Expressió Corporal<small class="empresa">Paula Tormo</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Expressió Corporal ══ -->
-<!-- ══ ACTIVITAT: Fábrica de Cuentos — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Fábrica de Cuentos» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/fabrica-de-cuentos.html ══ -->
 <a class="card-extra" href="fabrica-de-cuentos.html" data-cursos="I4 I5 P1 P2 P3" data-nom="fabrica de cuentos" data-ordre-edat="1">
   <img src="../assets/img/portades/fabrica-de-cuentos.jpg" alt="Fábrica de Cuentos" loading="lazy">
   <div class="nom">Fábrica de Cuentos<small class="empresa">Marcos Farina</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Fábrica de Cuentos ══ -->
-<!-- ══ ACTIVITAT: Gimnàstica Rítmica — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Gimnàstica Rítmica» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/gimnastica-ritmica.html ══ -->
 <a class="card-extra" href="gimnastica-ritmica.html" data-cursos="I5 P1 P2" data-nom="gimnastica ritmica" data-ordre-edat="2">
   <img src="../assets/img/portades/gimnastica-ritmica.jpg" alt="Gimnàstica Rítmica" loading="lazy">
   <div class="nom">Gimnàstica Rítmica<small class="empresa">The Hub — Danza, Música y Arte</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Gimnàstica Rítmica ══ -->
-<!-- ══ ACTIVITAT: Gimnàstica Rítmica (FDM) — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Gimnàstica Rítmica (FDM)» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/gimnastica-ritmica-fdm.html ══ -->
 <a class="card-extra" href="gimnastica-ritmica-fdm.html" data-cursos="P3 P4 P5 P6" data-nom="gimnastica ritmica (fdm)" data-ordre-edat="5">
   <img src="../assets/img/portades/gimnastica-ritmica-fdm.jpg" alt="Gimnàstica Rítmica (FDM)" loading="lazy">
   <div class="nom">Gimnàstica Rítmica (FDM)<small class="empresa">Fundació Esportiva Municipal (Escoles Esportives)</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Gimnàstica Rítmica (FDM) ══ -->
-<!-- ══ ACTIVITAT: Hoquei — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Hoquei» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/hoquei.html ══ -->
 <a class="card-extra" href="hoquei.html" data-cursos="P3 P4 P5 P6" data-nom="hoquei" data-ordre-edat="5">
   <img src="../assets/img/portades/hoquei.jpg" alt="Hoquei" loading="lazy">
   <div class="nom">Hoquei<small class="empresa">Fundació Esportiva Municipal (Escoles Esportives)</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Hoquei ══ -->
-<!-- ══ ACTIVITAT: Iniciació i Sensibilització Musical — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Iniciació i Sensibilització Musical» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/sensibilitzacio-musical.html ══ -->
 <a class="card-extra" href="sensibilitzacio-musical.html" data-cursos="I3 I4 I5" data-nom="iniciacio i sensibilitzacio musical" data-ordre-edat="0">
   <img src="../assets/img/portades/sensibilitzacio-musical.jpg" alt="Iniciació i Sensibilització Musical" loading="lazy">
   <div class="nom">Iniciació i Sensibilització Musical<small class="empresa">The Hub — Danza, Música y Arte</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Iniciació i Sensibilització Musical ══ -->
-<!-- ══ ACTIVITAT: Judo — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Judo» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/judo.html ══ -->
 <a class="card-extra" href="judo.html" data-cursos="I3 I4 I5 P1 P2 P3 P4 P5 P6" data-nom="judo" data-ordre-edat="0">
   <img src="../assets/img/portades/judo.jpg" alt="Judo" loading="lazy">
   <div class="nom">Judo<small class="empresa">Judokan València</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Judo ══ -->
-<!-- ══ ACTIVITAT: Juegamáticas — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Juegamáticas» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/juegamaticas.html ══ -->
 <a class="card-extra" href="juegamaticas.html" data-cursos="P1 P2 P3 P4 P5 P6" data-nom="juegamaticas" data-ordre-edat="3">
   <img src="../assets/img/portades/juegamaticas.jpg" alt="Juegamáticas" loading="lazy">
   <div class="nom">Juegamáticas<small class="empresa">Beatriz Cabrera</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Juegamáticas ══ -->
-<!-- ══ ACTIVITAT: Música — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Música» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/musica.html ══ -->
 <a class="card-extra" href="musica.html" data-cursos="I3 I4 I5 P1 P2 P3 P4 P5 P6" data-nom="musica" data-ordre-edat="0">
   <img src="../assets/img/portades/musica.jpg" alt="Música" loading="lazy">
   <div class="nom">Música<small class="empresa">Kid Pam Pum — La Casita Musical</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Música ══ -->
-<!-- ══ ACTIVITAT: Parkour — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Parkour» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/parkour.html ══ -->
 <a class="card-extra" href="parkour.html" data-cursos="I3 I4 I5 P1 P2 P3 P4 P5 P6" data-nom="parkour" data-ordre-edat="0">
   <img src="../assets/img/portades/parkour.jpg" alt="Parkour" loading="lazy">
   <div class="nom">Parkour<small class="empresa">R-evolution School</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Parkour ══ -->
-<!-- ══ ACTIVITAT: Patins — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Patins» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/patins.html ══ -->
 <a class="card-extra" href="patins.html" data-cursos="I3 I4 I5 P1 P2 P3 P4 P5 P6" data-nom="patins" data-ordre-edat="0">
   <img src="../assets/img/portades/patins.jpg" alt="Patins" loading="lazy">
   <div class="nom">Patins<small class="empresa">Let's Grow School</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Patins ══ -->
-<!-- ══ ACTIVITAT: Peke-teka — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Peke-teka» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/peke-teka.html ══ -->
 <a class="card-extra" href="peke-teka.html" data-cursos="I3 I4 I5 P1 P2 P3 P4 P5 P6" data-nom="peke-teka" data-ordre-edat="0">
   <img src="../assets/img/portades/peke-teka.jpg" alt="Peke-teka" loading="lazy">
   <div class="nom">Peke-teka<small class="empresa">Kid Pam Pum — La Casita Musical</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Peke-teka ══ -->
-<!-- ══ ACTIVITAT: Pre-esport — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Pre-esport» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/pre-esport.html ══ -->
 <a class="card-extra" href="pre-esport.html" data-cursos="P1 P2" data-nom="pre-esport" data-ordre-edat="3">
   <img src="../assets/img/portades/pre-esport.jpg" alt="Pre-esport" loading="lazy">
   <div class="nom">Pre-esport<small class="empresa">Fundació Esportiva Municipal (Escoles Esportives)</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Pre-esport ══ -->
-<!-- ══ ACTIVITAT: Skate — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Skate» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/skate.html ══ -->
 <a class="card-extra" href="skate.html" data-cursos="P1 P2 P3 P4 P5 P6" data-nom="skate" data-ordre-edat="3">
   <img src="../assets/img/portades/skate.jpg" alt="Skate" loading="lazy">
   <div class="nom">Skate<small class="empresa">Let's Grow School</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Skate ══ -->
-<!-- ══ ACTIVITAT: Tecnonautes — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Tecnonautes» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/tecnonautes.html ══ -->
 <a class="card-extra" href="tecnonautes.html" data-cursos="P1 P2 P3 P4 P5 P6" data-nom="tecnonautes" data-ordre-edat="3">
   <img src="../assets/img/portades/tecnonautes.jpg" alt="Tecnonautes" loading="lazy">
   <div class="nom">Tecnonautes<small class="empresa">nube7</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Tecnonautes ══ -->
-<!-- ══ ACTIVITAT: Teles Aèries — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Teles Aèries» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/teles-aeries.html ══ -->
 <a class="card-extra" href="teles-aeries.html" data-cursos="I3 I4 I5 P1 P2 P3 P4 P5 P6" data-nom="teles aeries" data-ordre-edat="0">
   <img src="../assets/img/portades/teles-aeries.jpg" alt="Teles Aèries" loading="lazy">
   <div class="nom">Teles Aèries<small class="empresa">R-evolution School</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Teles Aèries ══ -->
-<!-- ══ ACTIVITAT: Tenis — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Tenis» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/tenis.html ══ -->
 <a class="card-extra" href="tenis.html" data-cursos="I3 I4 I5 P1 P2 P3 P4 P5 P6" data-nom="tenis" data-ordre-edat="0">
   <img src="../assets/img/portades/tenis.jpg" alt="Tenis" loading="lazy">
   <div class="nom">Tenis<small class="empresa">Escola de Tenis Vicente Luis Ariño</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Tenis ══ -->
-<!-- ══ ACTIVITAT: Voleibol — per a LLEVAR-LA de la web: esborra
-     des d'esta línia fins «FI ACTIVITAT: Voleibol» (incloent-les totes dos), i esborra
-     també el fitxer extraescolars/voleibol.html ══ -->
 <a class="card-extra" href="voleibol.html" data-cursos="P4 P5 P6" data-nom="voleibol" data-ordre-edat="6">
   <img src="../assets/img/portades/voleibol.jpg" alt="Voleibol" loading="lazy">
   <div class="nom">Voleibol<small class="empresa">Fundació Esportiva Municipal (Escoles Esportives)</small></div>
 </a>
-<!-- ══ FI ACTIVITAT: Voleibol ══ -->
 </div>
 </section>
 
@@ -401,8 +270,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <a class="recurs" href="../assets/uploads/2026/01/Horari-i-espais-2025-2026xls.-Horari-2526-4_page-0001.jpg" target="_blank" rel="noreferrer noopener"><span class="icona">📄</span> Horari general</a>
 <a class="recurs" href="../assets/uploads/2025/09/Informacio-actv-municipals_-preus-i-cursos.pdf" target="_blank" rel="noreferrer noopener"><span class="icona">📄</span> Horaris activitats municipals</a>
 </div>
-<p class="nota">**Les activitats amb dos asteriscs, signifiquen que son activitats municipals, i
-per tant, el preu és més reduït.</p>
+<p class="nota">**Les activitats amb dos asteriscs, signifiquen que son activitats municipals, i per tant, el preu és més reduït.</p>
 <h3>Horari per nivell/curs</h3>
 <div class="grid-horaris">
 <a class="horari-item" href="../assets/uploads/2026/01/Horari-i-espais-2025-2026xls.-3-anys_page-0001.jpg" target="_blank" rel="noreferrer noopener"><img src="../assets/uploads/2026/01/Horari-i-espais-2025-2026xls.-3-anys_page-0001.jpg" alt="Horari extraescolars 3 anys" loading="lazy"><span>3 anys</span></a>
@@ -419,10 +287,7 @@ per tant, el preu és més reduït.</p>
 
 <section>
 <h3>Baixes</h3>
-<p class="nota">Qualsevol baixa en alguna activitat s'ha de comunicar directament al monitor/a o
-empresa que la imparteix, amb còpia a
-<a href="mailto:extraescolarsalejandrasoler@gmail.com">extraescolarsalejandrasoler@gmail.com</a>.
-L'admissió es fa per ordre d'inscripció.</p>
+<p class="nota">Qualsevol baixa en alguna activitat s'ha de comunicar directament al monitor/a o empresa que la imparteix, amb còpia a <a href="mailto:extraescolarsalejandrasoler@gmail.com">extraescolarsalejandrasoler@gmail.com</a>. L'admissió es fa per ordre d'inscripció.</p>
 </section>
 </div>
 

@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head><meta name="robots" content="noindex, nofollow">
+<script>(function(){try{var p=localStorage.getItem('afa-lang');if(p&&p!=='va')location.replace('es/index.html');}catch(e){}})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Inici · AFA CEIP Alejandra Soler</title>
 <meta name="description" content="AFA del CEIP Alejandra Soler (Russafa, València): extraescolars, fes-te membre, junta i contacte.">
 <link rel="icon" href="assets/img/logo-afa.png">
+<link rel="alternate" hreflang="ca" href="https://afaalejandrasoler.es/index.html">
+<link rel="alternate" hreflang="es" href="https://afaalejandrasoler.es/es/index.html">
+<link rel="alternate" hreflang="x-default" href="https://afaalejandrasoler.es/index.html">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -16,6 +20,11 @@
       <img src="assets/img/logo-afa.png" alt="Logo AFA CEIP Alejandra Soler" width="44" height="74">
       <span>AFA CEIP Alejandra Soler<small>Russafa · València</small></span>
     </a>
+    <div class="lang-switch">
+      <a href="#" class="lang-link actiu">VAL</a>
+      <span class="lang-sep" aria-hidden="true">|</span>
+      <a href="es/index.html" class="lang-link" onclick="try{localStorage.setItem('afa-lang','es')}catch(e){}">CAST</a>
+    </div>
     <button class="nav-toggle" aria-expanded="false" aria-controls="menu-principal" onclick="
       var n=document.getElementById('menu-principal');
       var obert = n.classList.toggle('obert');

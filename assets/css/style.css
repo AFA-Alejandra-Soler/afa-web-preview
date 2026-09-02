@@ -196,6 +196,32 @@ nav.menu-principal a.actiu {
   .submenu-item.actiu { color: var(--morado); font-weight: 700; }
 }
 
+/* ---------- Selector d'idioma (VAL/CAST, 02-09-2026) ---------- */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  font-family: var(--font-titulos);
+  font-size: .8rem;
+  font-weight: 700;
+  order: 1;
+}
+.lang-switch .lang-link {
+  text-decoration: none;
+  color: var(--tinta-suave);
+  padding: .2rem .35rem;
+  border-radius: 5px;
+  letter-spacing: .02em;
+}
+.lang-switch .lang-link:hover { color: var(--morado); }
+.lang-switch .lang-link.actiu { color: var(--morado-oscuro); background: var(--lila); }
+.lang-switch .lang-sep { color: var(--linea); }
+
+@media (max-width: 780px) {
+  .lang-switch { order: 0; margin-left: auto; }
+  .nav-toggle { order: 2; }
+}
+
 /* ---------- Hero / cabeceras de página ---------- */
 .hero {
   background: linear-gradient(160deg, var(--lila), var(--papel) 70%);
