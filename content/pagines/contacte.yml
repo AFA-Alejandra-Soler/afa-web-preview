@@ -1,22 +1,46 @@
 titol: Contacte
+titol_es: Contacto
 subtitol: Contacte AFA / Contacto AFA
+subtitol_es: Contacto AFA
 meta_desc: 'Contacte de l''AFA CEIP Alejandra Soler: email, telèfon i xarxes socials.'
+meta_desc_es: 'Contacto del AFA CEIP Alejandra Soler: email, teléfono y redes sociales.'
 cos: |-
   <div class="grid-accions">
     <div class="caja">
       <h3>Consultes generals</h3>
-      <p class="trad-cast">Para consultas generales, puedes escribir a:</p>
+      <p>Per a consultes generals, pots escriure a:</p>
       <p><a href="mailto:secretariaalejandrasoler@gmail.com">secretariaalejandrasoler@gmail.com</a></p>
     </div>
     <div class="caja">
       <h3>Extraescolars, matinera i conciliació</h3>
-      <p class="trad-cast">Para consultas relacionadas con las extraescolares, puedes contactar en:</p>
+      <p>Per a consultes relacionades amb les extraescolars, pots contactar en:</p>
       <p><a href="mailto:extraescolarsalejandrasoler@gmail.com">extraescolarsalejandrasoler@gmail.com</a></p>
       <p class="nota">Tel. 624 07 16 69 (només WhatsApp)</p>
     </div>
   </div>
   <h3>Xarxes socials</h3>
-  <p class="trad-cast">También nos puedes encontrar en:</p>
+  <p>També ens pots trobar en:</p>
+  <div class="botonera">
+    <a class="boton boton-secundari boton-petit" href="https://m.facebook.com/profile.php?id=100064643261523&amp;_rdr" target="_blank" rel="noreferrer noopener">Facebook</a>
+    <a class="boton boton-secundari boton-petit" href="http://instagram.com/afa_alejandrasoler" target="_blank" rel="noreferrer noopener">Instagram</a>
+    <a class="boton boton-secundari boton-petit" href="https://t.me/AFA_AlejandraSoler" target="_blank" rel="noreferrer noopener">Telegram @AFA_ALEJANDRASOLER</a>
+  </div>
+cos_es: |-
+  <div class="grid-accions">
+    <div class="caja">
+      <h3>Consultas generales</h3>
+      <p>Para consultas generales, puedes escribir a:</p>
+      <p><a href="mailto:secretariaalejandrasoler@gmail.com">secretariaalejandrasoler@gmail.com</a></p>
+    </div>
+    <div class="caja">
+      <h3>Extraescolares, aula matinera y conciliación</h3>
+      <p>Para consultas relacionadas con las extraescolares, puedes contactar en:</p>
+      <p><a href="mailto:extraescolarsalejandrasoler@gmail.com">extraescolarsalejandrasoler@gmail.com</a></p>
+      <p class="nota">Tel. 624 07 16 69 (solo WhatsApp)</p>
+    </div>
+  </div>
+  <h3>Redes sociales</h3>
+  <p>También nos puedes encontrar en:</p>
   <div class="botonera">
     <a class="boton boton-secundari boton-petit" href="https://m.facebook.com/profile.php?id=100064643261523&amp;_rdr" target="_blank" rel="noreferrer noopener">Facebook</a>
     <a class="boton boton-secundari boton-petit" href="http://instagram.com/afa_alejandrasoler" target="_blank" rel="noreferrer noopener">Instagram</a>

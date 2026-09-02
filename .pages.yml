@@ -34,6 +34,12 @@ content:
         type: string
         required: true
 
+      - name: nom_es
+        label: "Nom de l'activitat (castellà)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el nom en valencià."
+
       - name: empresa
         label: "Empresa o professional que la imparteix"
         type: string
@@ -97,6 +103,12 @@ content:
         type: string
         required: false
 
+      - name: dossier_label_es
+        label: "Text del botó del dossier (castellà, opcional)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
+
       - name: dossier2
         label: "Dossier alternatiu (opcional, només si n'hi ha dos)"
         type: file
@@ -109,6 +121,12 @@ content:
         label: "Text del botó del segon dossier (opcional)"
         type: string
         required: false
+
+      - name: dossier2_label_es
+        label: "Text del botó del segon dossier (castellà, opcional)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
 
       - name: form
         label: "Enllaç al formulari d'inscripció (Google Forms)"
@@ -130,6 +148,16 @@ content:
           media: false
           switcher: false
 
+      - name: descripcio_es
+        label: "Descripció de l'activitat (castellà)"
+        type: rich-text
+        required: false
+        options:
+          format: html
+          media: false
+          switcher: false
+        description: "Si es deixa buit, la web mostra la descripció en valencià."
+
       - name: nota
         label: "Nota destacada (opcional — horari especial, ubicació...)"
         type: rich-text
@@ -138,6 +166,16 @@ content:
           format: html
           media: false
           switcher: false
+
+      - name: nota_es
+        label: "Nota destacada (castellà, opcional)"
+        type: rich-text
+        required: false
+        options:
+          format: html
+          media: false
+          switcher: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
 
       - name: ph
         label: "Color de reserva (tècnic, no cal tocar-lo)"
@@ -202,6 +240,12 @@ content:
         type: string
         required: true
 
+      - name: carrec_es
+        label: "Càrrec (castellà)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el càrrec en valencià."
+
       - name: email
         label: "Email de contacte (opcional)"
         type: string
@@ -231,6 +275,11 @@ content:
           - name: nom
             label: Nom de la comissió
             type: string
+          - name: nom_es
+            label: "Nom de la comissió (castellà)"
+            type: string
+            required: false
+            description: "Si es deixa buit, la web mostra el nom en valencià."
           - name: contacte
             label: Persona/es de contacte
             type: string
@@ -254,6 +303,12 @@ content:
         type: string
         required: true
 
+      - name: titol_es
+        label: "Títol de l'entrada (castellà)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el títol en valencià."
+
       - name: data
         label: Data de publicació
         type: date
@@ -263,6 +318,12 @@ content:
         label: "Data en text (com es mostra a la web, p. ex. «4 de juny de 2026»)"
         type: string
         required: true
+
+      - name: data_label_es
+        label: "Data en text (castellà, p. ex. «4 de junio de 2026»)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
 
       - name: cos_valencia
         label: "Text en valencià"
@@ -303,6 +364,12 @@ content:
         type: string
         required: true
 
+      - name: mes_label_es
+        label: "Mes publicat (castellà, opcional)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
+
       - name: imatge
         label: "Imatge del calendari de places"
         type: image
@@ -342,8 +409,19 @@ content:
         type: string
         required: true
 
+      - name: titol_es
+        label: "Títol (castellà)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el títol en valencià."
+
       - name: titol_pestanya
         label: "Títol de la pestanya del navegador (opcional, si ha de ser diferent del H1)"
+        type: string
+        required: false
+
+      - name: titol_pestanya_es
+        label: "Títol de la pestanya del navegador (castellà, opcional)"
         type: string
         required: false
 
@@ -352,12 +430,26 @@ content:
         type: string
         required: true
 
+      - name: subtitol_es
+        label: "Subtítol (castellà)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el subtítol en valencià."
+
       - name: meta_desc
         label: "Descripció curta per a cercadors (SEO)"
         type: text
         required: true
         options:
           maxlength: 300
+
+      - name: meta_desc_es
+        label: "Descripció curta per a cercadors — castellà (SEO)"
+        type: text
+        required: false
+        options:
+          maxlength: 300
+        description: "Si es deixa buit, la web usa la descripció en valencià."
 
       - name: cos
         label: "Contingut de la pàgina"
@@ -367,3 +459,14 @@ content:
           media: cms
           path: assets/uploads/cms
           switcher: false
+
+      - name: cos_es
+        label: "Contingut de la pàgina (castellà)"
+        type: rich-text
+        required: false
+        options:
+          format: html
+          media: cms
+          path: assets/uploads/cms
+          switcher: false
+        description: "Si es deixa buit, la web mostra el contingut en valencià."

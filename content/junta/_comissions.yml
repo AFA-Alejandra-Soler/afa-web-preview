@@ -1,19 +1,28 @@
 comissions:
 - nom: Trobades d'Escoles en Valencià
+  nom_es: Encuentros de Escuelas en Valenciano
   contacte: Raquel i Llum
 - nom: Dinamització del pati obert
+  nom_es: Dinamización del patio abierto
   contacte: Mar i Estelle
 - nom: Festa de Nadal
+  nom_es: Fiesta de Navidad
   contacte: Mar i Elena
 - nom: Festa de Fi de Curs
+  nom_es: Fiesta de Fin de Curso
   contacte: Natàlia i Mina
 - nom: Carnestoltes de Russafa
+  nom_es: Carnaval de Russafa
   contacte: Mariajo i Bea
 - nom: Col·laboració amb entitats barri
+  nom_es: Colaboración con entidades del barrio
   contacte: Bea i Eva
 - nom: Subvencions
+  nom_es: Subvenciones
   contacte: Fran
 - nom: Alimentació i salut
+  nom_es: Alimentación y salud
   contacte: Mina i Céline
 - nom: Cura del pati
+  nom_es: Cuidado del patio
   contacte: Ignacio i Aurélie

@@ -1,7 +1,11 @@
 titol: L'AFA
+titol_es: El AFA
 titol_pestanya: L'AFA — Qui som
+titol_pestanya_es: El AFA — Quiénes somos
 subtitol: Qui som i què volem per al cole
+subtitol_es: Quiénes somos y qué queremos para el cole
 meta_desc: 'Qui som: l''AFA del CEIP Alejandra Soler, una associació multicultural al barri de Russafa.'
+meta_desc_es: 'Quiénes somos: el AFA del CEIP Alejandra Soler, una asociación multicultural en el barrio de Russafa.'
 cos: |-
   <p><strong>Som una AFA multicultural</strong>, tal com ho és el nostre barri, <strong>Russafa</strong>.
   Això fa que cada membre siga únic i tinga un gran tresor que aportar a l'associació: la seua
@@ -19,20 +23,20 @@ cos: |-
   multidisciplinaris</strong> que siguen gratuïts per als i les alumnes i/o les seues famílies,
   recollint totes les propostes i iniciatives que ens facen arribar.</p>
   <h2>Totes i tots som AFA. L'educació pública ens necessita</h2>
-  <p class="nota">
-  <em>Somos una AFA multicultural, tal y como lo es nuestro barrio, Russafa. Eso hace que cada
-  miembro sea único y tenga un gran tesoro que aportar a la asociación: su identidad, su cultura,
-  sus costumbres, sus valores&hellip; y necesitamos la contribución de todas y todos para sentar
-  las bases de este nuevo espacio educativo tan deseado por el barrio. Queremos que el alumnado se
-  sienta en el colegio como en una gran familia, por eso nos interesa especialmente lograr y
-  mantener un ambiente de buena convivencia en el centro, fomentar el respeto y el diálogo en todo
-  momento, mantener una comunicación de forma fluida con dirección y hacerla partícipe de nuestras
-  necesidades e inquietudes para ayudar a resolver los problemas que puedan surgir, etc.</em></p>
-  <p class="nota">
-  <em>Tenemos muchos proyectos, algunos a corto plazo, otros más a largo plazo. Deseamos formar
+cos_es: |-
+  <p><strong>Somos una AFA multicultural</strong>, tal y como lo es nuestro barrio, <strong>Russafa</strong>.
+  Eso hace que cada miembro sea único y tenga un gran tesoro que aportar a la asociación: su
+  identidad, su cultura, sus costumbres, sus valores&hellip; y necesitamos la contribución
+  de todas y todos para sentar las bases de este nuevo espacio educativo tan deseado por el barrio.
+  Queremos que el alumnado se sienta en el colegio como en una gran familia, por eso nos interesa
+  especialmente lograr y mantener un ambiente de buena convivencia en el centro, fomentar el
+  respeto y el diálogo en todo momento, mantener una comunicación de forma fluida con dirección y
+  hacerla partícipe de nuestras necesidades e inquietudes para ayudar a resolver los problemas
+  que puedan surgir, etc.</p>
+  <p>Tenemos muchos proyectos, algunos a corto plazo, otros más a largo plazo. Deseamos formar
   <strong>parte activa como AFA de la vida del barrio</strong>, es decir, participar dentro de
   nuestras posibilidades en los eventos culturales, artísticos, sociales que se organicen en un
   barrio tan vivo como Russafa. Por otro lado, queremos organizar dentro del colegio <strong>talleres
   multidisciplinarios</strong> que sean gratuitos para el alumnado y/o sus familias, recogiendo
-  todas las propuestas e iniciativas que nos hagan llegar.</em></p>
+  todas las propuestas e iniciativas que nos hagan llegar.</p>
   <h2>Todas y todos somos AFA. La educación pública nos necesita</h2>

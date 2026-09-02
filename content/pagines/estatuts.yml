@@ -1,9 +1,18 @@
 titol: Estatuts
+titol_es: Estatutos
 subtitol: Documents oficials de l'associació
+subtitol_es: Documentos oficiales de la asociación
 meta_desc: Estatuts i documents oficials de l'AFA CEIP Alejandra Soler.
+meta_desc_es: Estatutos y documentos oficiales del AFA CEIP Alejandra Soler.
 cos: |-
   <div class="recursos">
     <a class="recurs" href="assets/uploads/2022/09/Estatuts_AFA_CEIP_Alejandra_Soler_2022-1.pdf" target="_blank" rel="noreferrer noopener"><span class="icona">📄</span> Estatuts_AFA_CEIP_Alejandra_Soler_2022</a>
     <a class="recurs" href="assets/uploads/2023/10/AFA-Alejandra-Soler-Junta-Directiva-a-28-11-2022-CERTJU_V_1669635799456.pdf" target="_blank" rel="noreferrer noopener"><span class="icona">📄</span> Registre Junta AFA</a>
     <a class="recurs" href="assets/uploads/2023/10/INFORME-GESTIÓ-CURS-22-23.pdf" target="_blank" rel="noreferrer noopener"><span class="icona">📄</span> Comptes Curs 2023/24</a>
+  </div>
+cos_es: |-
+  <div class="recursos">
+    <a class="recurs" href="assets/uploads/2022/09/Estatuts_AFA_CEIP_Alejandra_Soler_2022-1.pdf" target="_blank" rel="noreferrer noopener"><span class="icona">📄</span> Estatuts_AFA_CEIP_Alejandra_Soler_2022</a>
+    <a class="recurs" href="assets/uploads/2023/10/AFA-Alejandra-Soler-Junta-Directiva-a-28-11-2022-CERTJU_V_1669635799456.pdf" target="_blank" rel="noreferrer noopener"><span class="icona">📄</span> Registro Junta AFA</a>
+    <a class="recurs" href="assets/uploads/2023/10/INFORME-GESTIÓ-CURS-22-23.pdf" target="_blank" rel="noreferrer noopener"><span class="icona">📄</span> Cuentas Curso 2023/24</a>
   </div>

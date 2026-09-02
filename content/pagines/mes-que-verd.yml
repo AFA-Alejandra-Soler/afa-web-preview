@@ -1,6 +1,9 @@
 titol: Més que verd
+titol_es: Més que verd
 subtitol: Naturalització del pati escolar
+subtitol_es: Naturalización del patio escolar
 meta_desc: 'Més que verd: naturalització de patis escolars impulsada per l''AFA CEIP Alejandra Soler.'
+meta_desc_es: 'Més que verd: naturalización de patios escolares impulsada por el AFA CEIP Alejandra Soler.'
 cos: |-
   <p>Més que verd és el resultat de la Comunitat d'Aprenentatge i Pràctica (CAP) al voltant de la
   naturalització de patis escolars, impulsada per l'AFA del CEIP Alejandra Soler, al si de
@@ -9,16 +12,22 @@ cos: |-
   naturalització, més enllà del verd, i fer-ho en col·lectiu, amb diversitat d'agents que prenen
   part en el procés: alumnat del centre, famílies, personal docent, de direcció, de menjador, de
   neteja, experts en urbanisme, en medi ambient, en recerca, ciutadania, etc.</p>
-  <p class="nota">
-  <em>Més que verd es el resultado de la Comunidad de Aprendizaje y Práctica (CAP) alrededor de la
+  <h3>Descarrega els documents</h3>
+  <div class="recursos">
+  <a class="recurs" href="assets/uploads/2024/05/mesqueverd_valencia.pdf" target="_blank" rel="noreferrer noopener"><span class="icona">📄</span> Fullet valencià</a>
+  <a class="recurs" href="assets/uploads/2024/05/mesqueverd_castellano.pdf" target="_blank" rel="noreferrer noopener"><span class="icona">📄</span> Folleto castellano</a>
+  <a class="recurs" href="assets/uploads/2024/05/AFmesqueverd_val_extendido.pdf" target="_blank" rel="noreferrer noopener"><span class="icona">📄</span> Versió estesa valencià</a>
+  <a class="recurs" href="assets/uploads/2024/05/AFmesqueverd_cast_extendido.pdf" target="_blank" rel="noreferrer noopener"><span class="icona">📄</span> Versión extendida castellano</a>
+  </div>
+cos_es: |-
+  <p>Més que verd es el resultado de la Comunidad de Aprendizaje y Práctica (CAP) alrededor de la
   naturalización de patios escolares, impulsada por el AFA del CEIP Alejandra Soler, en el seno de
   Ciutat·lab de Las Naves, Centro de innovación social y urbana de la ciudad de València. La
   propuesta nace con el objetivo de desarrollar una hoja de ruta para poner en marcha un proceso de
-  naturalización, más allá del verde, y hacerlo en colectivo, con diversidad de agentes que forman
-  parte del proceso de naturalización: alumnado del centro, familias, personal docente, de
-  dirección, de comedor, de limpieza, expertos en urbanismo, en medio ambiente, en investigación,
-  ciudadanía, etc.</em></p>
-  <h3>Descarrega els documents</h3>
+  naturalización, más allá del verde, y hacerlo en colectivo, con diversidad de agentes que toman
+  parte en el proceso: alumnado del centro, familias, personal docente, de dirección, de comedor, de
+  limpieza, expertos en urbanismo, en medio ambiente, en investigación, ciudadanía, etc.</p>
+  <h3>Descarga los documentos</h3>
   <div class="recursos">
   <a class="recurs" href="assets/uploads/2024/05/mesqueverd_valencia.pdf" target="_blank" rel="noreferrer noopener"><span class="icona">📄</span> Fullet valencià</a>
   <a class="recurs" href="assets/uploads/2024/05/mesqueverd_castellano.pdf" target="_blank" rel="noreferrer noopener"><span class="icona">📄</span> Folleto castellano</a>
