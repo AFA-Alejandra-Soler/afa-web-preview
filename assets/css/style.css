@@ -235,7 +235,7 @@ nav.menu-principal a.actiu {
   .marca span { white-space: nowrap; }
   nav.menu-principal {
     flex-wrap: nowrap;
-    gap: .15rem .6rem;
+    gap: .15rem 1.1rem;
   }
   nav.menu-principal a,
   .menu-toggle {
