@@ -3,25 +3,50 @@ nom_es: Hockey
 empresa: Fundació Esportiva Municipal (Escoles Esportives)
 activa: true
 cursos:
-- P3
-- P4
-- P5
-- P6
-ph: ph-6
+  - P3
+  - P4
+  - P5
+  - P6
 imatge: assets/img/portades/hoquei.jpg
-dossier: https://ampaalejandrasoler.es/wp-content/uploads/2025/06/Dossier-EEDDMM.pdf
+dossier: /assets/uploads/cms/dossier-eedd-2026-27-comprimit-6.pdf
 dossier_label: Dossier Escoles Esportives Municipals (FDM)
 dossier_label_es: Dossier Escuelas Deportivas Municipales (FDM)
-form: null
+dossier2: /assets/uploads/cms/dossier-eedd-2026-27-comprimit-7.pdf
+descripcio: "<p>Les Escoles Esportives Municipals (EEDD) són el programa de
+  promoció esportiva de la Fundació Esportiva Municipal de València, organitzat
+  amb les federacions esportives: activitat voluntària, complementària de
+  l'Educació Física, en horari no lectiu, a les instal·lacions del col·legi i
+  d'octubre a maig. Escola Esportiva de Promoció (EDP) d'hoquei, amb la
+  Federació d'Hoquei de la Comunitat Valenciana: iniciació esportiva bàsica per
+  a 3r a 6é de Primària, dos sessions setmanals d'una hora.</p>"
+descripcio_es: "<p>Las Escuelas Deportivas Municipales (EEDD) son el programa de
+  promoción deportiva de la Fundación Deportiva Municipal de Valencia,
+  organizado con las federaciones deportivas: actividad voluntaria,
+  complementaria de la Educación Física, en horario no lectivo, en las
+  instalaciones del colegio y de octubre a mayo. Escuela Deportiva de Promoción
+  (EDP) de hockey, con la Federación de Hockey de la Comunitat Valenciana:
+  iniciación deportiva básica para 3º a 6º de Primaria, dos sesiones semanales
+  de una hora.</p>"
+nota: "<p>Activitat de les <strong>Escoles Esportives Municipals</strong>
+  (Fundació Esportiva Municipal de València): preu reduït i bonificació per a
+  les famílies beneficiàries de la beca de menjador.
+  <strong>Inscripció</strong>: cal omplir el full d'inscripció (PDF) i
+  enviar-lo, junt amb el justificant de pagament, a
+  extraescolarsalejandrasoler@gmail.com. El pagament es fa en dos terminis
+  (inici d'octubre i finals de gener), excepte les famílies amb beca, en un únic
+  termini. Totes les activitats municipals comparteixen dossier, full
+  d'inscripció i full de preus.</p>"
+nota_es: "<p>Actividad de las <strong>Escuelas Deportivas Municipales</strong>
+  (Fundación Deportiva Municipal de Valencia): precio reducido y bonificación
+  para las familias beneficiarias de la beca de comedor.
+  <strong>Inscripción</strong>: hay que rellenar la hoja de inscripción (PDF) y
+  enviarla, junto con el justificante de pago, a
+  extraescolarsalejandrasoler@gmail.com. El pago se hace en dos plazos (inicio
+  de octubre y finales de enero), excepto las familias con beca, en un único
+  plazo. Todas las actividades municipales comparten dossier, hoja de
+  inscripción y hoja de precios.</p>"
+ph: ph-6
 es_municipal: true
-inscripcio_pdf: https://ampaalejandrasoler.es/wp-content/uploads/2025/08/Inscripción-municipales-25-26.pdf
-bonificacio: https://ampaalejandrasoler.es/wp-content/uploads/2025/09/Sol-Bonificiacion_Municipales-25-26.pdf
-info_preus: https://ampaalejandrasoler.es/wp-content/uploads/2025/09/Informacio-actv-municipals_-preus-i-cursos.pdf
-nota: |-
-  Activitat de les <strong>Escoles Esportives Municipals</strong> (Fundació Esportiva Municipal de València): preu reduït i bonificació per a les famílies beneficiàries de la beca de menjador. <strong>Inscripció</strong>: cal omplir el full d'inscripció (PDF) i enviar-lo, junt amb el justificant de pagament, a extraescolarsalejandrasoler@gmail.com. El pagament es fa en dos terminis (inici d'octubre i finals de gener), excepte les famílies amb beca, en un únic termini. Totes les activitats municipals comparteixen dossier, full d'inscripció i full de preus.
-nota_es: |-
-  Actividad de las <strong>Escuelas Deportivas Municipales</strong> (Fundación Deportiva Municipal de Valencia): precio reducido y bonificación para las familias beneficiarias de la beca de comedor. <strong>Inscripción</strong>: hay que rellenar la hoja de inscripción (PDF) y enviarla, junto con el justificante de pago, a extraescolarsalejandrasoler@gmail.com. El pago se hace en dos plazos (inicio de octubre y finales de enero), excepto las familias con beca, en un único plazo. Todas las actividades municipales comparten dossier, hoja de inscripción y hoja de precios.
-descripcio: |-
-  Les Escoles Esportives Municipals (EEDD) són el programa de promoció esportiva de la Fundació Esportiva Municipal de València, organitzat amb les federacions esportives: activitat voluntària, complementària de l'Educació Física, en horari no lectiu, a les instal·lacions del col·legi i d'octubre a maig. Escola Esportiva de Promoció (EDP) d'hoquei, amb la Federació d'Hoquei de la Comunitat Valenciana: iniciació esportiva bàsica per a 3r a 6é de Primària, dos sessions setmanals d'una hora. Horari del curs 2025-26: dimarts i dijous de 16:30 a 17:30.
-descripcio_es: |-
-  Las Escuelas Deportivas Municipales (EEDD) son el programa de promoción deportiva de la Fundación Deportiva Municipal de Valencia, organizado con las federaciones deportivas: actividad voluntaria, complementaria de la Educación Física, en horario no lectivo, en las instalaciones del colegio y de octubre a mayo. Escuela Deportiva de Promoción (EDP) de hockey, con la Federación de Hockey de la Comunitat Valenciana: iniciación deportiva básica para 3º a 6º de Primaria, dos sesiones semanales de una hora. Horario del curso 2025-26: martes y jueves de 16:30 a 17:30.
+inscripcio_pdf: /assets/uploads/cms/inscripcion-municipales-26-27-1-4.pdf
+bonificacio: /assets/uploads/cms/sol-bonificiacionmunicipales-26-27-1-4.pdf
+info_preus: /assets/uploads/cms/informacio-actv-municipals-preus-i-cursos-26-27-1-4.pdf
