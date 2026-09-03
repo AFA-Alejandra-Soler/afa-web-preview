@@ -1,25 +1,41 @@
-nom: Cor (Acting in English)
-nom_es: Coro (Acting in English)
+nom: Cor
+nom_es: Coro
 empresa: Acting in English (Michael Lee)
 activa: true
 cursos:
-- I4
-- I5
-- P1
-- P2
-- P3
-- P4
-- P5
-- P6
-ph: ph-2
-imatge: assets/img/portades/cor-acting-in-english.jpg
+  - I4
+  - I5
+  - P1
+  - P2
+  - P3
+  - P4
+  - P5
+  - P6
 dossier: assets/uploads/2026/08/acting-in-english-2026-27.pdf
 form: https://forms.gle/uG21btMLS4DMgbxK7
-nota: |-
-  Aquesta activitat la imparteix l'acadèmia <strong>Acting in English</strong>. Comparteix dossier i formulari d'inscripció amb Acting, Cor i Anglès — són la mateixa acadèmia, tres activitats.
-nota_es: |-
-  Esta actividad la imparte la academia <strong>Acting in English</strong>. Comparte dossier y formulario de inscripción con Acting, Coro e Inglés — son la misma academia, tres actividades.
-descripcio: |-
-  Aprendre anglés a través de la música. El cor d'Acting in English va molt més enllà d'aprendre cançons: cada sessió combina repertori, tècnica vocal, jocs musicals i exercicis inspirats en el teatre musical per a desenvolupar la veu, la musicalitat i l'expressió artística. Es treballa la respiració, l'afinació, el ritme, la projecció de la veu, l'escolta activa i la interpretació amb dinàmiques adaptades a cada edat, i el cant es converteix en una activitat cooperativa. L'anglés apareix de manera natural en les cançons, les instruccions i les activitats. Infantil (4 i 5 anys) els dilluns i Primària els divendres, a migdia.
-descripcio_es: |-
-  Aprender inglés a través de la música. El coro de Acting in English va mucho más allá de aprender canciones: cada sesión combina repertorio, técnica vocal, juegos musicales y ejercicios inspirados en el teatro musical para desarrollar la voz, la musicalidad y la expresión artística. Se trabaja la respiración, la afinación, el ritmo, la proyección de la voz, la escucha activa y la interpretación con dinámicas adaptadas a cada edad, y el canto se convierte en una actividad cooperativa. El inglés aparece de forma natural en las canciones, las instrucciones y las actividades. Infantil (4 y 5 años) los lunes y Primaria los viernes, al mediodía.
+descripcio: "<p>Aprendre anglés a través de la música. El cor d'Acting in
+  English va molt més enllà d'aprendre cançons: cada sessió combina repertori,
+  tècnica vocal, jocs musicals i exercicis inspirats en el teatre musical per a
+  desenvolupar la veu, la musicalitat i l'expressió artística. Es treballa la
+  respiració, l'afinació, el ritme, la projecció de la veu, l'escolta activa i
+  la interpretació amb dinàmiques adaptades a cada edat, i el cant es converteix
+  en una activitat cooperativa. L'anglés apareix de manera natural en les
+  cançons, les instruccions i les activitats. Infantil (4 i 5 anys) els dilluns
+  i Primària els divendres, a migdia.</p>"
+descripcio_es: "<p>Aprender inglés a través de la música. El coro de Acting in
+  English va mucho más allá de aprender canciones: cada sesión combina
+  repertorio, técnica vocal, juegos musicales y ejercicios inspirados en el
+  teatro musical para desarrollar la voz, la musicalidad y la expresión
+  artística. Se trabaja la respiración, la afinación, el ritmo, la proyección de
+  la voz, la escucha activa y la interpretación con dinámicas adaptadas a cada
+  edad, y el canto se convierte en una actividad cooperativa. El inglés aparece
+  de forma natural en las canciones, las instrucciones y las actividades.
+  Infantil (4 y 5 años) los lunes y Primaria los viernes, al mediodía.</p>"
+nota: <p>Aquesta activitat la imparteix l'acadèmia <strong>Acting in
+  English</strong>. Comparteix dossier i formulari d'inscripció amb Acting, Cor
+  i Anglès — són la mateixa acadèmia, tres activitats.</p>
+nota_es: <p>Esta actividad la imparte la academia <strong>Acting in
+  English</strong>. Comparte dossier y formulario de inscripción con Acting,
+  Coro e Inglés — son la misma academia, tres actividades.</p>
+ph: ph-2
+es_municipal: false
