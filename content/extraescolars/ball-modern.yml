@@ -2,16 +2,36 @@ nom: Ball Modern
 nom_es: Baile Moderno
 empresa: The Hub — Danza, Música y Arte
 activa: true
-cursos: []
-ph: ph-4
-imatge: assets/img/portades/ball-modern.jpg
+imatge: /assets/uploads/cms/firma-ok-03-1.png
 dossier: assets/uploads/2026/08/the-hub-dansa-moderna-2026-27.pdf
 form: https://forms.gle/KXiPQN9K5h5g7xJU8
-nota: |-
-  Aquesta activitat la imparteix <strong>The Hub — Danza, Música y Arte</strong>. Comparteix formulari d'inscripció amb Iniciació i Sensibilització Musical, Gimnàstica Rítmica i Ball Modern — són la mateixa escola, tres activitats (cada una amb el seu dossier).
-nota_es: |-
-  Esta actividad la imparte <strong>The Hub — Danza, Música y Arte</strong>. Comparte formulario de inscripción con Iniciación y Sensibilización Musical, Gimnasia Rítmica y Baile Moderno — son la misma escuela, tres actividades (cada una con su dossier).
-descripcio: |-
-  Dansa moderna / dansa urbana amb The Hub Danza, Música y Arte, impartida per Pablo Prieto (ballarí i professor de dansa urbana format a Los Angeles, component de Free Up Family — sis vegades campions nacionals — i representant d'Espanya en el mundial de hip hop de Las Vegas; més de 15 anys de docència). La dansa urbana és un conjunt d'estils de ball nascuts als carrers i als patis d'esbarjo junt amb gèneres musicals com el hip hop, el funk i l'R&B; la seua llibertat d'expressió, energia i actitud la fan única i divertida. Objectius: aprendre a interpretar la música, memòria coreogràfica, creativitat i improvisació, coordinació, condició física, treball en equip i actuació final.
-descripcio_es: |-
-  Danza moderna / danza urbana con The Hub Danza, Música y Arte, impartida por Pablo Prieto (bailarín y profesor de danza urbana formado en Los Ángeles, componente de Free Up Family — seis veces campeones nacionales — y representante de España en el mundial de hip hop de Las Vegas; más de 15 años de docencia). La danza urbana es un conjunto de estilos de baile nacidos en las calles y en los patios de recreo junto con géneros musicales como el hip hop, el funk y el R&B; su libertad de expresión, energía y actitud la hacen única y divertida. Objetivos: aprender a interpretar la música, memoria coreográfica, creatividad e improvisación, coordinación, condición física, trabajo en equipo y actuación final.
+descripcio: "<p>Dansa moderna / dansa urbana amb The Hub Danza, Música y Arte,
+  impartida per Pablo Prieto (ballarí i professor de dansa urbana format a Los
+  Angeles, component de Free Up Family — sis vegades campions nacionals — i
+  representant d'Espanya en el mundial de hip hop de Las Vegas; més de 15 anys
+  de docència). La dansa urbana és un conjunt d'estils de ball nascuts als
+  carrers i als patis d'esbarjo junt amb gèneres musicals com el hip hop, el
+  funk i l'R&amp;B; la seua llibertat d'expressió, energia i actitud la fan
+  única i divertida. Objectius: aprendre a interpretar la música, memòria
+  coreogràfica, creativitat i improvisació, coordinació, condició física,
+  treball en equip i actuació final.</p>"
+descripcio_es: "<p>Danza moderna / danza urbana con The Hub Danza, Música y
+  Arte, impartida por Pablo Prieto (bailarín y profesor de danza urbana formado
+  en Los Ángeles, componente de Free Up Family — seis veces campeones nacionales
+  — y representante de España en el mundial de hip hop de Las Vegas; más de 15
+  años de docencia). La danza urbana es un conjunto de estilos de baile nacidos
+  en las calles y en los patios de recreo junto con géneros musicales como el
+  hip hop, el funk y el R&amp;B; su libertad de expresión, energía y actitud la
+  hacen única y divertida. Objetivos: aprender a interpretar la música, memoria
+  coreográfica, creatividad e improvisación, coordinación, condición física,
+  trabajo en equipo y actuación final.</p>"
+nota: <p>Aquesta activitat la imparteix <strong>The Hub — Danza, Música y
+  Arte</strong>. Comparteix formulari d'inscripció amb Iniciació i
+  Sensibilització Musical, Gimnàstica Rítmica i Ball Modern — són la mateixa
+  escola, tres activitats (cada una amb el seu dossier).</p>
+nota_es: <p>Esta actividad la imparte <strong>The Hub — Danza, Música y
+  Arte</strong>. Comparte formulario de inscripción con Iniciación y
+  Sensibilización Musical, Gimnasia Rítmica y Baile Moderno — son la misma
+  escuela, tres actividades (cada una con su dossier).</p>
+ph: ph-4
+es_municipal: false
