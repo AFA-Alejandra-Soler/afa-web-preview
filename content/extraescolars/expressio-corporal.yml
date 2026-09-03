@@ -3,16 +3,31 @@ nom_es: Expresión Corporal
 empresa: Paula Tormo
 activa: true
 cursos:
-- I3
-- I4
-- I5
-- P1
-- P2
-ph: ph-4
+  - I3
+  - I4
+  - I5
+  - P1
+  - P2
 imatge: assets/img/portades/expressio-corporal.jpg
 dossier: assets/uploads/2026/08/expressio-corporal-2026-27.pdf
 form: https://docs.google.com/forms/d/e/1FAIpQLSeAkAK_9a5GekP_w3Vvy723RXc8py566KraYvt3ROF0WivvXg/viewform?usp=dialog
-descripcio: |-
-  A través de l'expressió corporal, el joc i la música es dona suport al xiquet en el seu desenvolupament integral, creant un espai que permet la seua expressió, el moviment i el joc. Es fan jocs corporals en què es transformen en animals o personatges, danses, exercicis d'equilibri, dansa lliure i exercicis de relaxació tipus ioga, a més de propostes de representació (dibuix, construcció amb fustes, modelatge). Imparteix Paula Tormo, psicòloga col. CV09549 i psicomotricista amb àmplia formació en dansa. Per a 1r, 2n i 3r d'Infantil i 1r i 2n de Primària; grups de 5 a 10.
-descripcio_es: |-
-  A través de la expresión corporal, el juego y la música se apoya al niño en su desarrollo integral, creando un espacio que permite su expresión, el movimiento y el juego. Se hacen juegos corporales en los que se transforman en animales o personajes, danzas, ejercicios de equilibrio, danza libre y ejercicios de relajación tipo yoga, además de propuestas de representación (dibujo, construcción con maderas, modelado). Imparte Paula Tormo, psicóloga col. CV09549 y psicomotricista con amplia formación en danza. Para 1º, 2º y 3º de Infantil y 1º y 2º de Primaria; grupos de 5 a 10.
+descripcio: <p>A través de l'expressió corporal, el joc i la música es dona
+  suport al xiquet en el seu desenvolupament integral, creant un espai que
+  permet la seua expressió, el moviment i el joc. Es fan jocs corporals en què
+  es transformen en animals o personatges, danses, exercicis d'equilibri, dansa
+  lliure i exercicis de relaxació tipus ioga, a més de propostes de
+  representació (dibuix, construcció amb fustes, modelatge). Imparteix Paula
+  Tormo, psicòloga col. CV09549 i psicomotricista amb àmplia formació en
+  dansa.</p>
+descripcio_es: <p>A través de la expresión corporal, el juego y la música se
+  apoya al niño en su desarrollo integral, creando un espacio que permite su
+  expresión, el movimiento y el juego. Se hacen juegos corporales en los que se
+  transforman en animales o personajes, danzas, ejercicios de equilibrio, danza
+  libre y ejercicios de relajación tipo yoga, además de propuestas de
+  representación (dibujo, construcción con maderas, modelado). Imparte Paula
+  Tormo, psicóloga col. CV09549 y psicomotricista con amplia formación en
+  danza.</p>
+nota: <p></p>
+nota_es: <p></p>
+ph: ph-4
+es_municipal: false
