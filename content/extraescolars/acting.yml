@@ -10,7 +10,7 @@ cursos:
   - P4
   - P5
   - P6
-imatge: assets/img/portades/acting.jpg
+imatge: /assets/uploads/cms/acting-in-english-circular-logo.png
 dossier: assets/uploads/2026/08/acting-in-english-2026-27.pdf
 form: https://forms.gle/uG21btMLS4DMgbxK7
 descripcio: "<p>Aprendre anglès a través del teatre. Les classes d'Acting
@@ -33,10 +33,10 @@ descripcio_es: "<p>Aprender inglés a través del teatro. Las clases de Acting
   extraescolar realiza actuaciones de Navidad y fin de curso ante las
   familias.</p>"
 nota: <p>Aquesta activitat la imparteix l'acadèmia <strong>Acting in
-  English</strong>. Comparteix dossier i formulari d'inscripció amb Acting, Cor
-  i Anglès — són la mateixa acadèmia, tres activitats.</p>
+  English</strong>. Comparteix dossier i formulari d'inscripció amb Cor i Anglès
+  — són la mateixa acadèmia, tres activitats.</p>
 nota_es: <p>Esta actividad la imparte la academia <strong>Acting in
-  English</strong>. Comparte dossier y formulario de inscripción con Acting, Cor
-  y Anglès — son la misma academia, tres actividades.</p>
+  English</strong>. Comparte dossier y formulario de inscripción con Coro y
+  Inglés — son la misma academia, tres actividades.</p>
 ph: ph-2
 es_municipal: false
