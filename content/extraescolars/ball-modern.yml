@@ -1,7 +1,14 @@
-nom: Ball Modern
-nom_es: Baile Moderno
+nom: Dansa Moderna
+nom_es: Danza Moderna
 empresa: The Hub — Danza, Música y Arte
 activa: true
+cursos:
+  - P1
+  - P2
+  - P3
+  - P4
+  - P5
+  - P6
 imatge: /assets/uploads/cms/captura-de-pantalla-2026-09-03-171750.png
 dossier: assets/uploads/2026/08/the-hub-dansa-moderna-2026-27.pdf
 form: https://forms.gle/KXiPQN9K5h5g7xJU8
@@ -27,11 +34,11 @@ descripcio_es: "<p>Danza moderna / danza urbana con The Hub Danza, Música y
   trabajo en equipo y actuación final.</p>"
 nota: <p>Aquesta activitat la imparteix <strong>The Hub — Danza, Música y
   Arte</strong>. Comparteix formulari d'inscripció amb Iniciació i
-  Sensibilització Musical, Gimnàstica Rítmica i Ball Modern — són la mateixa
-  escola, tres activitats (cada una amb el seu dossier).</p>
+  Sensibilització Musical i Gimnàstica Rítmica — són la mateixa escola, tres
+  activitats (cada una amb el seu dossier).</p>
 nota_es: <p>Esta actividad la imparte <strong>The Hub — Danza, Música y
   Arte</strong>. Comparte formulario de inscripción con Iniciación y
-  Sensibilización Musical, Gimnasia Rítmica y Baile Moderno — son la misma
-  escuela, tres actividades (cada una con su dossier).</p>
+  Sensibilización Musical y Gimnasia Rítmica — son la misma escuela, tres
+  actividades (cada una con su dossier).</p>
 ph: ph-4
 es_municipal: false
