@@ -1,22 +1,46 @@
 nom: Breaking
+nom_es: Breaking
 empresa: Let's Grow School
 activa: true
 cursos:
-- P1
-- P2
-- P3
-- P4
-- P5
-- P6
-ph: ph-5
-imatge: assets/img/portades/breaking.jpg
+  - P1
+  - P2
+  - P3
+  - P4
+  - P5
+  - P6
+imatge: /assets/uploads/cms/captura-de-pantalla-2026-09-03-171659.png
 dossier: assets/uploads/2026/08/lets-grow-2026-27.pdf
 form: https://forms.gle/mEobygdosJVc8nAg7
-nota: |-
-  Aquesta activitat la imparteix <strong>Let's Grow School</strong> (associació cultural de hip hop). Comparteix dossier i formulari d'inscripció amb Patins, Skate, Breaking i ExpresArte — són la mateixa entitat, quatre activitats.
-nota_es: |-
-  Esta actividad la imparte <strong>Let's Grow School</strong> (asociación cultural de hip hop). Comparte dossier y formulario de inscripción con Patines, Skate, Breaking y ExpresArte — son la misma entidad, cuatro actividades.
-descripcio: |-
-  Introducció al breaking dance (dansa olímpica, esportiva i acrobàtica) i a la música Funk junt amb la cultura Hip Hop; també s'introdueix la competició de dansa a través de la improvisació i la creativitat acrobàtica. És una activitat física d'alta intensitat, amb molta diversió i autosuperació, apta sobretot per al segon cicle de Primària. Els objectius que es treballen són molt dinàmics i es busca l'enriquiment cultural i de valors socials per al desenvolupament: reflexió, autocrítica, perseverança i extraversió. Durant el curs es fa una Lliga de Breakin en esdeveniments fora del cole, on l'alumnat pot participar lliurement i mesurar les seues habilitats amb alumnat d'altres col·legis i de l'escola oficial, coneixent altres persones que es dediquen al ball i a la competició sana. Dilluns i dimecres de 16:30 a 17:30 (Breaking Kids Primària).
-descripcio_es: |-
-  Introducción al breaking dance (danza olímpica, deportiva y acrobática) y a la música Funk junto con la cultura Hip Hop; también se introduce la competición de danza a través de la improvisación y la creatividad acrobática. Es una actividad física de alta intensidad, con mucha diversión y superación personal, apta sobre todo para el segundo ciclo de Primaria. Los objetivos que se trabajan son muy dinámicos y se busca el enriquecimiento cultural y de valores sociales para el desarrollo: reflexión, autocrítica, perseverancia y extraversión. Durante el curso se hace una Liga de Breakin en eventos fuera del cole, donde el alumnado puede participar libremente y medir sus habilidades con alumnado de otros colegios y de la escuela oficial, conociendo a otras personas que se dedican al baile y a la competición sana. Lunes y miércoles de 16:30 a 17:30 (Breaking Kids Primaria).
+descripcio: "<p>Introducció al break dance (dansa olímpica, esportiva i
+  acrobàtica) i a la música Funk junt amb la cultura Hip Hop; també s'introdueix
+  la competició de dansa a través de la improvisació i la creativitat
+  acrobàtica. És una activitat física d'alta intensitat, amb molta diversió i
+  autosuperació. Els objectius que es treballen són molt dinàmics i es busca
+  l'enriquiment cultural i de valors socials per al desenvolupament: reflexió,
+  autocrítica, perseverança i extraversió. Durant el curs es fa una Lliga de
+  Breakin en esdeveniments fora del cole, on l'alumnat pot participar lliurement
+  i mesurar les seues habilitats amb alumnat d'altres col·legis i de l'escola
+  oficial, coneixent altres persones que es dediquen al ball i a la competició
+  sana.</p>"
+descripcio_es: "<p>Introducción al break dance (danza olímpica, deportiva y
+  acrobática) y a la música Funk junto con la cultura Hip Hop; también se
+  introduce la competición de danza a través de la improvisación y la
+  creatividad acrobática. Es una actividad física de alta intensidad, con mucha
+  diversión y superación personal. Los objetivos que se trabajan son muy
+  dinámicos y se busca el enriquecimiento cultural y de valores sociales para el
+  desarrollo: reflexión, autocrítica, perseverancia y extraversión. Durante el
+  curso se hace una Liga de Breakin en eventos fuera del cole, donde el alumnado
+  puede participar libremente y medir sus habilidades con alumnado de otros
+  colegios y de la escuela oficial, conociendo a otras personas que se dedican
+  al baile y a la competición sana.</p>"
+nota: <p>Aquesta activitat la imparteix <strong>Let's Grow School</strong>
+  (associació cultural de hip hop). Comparteix dossier i formulari d'inscripció
+  amb Patins, Skate i ExpresArte — són la mateixa entitat, quatre
+  activitats.</p>
+nota_es: <p>Esta actividad la imparte <strong>Let's Grow School</strong>
+  (asociación cultural de hip hop). Comparte dossier y formulario de inscripción
+  con Patines, Skate, y ExpresArte — son la misma entidad, cuatro
+  actividades.</p>
+ph: ph-5
+es_municipal: false
