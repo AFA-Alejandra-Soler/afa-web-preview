@@ -3,21 +3,38 @@ nom_es: Inglés (Acting in English)
 empresa: Acting in English (Michael Lee)
 activa: true
 cursos:
-- P1
-- P2
-- P3
-- P4
-- P5
-- P6
-ph: ph-2
-imatge: assets/img/portades/angles-acting-in-english.jpg
+  - P1
+  - P2
+  - P3
+  - P4
+  - P5
+  - P6
+imatge: /assets/uploads/cms/acting-in-english-circular-logo-1.png
 dossier: assets/uploads/2026/08/acting-in-english-2026-27.pdf
 form: https://forms.gle/uG21btMLS4DMgbxK7
-nota: |-
-  Aquesta activitat la imparteix l'acadèmia <strong>Acting in English</strong>. Comparteix dossier i formulari d'inscripció amb Acting, Cor i Anglès — són la mateixa acadèmia, tres activitats. Esta activitat es realitza en la pròpia acadèmia (C/ Cadis, 29): recullen l'alumnat al pati del cole i l'acompanyen.
-nota_es: |-
-  Esta actividad la imparte la academia <strong>Acting in English</strong>. Comparte dossier y formulario de inscripción con Acting, Cor y Anglès — son la misma academia, tres actividades. Esta actividad se realiza en la propia academia (C/ Cadis, 29): recogen al alumnado en el patio del cole y lo acompañan.
-descripcio: |-
-  Aprendre anglés practicant-lo. Les classes d'English d'Acting in English ofereixen una alternativa dinàmica a l'aprenentatge tradicional de l'idioma: l'alumnat utilitza l'anglés des del primer moment mitjançant activitats comunicatives que fomenten la participació constant. Es treballa l'expressió oral, la comprensió auditiva, la lectura i l'escriptura a través de jocs, projectes, cançons, storytelling, activitats cooperatives i reptes adaptats al nivell de cada grup. Primària, divendres de 15:00 a 16:30.
-descripcio_es: |-
-  Aprender inglés practicándolo. Las clases de English de Acting in English ofrecen una alternativa dinámica al aprendizaje tradicional del idioma: el alumnado utiliza el inglés desde el primer momento mediante actividades comunicativas que fomentan la participación constante. Se trabaja la expresión oral, la comprensión auditiva, la lectura y la escritura a través de juegos, proyectos, canciones, storytelling, actividades cooperativas y retos adaptados al nivel de cada grupo. Primaria, viernes de 15:00 a 16:30.
+descripcio: "<p>Aprendre anglès practicant-lo. Les classes d'anglès d'Acting in
+  English ofereixen una alternativa dinàmica a l'aprenentatge tradicional de
+  l'idioma: l'alumnat utilitza l'anglès des del primer moment mitjançant
+  activitats comunicatives que fomenten la participació constant. Es treballa
+  l'expressió oral, la comprensió auditiva, la lectura i l'escriptura a través
+  de jocs, projectes, cançons, storytelling, activitats cooperatives i reptes
+  adaptats al nivell de cada grup.</p>"
+descripcio_es: "<p>Aprender inglés practicándolo. Las clases de inglés de Acting
+  in English ofrecen una alternativa dinámica al aprendizaje tradicional del
+  idioma: el alumnado utiliza el inglés desde el primer momento mediante
+  actividades comunicativas que fomentan la participación constante. Se trabaja
+  la expresión oral, la comprensión auditiva, la lectura y la escritura a través
+  de juegos, proyectos, canciones, storytelling, actividades cooperativas y
+  retos adaptados al nivel de cada grupo.</p>"
+nota: "<p>Aquesta activitat la imparteix l'acadèmia <strong>Acting in
+  English</strong>. Comparteix dossier i formulari d'inscripció amb Acting i Cor
+  — són la mateixa acadèmia, tres activitats. </p><p>Esta activitat es realitza
+  en la pròpia acadèmia (C/ Cadis, 29): recullen l'alumnat al pati del cole i
+  l'acompanyen.</p>"
+nota_es: "<p>Esta actividad la imparte la academia <strong>Acting in
+  English</strong>. Comparte dossier y formulario de inscripción con Acting y
+  Cor — son la misma academia, tres actividades. </p><p>Esta actividad se
+  realiza en la propia academia (C/ Cadis, 29): recogen al alumnado en el patio
+  del cole y lo acompañan.</p>"
+ph: ph-2
+es_municipal: false
