@@ -1,21 +1,37 @@
-nom: Art / Arte
+nom: Art
+nom_es: Arte
 empresa: Maria Barrachina
 activa: true
 cursos:
-- I3
-- I4
-- I5
-- P1
-- P2
-- P3
-- P4
-- P5
-- P6
-ph: ph-4
+  - I3
+  - I4
+  - I5
+  - P1
+  - P2
+  - P3
+  - P4
+  - P5
+  - P6
 imatge: assets/img/portades/art.jpg
 dossier: assets/uploads/2026/08/art-maria-barrachina-2026-27.pdf
 form: https://forms.gle/b6Km4mS4SaTbJf3Q7
-descripcio: |-
-  Taller Laboratori de creativitat i experimentació artística impartit per Maria Barrachina, artista, il·lustradora i veterinària. Les xiquetes i els xiquets proven múltiples materials, tècniques i procediments (dibuix, pintura, volum, enquadernació, estampació, origami, collage, fang) al llarg de huit mesos, amb grups diferenciats d'Infantil i de Primària adaptats a cada etapa. L'objectiu és potenciar la creativitat utilitzant el joc, la diversió i la llibertat d'expressió com a elements principals de l'aprenentatge. S'imparteix a migdia, un dia a la setmana, d'octubre a maig, en grups de 8 a 10 per nivells d'edat.
-descripcio_es: |-
-  Taller Laboratorio de creatividad y experimentación artística impartido por Maria Barrachina, artista, ilustradora y veterinaria. Las niñas y los niños prueban múltiples materiales, técnicas y procedimientos (dibujo, pintura, volumen, encuadernación, estampación, origami, collage, barro) a lo largo de ocho meses, con grupos diferenciados de Infantil y de Primaria adaptados a cada etapa. El objetivo es potenciar la creatividad utilizando el juego, la diversión y la libertad de expresión como elementos principales del aprendizaje. Se imparte al mediodía, un día a la semana, de octubre a mayo, en grupos de 8 a 10 por niveles de edad.
+descripcio: <p>Taller Laboratori de creativitat i experimentació artística
+  impartit per Maria Barrachina, artista, il·lustradora i veterinària. Les
+  xiquetes i els xiquets proven múltiples materials, tècniques i procediments
+  (dibuix, pintura, volum, enquadernació, estampació, origami, collage, fang) al
+  llarg de huit mesos, amb grups diferenciats d'Infantil i de Primària adaptats
+  a cada etapa. L'objectiu és potenciar la creativitat utilitzant el joc, la
+  diversió i la llibertat d'expressió com a elements principals de
+  l'aprenentatge.</p>
+descripcio_es: <p>Taller Laboratorio de creatividad y experimentación artística
+  impartido por Maria Barrachina, artista, ilustradora y veterinaria. Las niñas
+  y los niños prueban múltiples materiales, técnicas y procedimientos (dibujo,
+  pintura, volumen, encuadernación, estampación, origami, collage, barro) a lo
+  largo de ocho meses, con grupos diferenciados de Infantil y de Primaria
+  adaptados a cada etapa. El objetivo es potenciar la creatividad utilizando el
+  juego, la diversión y la libertad de expresión como elementos principales del
+  aprendizaje.</p>
+nota: <p></p>
+nota_es: <p></p>
+ph: ph-4
+es_municipal: false
