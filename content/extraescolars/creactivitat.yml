@@ -2,19 +2,39 @@ nom: CreActivitat
 empresa: nube7
 activa: true
 cursos:
-- P1
-- P2
-- P3
-- P4
-ph: ph-6
-imatge: assets/img/portades/creactivitat.jpg
+  - P1
+  - P2
+  - P3
+  - P4
+imatge: /assets/uploads/cms/captura-de-pantalla-2026-09-03-173323.png
 dossier: assets/uploads/2026/08/nube7-tecnonautes-creactivitat-2026-27.pdf
 form: https://forms.gle/ftAdPZXbmBsTZezU8
-nota: |-
-  Aquesta activitat la imparteix <strong>nube7</strong>. Comparteix dossier i formulari d'inscripció amb Tecnonautes i CreActivitat — són la mateixa empresa, dos activitats.
-nota_es: |-
-  Esta actividad la imparte <strong>nube7</strong>. Comparte dossier y formulario de inscripción con Tecnonautas y CreActivitat — son la misma empresa, dos actividades.
-descripcio: |-
-  Pensem amb les mans: descobrim com veiem el món i com el sentim, explorem la matèria i l'energia, la força i el moviment, i creem artefactes cientificoartístics i videoclips de stop motion. En fusionar art, ciència i cultura maker s'aprenen conceptes científics i STEAM (llum i òptica, ones i acústica, forces i impuls, biologia i percepció), habilitats maker i d'enginyeria (prototips propis, resolució de problemes i tolerància a la frustració, ús creatiu de materials quotidians i reciclatge) i pensament crític i creativitat («què passa si…?»). Exemples: cub infinit, tub de llum, làmpada amb circuits de paper, llibre d'espills, ombres de colors, pintar amb llum, màscares de cartó o escultures en equilibri. Alumnat de 1r a 4t de Primària; divendres de 15:00 a 16:30, d'octubre a maig, en una aula del centre.
-descripcio_es: |-
-  Pensamos con las manos: descubrimos cómo vemos el mundo y cómo lo sentimos, exploramos la materia y la energía, la fuerza y el movimiento, y creamos artefactos científico-artísticos y videoclips de stop motion. Al fusionar arte, ciencia y cultura maker se aprenden conceptos científicos y STEAM (luz y óptica, ondas y acústica, fuerzas e impulso, biología y percepción), habilidades maker y de ingeniería (prototipos propios, resolución de problemas y tolerancia a la frustración, uso creativo de materiales cotidianos y reciclaje) y pensamiento crítico y creatividad («¿qué pasa si…?»). Ejemplos: cubo infinito, tubo de luz, lámpara con circuitos de papel, libro de espejos, sombras de colores, pintar con luz, máscaras de cartón o esculturas en equilibrio. Alumnado de 1º a 4º de Primaria; viernes de 15:00 a 16:30, de octubre a mayo, en un aula del centro.
+descripcio: "<p>Pensem amb les mans: descobrim com veiem el món i com el sentim,
+  explorem la matèria i l'energia, la força i el moviment, i creem artefactes
+  cientificoartístics i videoclips de stop motion. En fusionar art, ciència i
+  cultura maker s'aprenen conceptes científics i STEAM (llum i òptica, ones i
+  acústica, forces i impuls, biologia i percepció), habilitats maker i
+  d'enginyeria (prototips propis, resolució de problemes i tolerància a la
+  frustració, ús creatiu de materials quotidians i reciclatge) i pensament
+  crític i creativitat («què passa si…?»). Exemples: cub infinit, tub de llum,
+  làmpada amb circuits de paper, llibre d'espills, ombres de colors, pintar amb
+  llum, màscares de cartó o escultures en equilibri.</p>"
+descripcio_es: "<p>Pensamos con las manos: descubrimos cómo vemos el mundo y
+  cómo lo sentimos, exploramos la materia y la energía, la fuerza y el
+  movimiento, y creamos artefactos científico-artísticos y videoclips de stop
+  motion. Al fusionar arte, ciencia y cultura maker se aprenden conceptos
+  científicos y STEAM (luz y óptica, ondas y acústica, fuerzas e impulso,
+  biología y percepción), habilidades maker y de ingeniería (prototipos propios,
+  resolución de problemas y tolerancia a la frustración, uso creativo de
+  materiales cotidianos y reciclaje) y pensamiento crítico y creatividad («¿qué
+  pasa si…?»). Ejemplos: cubo infinito, tubo de luz, lámpara con circuitos de
+  papel, libro de espejos, sombras de colores, pintar con luz, máscaras de
+  cartón o esculturas en equilibrio.</p>"
+nota: <p>Aquesta activitat la imparteix <strong>nube7</strong>. Comparteix
+  dossier i formulari d'inscripció amb Tecnonautes — són la mateixa empresa, dos
+  activitats.</p>
+nota_es: <p>Esta actividad la imparte <strong>nube7</strong>. Comparte dossier y
+  formulario de inscripción con Tecnonautas — son la misma empresa, dos
+  actividades.</p>
+ph: ph-6
+es_municipal: false
