@@ -1080,8 +1080,9 @@ def _clau_alfabetica(nom):
     return "".join(c for c in s if not unicodedata.combining(c) and c not in "'’").lower()
 
 
-# Recursos fixos de la landing d'extraescolars (no són d'una activitat
-# concreta, viuen com a codi — fora d'abast de l'editor v1).
+# Valors per defecte de la secció "Horaris per curs" — s'usen només si
+# content/horaris.yml no existix o té un camp buit. El fitxer editable des
+# de Pages CMS és content/horaris.yml.
 HORARI_GENERAL = "https://ampaalejandrasoler.es/wp-content/uploads/2026/01/Horari-i-espais-2025-2026xls.-Horari-2526-4_page-0001.jpg"
 PREUS_MUNICIPALS = "https://ampaalejandrasoler.es/wp-content/uploads/2025/09/Informacio-actv-municipals_-preus-i-cursos.pdf"
 HORARIS_NIVELL = [
@@ -1097,8 +1098,62 @@ HORARIS_NIVELL = [
 ]
 
 
+def load_horaris():
+    """Carrega content/horaris.yml (editable des de Pages CMS). Torna un
+    dict amb:
+      nota / nota_es: string o None (None = usar el text fix t(lang, "extra_horaris_nota"))
+      horari_general / preus_municipals: string (URL o ruta local) o None (sense enllaç)
+      horaris_nivell: llista de tuples (url, curs_va, curs_es)
+
+    Dos xarxes de seguretat DIFERENTS (perquè un oblit de la junta mai trenca
+    el build, però buidar un recurs a propòsit sí que l'ha de fer desaparéixer):
+      - Si el FITXER SENCER no existix o està buit (encara no s'ha creat/
+        editat des de l'editor), es cau als valors originals de la migració
+        (constants HORARI_GENERAL / PREUS_MUNICIPALS / HORARIS_NIVELL).
+      - Si el fitxer SÍ existix: `horari_general` i `preus_municipals` són
+        recursos individuals — si la junta els buida a propòsit des de
+        l'editor, es tracten com None (recursos_html ho omet, no torna a
+        mostrar el recurs antic). `horaris_nivell` és una llista: les
+        entrades sense `imatge` o sense `curs` s'ometen en silenci, però si
+        la llista sencera queda buida (l'editor no en té cap), es cau a la
+        constant per no deixar la secció «Horari per nivell/curs» buida.
+    """
+    try:
+        h = load_yaml("horaris.yml") or {}
+    except FileNotFoundError:
+        h = {}
+
+    if not h:
+        return {
+            "nota": None,
+            "nota_es": None,
+            "horari_general": HORARI_GENERAL,
+            "preus_municipals": PREUS_MUNICIPALS,
+            "horaris_nivell": HORARIS_NIVELL,
+        }
+
+    nivells = []
+    for entrada in h.get("horaris_nivell") or []:
+        if not isinstance(entrada, dict):
+            continue
+        imatge = entrada.get("imatge")
+        curs = entrada.get("curs")
+        if not imatge or not curs:
+            continue
+        nivells.append((imatge, curs, entrada.get("curs_es") or curs))
+
+    return {
+        "nota": h.get("nota") or None,
+        "nota_es": h.get("nota_es") or None,
+        "horari_general": h.get("horari_general") or None,
+        "preus_municipals": h.get("preus_municipals") or None,
+        "horaris_nivell": nivells or HORARIS_NIVELL,
+    }
+
+
 def pagina_extraescolars_landing(activitats, lang):
     ad = 1 + ROOT_OFFSET[lang]
+    h = load_horaris()
 
     def _card(a, fixa_final=False):
         nom = txt(a, "nom", lang)
@@ -1124,13 +1179,17 @@ def pagina_extraescolars_landing(activitats, lang):
         f'<a class="horari-item" href="{local_asset_href(ad, url)}" target="_blank" rel="noreferrer noopener">'
         f'<img src="{local_asset_href(ad, url)}" alt="{t(lang, "horari_alt_prefix")} {nv if lang == "va" else nes}" loading="lazy">'
         f'<span>{nv if lang == "va" else nes}</span></a>'
-        for url, nv, nes in HORARIS_NIVELL
+        for url, nv, nes in h["horaris_nivell"]
     )
 
-    recursos_html = (
-        asset_link(HORARI_GENERAL, t(lang, "extra_horari_general_label"), ad) + "\n" +
-        asset_link(PREUS_MUNICIPALS, t(lang, "extra_horaris_municipals_label"), ad)
-    )
+    recursos = []
+    if h["horari_general"]:
+        recursos.append(asset_link(h["horari_general"], t(lang, "extra_horari_general_label"), ad))
+    if h["preus_municipals"]:
+        recursos.append(asset_link(h["preus_municipals"], t(lang, "extra_horaris_municipals_label"), ad))
+    recursos_html = "\n".join(recursos)
+
+    horaris_nota = txt(h, "nota", lang) if h["nota"] else t(lang, "extra_horaris_nota")
 
     body = f"""
 <div class="page-hero"><div class="wrap"><h1>{t(lang, "extra_h1")}</h1>
@@ -1155,7 +1214,7 @@ def pagina_extraescolars_landing(activitats, lang):
 
 <section>
 <h2>{t(lang, "extra_horaris_h2")}</h2>
-<p class="nota">{t(lang, "extra_horaris_nota")}</p>
+<p class="nota">{horaris_nota}</p>
 <div class="recursos">
 {recursos_html}
 </div>

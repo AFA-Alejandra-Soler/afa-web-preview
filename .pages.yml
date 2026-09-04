@@ -386,6 +386,64 @@ content:
           extensions: [pdf]
 
   # --------------------------------------------------------------------
+  # Horaris d'extraescolars — secció «Horaris per curs» de la pàgina
+  # Extraescolars: imatge de l'horari general, PDF de preus de les activitats
+  # municipals i una imatge d'horari per nivell/curs.
+  # --------------------------------------------------------------------
+  - name: horaris
+    label: "Horaris d'extraescolars (pàgina Extraescolars)"
+    type: file
+    path: content/horaris.yml
+    format: yaml
+    fields:
+      - name: nota
+        label: "Nota sobre els horaris (p. ex. «Horaris del curs 2025-26...»)"
+        type: string
+        required: false
+
+      - name: nota_es
+        label: "Nota sobre els horaris (castellà, opcional)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
+
+      - name: horari_general
+        label: "Horari general — imatge"
+        type: image
+        required: false
+        options:
+          media: cms
+
+      - name: preus_municipals
+        label: "Activitats municipals: preus i cursos — PDF"
+        type: file
+        required: false
+        options:
+          media: cms
+          extensions: [pdf]
+
+      - name: horaris_nivell
+        label: "Horaris per nivell/curs (un per curs, en l'orde en què es mostren)"
+        type: object
+        list: true
+        fields:
+          - name: curs
+            label: "Curs (p. ex. «3 anys», «1er Primària»)"
+            type: string
+            required: true
+          - name: curs_es
+            label: "Curs (castellà, opcional)"
+            type: string
+            required: false
+            description: "Si es deixa buit, la web mostra el text en valencià."
+          - name: imatge
+            label: "Imatge de l'horari d'este curs"
+            type: image
+            required: true
+            options:
+              media: cms
+
+  # --------------------------------------------------------------------
   # Pàgines estàtiques — qui-som, fes-te-de-lafa, contacte, mes-que-verd,
   # estatuts. NO inclou "index" (portada) ni "galeria": fora d'abast v1.
   # --------------------------------------------------------------------

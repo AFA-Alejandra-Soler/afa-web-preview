@@ -16,7 +16,9 @@ content/            ← TOT el contingut editable, en YAML (esta és la part que
   junta/             ← una fitxa .yaml per membre + _comissions.yaml (llista de comissions)
   blog/              ← una fitxa .yaml per entrada de notícies
   pagines/           ← 5 pàgines estàtiques (qui-som, fes-te-de-lafa, contacte, mes-que-verd, estatuts)
-  places-lliures.yaml ← fitxer únic (imatge del calendari mensual)
+  places-lliures.yml ← fitxer únic (imatge del calendari mensual)
+  horaris.yml        ← fitxer únic (secció "Horaris per curs" d'Extraescolars: horari
+                         general, PDF de preus municipals i horari per nivell/curs)
 assets/              ← imatges, PDFs, CSS. Les pujades noves de l'editor van a assets/uploads/cms/
 build/
   generar.py         ← el generador: llig content/+assets/ i escriu dist/
@@ -67,6 +69,15 @@ la línia «Cursos» de la fitxa; buit = es veu sempre), `dossier_label`/`dossie
 (la fitxa mostra «Formulari d'inscripció: pendent de publicar»). Els dossiers 26-27
 estan a `assets/uploads/2026/08/`. Crèdits de les portades genèriques: vore
 `sitio/README.md` del projecte (§ Crèdits d'imatges).
+
+**Horaris d'extraescolars, editables des del 04-09-2026**: la secció «Horaris per curs» de
+la pàgina Extraescolars (imatge de l'horari general, PDF de preus de les activitats
+municipals, i una imatge d'horari per nivell/curs) ja NO és fixa al codi — es gestiona des
+de Pages CMS, secció **«Horaris d'extraescolars»** (`content/horaris.yml`). Buidar un dels
+dos camps individuals (Horari general / PDF de preus) fa que eixe enllaç desaparega de la
+web (no torna a mostrar l'antic); si es lleva TOTA la llista d'horaris per nivell, o el
+fitxer encara no s'ha tocat mai, la web mostra els valors originals de la migració
+(`build/generar.py`, funció `load_horaris()`) perquè un oblit mai deixe la secció buida.
 
 ## Diferències conegudes amb el clon original (`sitio/`, `preview-github/`)
 
