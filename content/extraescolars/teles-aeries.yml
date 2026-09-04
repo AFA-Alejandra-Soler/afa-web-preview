@@ -3,24 +3,31 @@ nom_es: Telas Aéreas
 empresa: R-evolution School
 activa: true
 cursos:
-- I3
-- I4
-- I5
-- P1
-- P2
-- P3
-- P4
-- P5
-- P6
-ph: ph-3
-imatge: assets/img/portades/teles-aeries.jpg
+  - P3
+  - P4
+  - P5
+  - P6
+imatge: /assets/uploads/cms/captura-de-pantalla-2026-09-03-173717.png
 dossier: assets/uploads/2026/08/revolution-school-2026-27.pdf
 form: https://forms.gle/J4buiPL92qf6EcNs9
-nota: |-
-  Aquesta activitat la imparteix <strong>R-evolution School</strong> (C/ Dénia, 1). Comparteix dossier i formulari d'inscripció amb Escalada, Parkour i Teles Aèries — són la mateixa empresa, tres activitats.
-nota_es: |-
-  Esta actividad la imparte <strong>R-evolution School</strong> (C/ Dénia, 1). Comparte dossier y formulario de inscripción con Escalada, Parkour y Telas Aéreas — son la misma empresa, tres actividades.
-descripcio: |-
-  Les teles aèries són el resultat d'un procés de transformació de distintes disciplines artístiques i esportives que combinen la dansa amb les arts circenses i es complementen amb la música. Es practica principalment suspés en l'aire. Exigeix una relació corporal, mental i espiritual, així com una disciplina i una constància rigoroses, ja que combina l'estètica de la dansa amb la força física i la preparació mental necessàries.
-descripcio_es: |-
-  Las telas aéreas son el resultado de un proceso de transformación de distintas disciplinas artísticas y deportivas que combinan la danza con las artes circenses y se complementan con la música. Se practica principalmente suspendido en el aire. Exige una relación corporal, mental y espiritual, así como una disciplina y una constancia rigurosas, ya que combina la estética de la danza con la fuerza física y la preparación mental necesarias.
+descripcio: <p>Les teles aèries són el resultat d'un procés de transformació de
+  distintes disciplines artístiques i esportives que combinen la dansa amb les
+  arts circenses i es complementen amb la música. Es practica principalment
+  suspés en l'aire. Exigeix una relació corporal, mental i espiritual, així com
+  una disciplina i una constància rigoroses, ja que combina l'estètica de la
+  dansa amb la força física i la preparació mental necessàries.</p>
+descripcio_es: <p>Las telas aéreas son el resultado de un proceso de
+  transformación de distintas disciplinas artísticas y deportivas que combinan
+  la danza con las artes circenses y se complementan con la música. Se practica
+  principalmente suspendido en el aire. Exige una relación corporal, mental y
+  espiritual, así como una disciplina y una constancia rigurosas, ya que combina
+  la estética de la danza con la fuerza física y la preparación mental
+  necesarias.</p>
+nota: <p>Aquesta activitat la imparteix <strong>R-evolution School</strong> (C/
+  Dénia, 1). Comparteix dossier i formulari d'inscripció amb Escalada i Parkour
+  — són la mateixa empresa, tres activitats.</p>
+nota_es: <p>Esta actividad la imparte <strong>R-evolution School</strong> (C/
+  Dénia, 1). Comparte dossier y formulario de inscripción con Escalada y Parkour
+  — son la misma empresa, tres actividades.</p>
+ph: ph-3
+es_municipal: false
