@@ -80,6 +80,14 @@ del peu, i qui obri la seua adreça (o l'enllaç antic) veu un avís «Aquesta p
 preparació» en lloc del contingut a mitges — mai un error 404. Per a tornar-la a publicar:
 el mateix interruptor en Sí.
 
+**Si canvies `.pages.yml` i l'editor no ho reflecteix (des del 04-09-2026)**: Pages CMS guarda
+la configuració en la seua base de dades i, en carregar o recarregar l'editor, NO la torna a
+llegir de GitHub (verificat al codi font: `lib/config-store.ts`, el layout crida `getConfig`
+sense `sync`). Només s'actualitza quan li arriba el **webhook del push** (pot tardar uns
+minuts) o quan es guarda des de Settings → Configuration dins del mateix editor. Per tant:
+després d'un push que toque `.pages.yml`, esperar uns minuts i recarregar; si encara no ix,
+obrir Settings → Configuration i guardar (força l'actualització).
+
 **Les 4 seccions «Extraescolars / …» del menú de Pages CMS (des del 04-09-2026)**: l'orde
 del menú lateral és l'orde de declaració del bloc `content:` de `.pages.yml` (verificat al
 codi font de Pages CMS, `lib/config.ts`, `normalizeContentEntries()` — cada entrada es
