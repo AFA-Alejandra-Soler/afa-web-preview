@@ -2,21 +2,38 @@ nom: Tecnonautes
 empresa: nube7
 activa: true
 cursos:
-- P1
-- P2
-- P3
-- P4
-- P5
-- P6
-ph: ph-6
-imatge: assets/img/portades/tecnonautes.jpg
+  - P1
+  - P2
+  - P3
+  - P4
+  - P5
+  - P6
+imatge: /assets/uploads/cms/captura-de-pantalla-2026-09-03-173323.png
 dossier: assets/uploads/2026/08/nube7-tecnonautes-creactivitat-2026-27.pdf
 form: https://forms.gle/ftAdPZXbmBsTZezU8
-nota: |-
-  Aquesta activitat la imparteix <strong>nube7</strong>. Comparteix dossier i formulari d'inscripció amb Tecnonautes i CreActivitat — són la mateixa empresa, dos activitats.
-nota_es: |-
-  Esta actividad la imparte <strong>nube7</strong>. Comparte dossier y formulario de inscripción con Tecnonautes y CreActivitat — son la misma empresa, dos actividades.
-descripcio: |-
-  Tecnonautes I (1r-2n de Primària): primers passos en programació/algorítmica (code.org), robòtica educativa (què és un robot?, circuits de paper, ODS de l'Agenda 2030) i disseny 3D amb 3D Slash. Tecnonautes II (3r-4t): programació de videojocs i històries interactives amb Scratch, programació de la placa micro:bit, disseny 3D amb Tinkercad. Tecnonautes III (5é-6é): videojocs retro amb Scratch, robots Maqueen + micro:bit resolent reptes (sensors, seguir la línia, esquivar obstacles), disseny 2D/3D amb Tinkercad, sculpt gl, GIMP i Inkscape. Classes d'una hora a l'aula d'informàtica del centre, d'octubre a maig.
-descripcio_es: |-
-  Tecnonautes I (1º-2º de Primaria): primeros pasos en programación/algorítmica (code.org), robótica educativa (¿qué es un robot?, circuitos de papel, ODS de la Agenda 2030) y diseño 3D con 3D Slash. Tecnonautes II (3º-4º): programación de videojuegos e historias interactivas con Scratch, programación de la placa micro:bit, diseño 3D con Tinkercad. Tecnonautes III (5º-6º): videojuegos retro con Scratch, robots Maqueen + micro:bit resolviendo retos (sensores, seguir la línea, esquivar obstáculos), diseño 2D/3D con Tinkercad, sculpt gl, GIMP e Inkscape. Clases de una hora en el aula de informática del centro, de octubre a mayo.
+descripcio: "<p>Tecnonautes I (1r-2n de Primària): primers passos en
+  programació/algorítmica (code.org), robòtica educativa (què és un robot?,
+  circuits de paper, ODS de l'Agenda 2030) i disseny 3D amb 3D Slash.
+  Tecnonautes II (3r-4t): programació de videojocs i històries interactives amb
+  Scratch, programació de la placa micro:bit, disseny 3D amb Tinkercad.
+  Tecnonautes III (5é-6é): videojocs retro amb Scratch, robots Maqueen +
+  micro:bit resolent reptes (sensors, seguir la línia, esquivar obstacles),
+  disseny 2D/3D amb Tinkercad, sculpt gl, GIMP i Inkscape. Classes d'una hora a
+  l'aula d'informàtica del centre, d'octubre a maig.</p>"
+descripcio_es: "<p>Tecnonautes I (1º-2º de Primaria): primeros pasos en
+  programación/algorítmica (code.org), robótica educativa (¿qué es un robot?,
+  circuitos de papel, ODS de la Agenda 2030) y diseño 3D con 3D Slash.
+  Tecnonautes II (3º-4º): programación de videojuegos e historias interactivas
+  con Scratch, programación de la placa micro:bit, diseño 3D con Tinkercad.
+  Tecnonautes III (5º-6º): videojuegos retro con Scratch, robots Maqueen +
+  micro:bit resolviendo retos (sensores, seguir la línea, esquivar obstáculos),
+  diseño 2D/3D con Tinkercad, sculpt gl, GIMP e Inkscape. Clases de una hora en
+  el aula de informática del centro, de octubre a mayo.</p>"
+nota: <p>Aquesta activitat la imparteix <strong>nube7</strong>. Comparteix
+  dossier i formulari d'inscripció amb CreActivitat — són la mateixa empresa,
+  dos activitats.</p>
+nota_es: <p>Esta actividad la imparte <strong>nube7</strong>. Comparte dossier y
+  formulario de inscripción con CreActivitat — son la misma empresa, dos
+  actividades.</p>
+ph: ph-6
+es_municipal: false
