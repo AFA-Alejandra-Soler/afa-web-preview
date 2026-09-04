@@ -51,6 +51,12 @@ DIST = os.path.join(ROOT, "dist")
 PREVIEW = os.environ.get("PREVIEW") == "1"
 DOMINI = "afaalejandrasoler.es"
 
+# Registre de pàgines indexables (04-09-2026, SEO): render_page() hi afig
+# cada pàgina que escriu de veres i que NO porta noindex (ni és build
+# PREVIEW) — mai una llista de rutes inventada a banda. generar_sitemap()
+# el llig tal qual al final del build. Vore render_page() i generar_sitemap().
+SITEMAP_ENTRIES = []
+
 # Nivells extra que cada arbre suma per a arribar a `assets/` (que NOMÉS
 # existix en l'arrel de `dist/`, mai dins de `dist/es/`) — vore rel_assets().
 ROOT_OFFSET = {"va": 0, "es": 1}
@@ -840,18 +846,43 @@ def render_page(*, lang, depth, page_path, active_href, title, meta_desc, body_h
       <a href="{cast_href}" class="lang-link{cast_cls}"{cast_onclick}>{t(lang, "lang_cast")}</a>
     </div>"""
 
+    # Open Graph (04-09-2026, SEO): mateix títol/descripció que ja es calculen
+    # per a <title>/<meta description>, imatge fixa per a tot el lloc:
+    # assets/img/og-afa.jpg (1200×630, retall de la il·lustració de portada —
+    # dibuix, sense menors). El logo (204×343) era massa menut: WhatsApp i
+    # Facebook no mostren imatges de menys de ~300 px. og:url apunta a la
+    # bessona d'idioma correcta.
+    titol_complet = f"{title} · AFA CEIP Alejandra Soler"
+    og_url = abs_va if lang == "va" else abs_es
+    og_locale = "ca_ES" if lang == "va" else "es_ES"
+    og_image = f"https://{DOMINI}/assets/img/og-afa.jpg"
+
+    def _og_esc(s):
+        return s.replace('"', "&quot;")
+
+    og_html = f"""<meta property="og:type" content="website">
+<meta property="og:site_name" content="AFA CEIP Alejandra Soler">
+<meta property="og:title" content="{_og_esc(titol_complet)}">
+<meta property="og:description" content="{_og_esc(meta_desc)}">
+<meta property="og:url" content="{og_url}">
+<meta property="og:image" content="{og_image}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="{og_locale}">"""
+
     html_out = f"""<!DOCTYPE html>
 <html lang="{html_lang}">
 <head>{head_extra}
 {pref_script}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{title} · AFA CEIP Alejandra Soler</title>
+<title>{titol_complet}</title>
 <meta name="description" content="{meta_desc}">
 <link rel="icon" href="{logo}">
 <link rel="alternate" hreflang="ca" href="{abs_va}">
 <link rel="alternate" hreflang="es" href="{abs_es}">
 <link rel="alternate" hreflang="x-default" href="{abs_va}">
+{og_html}
 <link rel="stylesheet" href="{css}">
 </head>
 <body>
@@ -923,6 +954,13 @@ def render_page(*, lang, depth, page_path, active_href, title, meta_desc, body_h
     # profunditat que ja s'usa per a css/logo). Enllaços externs i mailto:
     # no es toquen (el regex només actua sobre "/assets/" literal).
     html_out = _ASSET_ABS_RE.sub(lambda m: f'{m.group(1)}="{rel(ad, "assets/")}', html_out)
+
+    # Registre per al sitemap (vore SITEMAP_ENTRIES més amunt): NOMÉS les
+    # pàgines de veres indexables — mai en build PREVIEW, ni les que porten
+    # noindex (stubs de pàgina oculta o de la secció Extraescolars oculta).
+    if not PREVIEW and not noindex:
+        SITEMAP_ENTRIES.append((lang, page_path))
+
     return html_out
 
 
@@ -1567,6 +1605,176 @@ def pagina_places_lliures(lang):
 
 
 # --------------------------------------------------------------------------
+# 404 (04-09-2026, SEO): GitHub Pages només llig `404.html` a l'ARREL del
+# repo/domini i el servix per a QUALSEVOL ruta trencada, de QUALSEVOL
+# profunditat. Les rutes relatives de render_page() (rel(), css, logo, nav...)
+# es resoldrien contra la URL trencada del navegador, NO contra la ubicació
+# real del fitxer — per això esta pàgina NO reutilitza render_page() i porta
+# totes les seues rutes ABSOLUTES ("/assets/...", "/index.html"...) escrites
+# a mà. Bilingüe en un sol fitxer (VA + ES), noindex, sense script de redirecció.
+# --------------------------------------------------------------------------
+
+def build_nav_html_abs(lang):
+    """Versió del menú principal amb rutes ABSOLUTES ("/qui-som.html"...),
+    usada NOMÉS per pagina_404(). Mateixa font (NAV, href_visible) que
+    build_nav_html(), sense estat "actiu" (no té sentit en una pàgina d'error)."""
+    parts = []
+    for item in NAV:
+        if "children" in item:
+            children = [(h, key) for h, key in item["children"] if href_visible(h)]
+            if not children:
+                continue
+            children_html = "\n        ".join(
+                f'<li><a class="submenu-item" href="/{h}">{t(lang, key)}</a></li>'
+                for h, key in children
+            )
+            parts.append(f"""<div class="menu-item-parent">
+        <button type="button" class="menu-item menu-toggle" aria-expanded="false" aria-haspopup="true" onclick="
+          var s=this.nextElementSibling; var o=s.classList.toggle('obert'); this.setAttribute('aria-expanded', o);
+        ">{t(lang, item["key"])} <span class="caret" aria-hidden="true"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        <ul class="submenu">
+        {children_html}
+        </ul>
+      </div>""")
+        else:
+            href = item["href"]
+            extern = item.get("extern")
+            if not extern and not href_visible(href):
+                continue
+            full_href = href if extern else f"/{href}"
+            target_attrs = ' target="_blank" rel="noreferrer noopener"' if extern else ""
+            parts.append(f'<a class="menu-item" href="{full_href}"{target_attrs}>{t(lang, item["key"])}</a>')
+    return "\n      ".join(parts)
+
+
+def pagina_404():
+    """Pàgina 404 ÚNICA i bilingüe (dist/404.html). Mateixa capçalera/menú/peu
+    i mateix CSS que la resta del lloc, però amb totes les rutes absolutes
+    (vore comentari de dalt). Contingut: H1 + línia explicativa en cada
+    idioma + enllaç a la portada VA i a la portada ES. Meta robots noindex."""
+    css = "/assets/css/style.css"
+    logo = "/assets/img/logo-afa.png"
+    nav_html = build_nav_html_abs("va")
+    body = f"""
+<div class="wrap">
+<section>
+<h1>Pàgina no trobada</h1>
+<p>La pàgina que busques no existix o s'ha mogut. Torna a la portada:</p>
+<p><a class="boton boton-secundari boton-petit" href="/index.html">Portada en valencià</a></p>
+</section>
+<section>
+<h1>Página no encontrada</h1>
+<p>La página que buscas no existe o se ha movido. Vuelve a la portada:</p>
+<p><a class="boton boton-secundari boton-petit" href="/es/index.html">Portada en castellano</a></p>
+</section>
+</div>
+"""
+    return f"""<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pàgina no trobada / Página no encontrada · AFA CEIP Alejandra Soler</title>
+<link rel="icon" href="{logo}">
+<link rel="stylesheet" href="{css}">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="marca" href="/index.html">
+      <img src="{logo}" alt="Logo AFA CEIP Alejandra Soler" width="44" height="74">
+      <span>AFA CEIP Alejandra Soler<small>Russafa · València</small></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="menu-principal" onclick="
+      var n=document.getElementById('menu-principal');
+      var obert = n.classList.toggle('obert');
+      this.setAttribute('aria-expanded', obert);
+    ">☰ Menú</button>
+    <nav class="menu-principal" id="menu-principal">
+      {nav_html}
+    </nav>
+  </div>
+</header>
+
+<main>
+{body}
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="avall">
+      <span>{t("va", "footer_copyright")}</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+"""
+
+
+# --------------------------------------------------------------------------
+# robots.txt i sitemap.xml (04-09-2026, SEO)
+# --------------------------------------------------------------------------
+
+def escriure_robots():
+    """PREVIEW: bloqueja tot el rastreig (Disallow: /) — mateix criteri que el
+    <meta noindex> de cada pàgina. Producció: permet tot i apunta al sitemap."""
+    if PREVIEW:
+        contingut = "User-agent: *\nDisallow: /\n"
+    else:
+        contingut = f"User-agent: *\nAllow: /\nSitemap: https://{DOMINI}/sitemap.xml\n"
+    write("robots.txt", contingut)
+
+
+def _xml_esc(s):
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def generar_sitemap():
+    """Sitemap XML a partir de SITEMAP_ENTRIES: EXACTAMENT les pàgines que
+    render_page() ha escrit de veres i que no porten noindex (vore el
+    comentari de dalt de SITEMAP_ENTRIES) — mai una llista de rutes
+    inventada a banda. Cada `page_path` genera un <url> per idioma disponible,
+    amb les seues bessones com <xhtml:link alternate hreflang>, igual que el
+    hreflang de cada pàgina (render_page). Sense <lastmod> (no en tenim data
+    fiable per pàgina). Es crida NOMÉS en producció (main() ja ho garantix)."""
+    per_path = {}
+    orde = []
+    for lang, page_path in SITEMAP_ENTRIES:
+        if page_path not in per_path:
+            per_path[page_path] = set()
+            orde.append(page_path)
+        per_path[page_path].add(lang)
+
+    blocs = []
+    for page_path in orde:
+        langs = per_path[page_path]
+        abs_va = f"https://{DOMINI}/{page_path}"
+        abs_es = f"https://{DOMINI}/es/{page_path}"
+        alternates = []
+        if "va" in langs:
+            alternates.append(f'    <xhtml:link rel="alternate" hreflang="ca" href="{_xml_esc(abs_va)}"/>')
+            alternates.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{_xml_esc(abs_va)}"/>')
+        if "es" in langs:
+            alternates.append(f'    <xhtml:link rel="alternate" hreflang="es" href="{_xml_esc(abs_es)}"/>')
+        alternates_html = "\n".join(alternates)
+        for lang in ("va", "es"):
+            if lang not in langs:
+                continue
+            loc = abs_va if lang == "va" else abs_es
+            blocs.append(f"  <url>\n    <loc>{_xml_esc(loc)}</loc>\n{alternates_html}\n  </url>")
+
+    xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+           'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+           + "\n".join(blocs) + "\n</urlset>\n")
+    write("sitemap.xml", xml)
+
+
+# --------------------------------------------------------------------------
 # Main
 # --------------------------------------------------------------------------
 
@@ -1618,6 +1826,14 @@ def main():
 
     with open(os.path.join(DIST, ".nojekyll"), "w"):
         pass
+
+    # SEO (04-09-2026): robots.txt sempre; 404.html sempre (útil també en
+    # PREVIEW); sitemap.xml NOMÉS en producció (generar_sitemap() llig
+    # SITEMAP_ENTRIES, que en PREVIEW no s'ompli — vore render_page()).
+    escriure_robots()
+    write("404.html", pagina_404())
+    if not PREVIEW:
+        generar_sitemap()
 
     print("Build completat a", DIST, "(PREVIEW)" if PREVIEW else "(producció)")
 

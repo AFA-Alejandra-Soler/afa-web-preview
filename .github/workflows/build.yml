@@ -5,10 +5,12 @@ name: Build i publica a GitHub Pages
 # i la publica amb el mètode oficial de GitHub Pages. La junta MAI executa
 # res manualment: guarden en el CMS i el "Commit" ja dispara açò.
 #
-# PREVIEW=1: este repositori és el PILOT de proves (afa-web-preview), no el
-# de l'AFA. Al repositori definitiu del AFA, elimina la línia "env: PREVIEW"
-# (o posa-la a "0") perquè es publique amb el domini propi (CNAME) i sense
-# noindex.
+# PREVIEW=1 va ser el mode de pilotatge (repositori de proves afa-web-preview):
+# afig <meta robots noindex> i no escriu CNAME, perquè Google no indexara la
+# preview. Des del 4-9-2026 este repositori JA ÉS el de l'AFA (organització
+# AFA-Alejandra-Soler), amb el domini afaalejandrasoler.es configurat a
+# Settings → Pages i HTTPS forçat. Per això PREVIEW="0": build de producció,
+# indexable, amb sitemap.xml i robots.txt permetent el rastreig.
 
 on:
   push:
@@ -42,7 +44,9 @@ jobs:
 
       - name: Genera el lloc (dist/)
         env:
-          PREVIEW: "1" # ⚠️ repo pilot — llevar/posar a "0" al repo del AFA
+          # Producció (repo del AFA, domini connectat): "0". Només es posa a
+          # "1" per a un repositori pilot/preview sense domini propi.
+          PREVIEW: "0"
         run: python3 build/generar.py
 
       - name: Prepara l'artifact de Pages

@@ -49,7 +49,7 @@ dist/                ← NO es puja a git (.gitignore): és la web generada, la 
 cd build
 pip install -r requirements.txt
 python3 generar.py                # build de producció (amb CNAME, sense noindex)
-PREVIEW=1 python3 generar.py      # build de preview (sense CNAME, amb noindex — el que fa CI en este repo pilot)
+PREVIEW=1 python3 generar.py      # build de preview (sense CNAME, amb noindex, sense sitemap — mode pilot/proves)
 ```
 
 El resultat s'escriu a `dist/` (a l'arrel del repo). Obri `dist/index.html` al navegador
@@ -153,18 +153,33 @@ Verificat amb diff estructural (espais/salts de línia entre etiquetes normalitz
 ver `docs/REGISTRO_TECNICO.md` del repo del projecte): **el contingut visible és
 idèntic**. L'única diferència són els comentaris-guia HTML (`<!-- ══ ACTIVITAT... ══ -->`)
 que hi havia al clon perquè algú sense perfil tècnic poguera esborrar blocs a mà des de
-github.com — ара ja no fan falta (el camp `activa` i l'editor visual fan eixa faena),
+github.com — ara ja no fan falta (el camp `activa` i l'editor visual fan eixa faena),
 per això el generador nou no els escriu. No afecten res del que es veu al navegador.
 
-## Migració al repositori del AFA (quan hi haja compte del AFA)
+## Llançament (fet el 4-9-2026)
 
-1. Crear el repositori nou baix el compte/organització del AFA i pujar tot este contingut.
-2. Reinstal·lar la GitHub App de Pages CMS sobre eixe repositori nou i tornar a convidar
-   els col·laboradors (la junta) — uns 15 minuts.
-3. Al workflow (`.github/workflows/build.yml`), llevar `PREVIEW: "1"` (o posar-lo a `"0"`)
-   perquè es genere amb el domini propi (`CNAME`) i sense `noindex`.
-4. Configurar el domini (DonDominio) apuntant a GitHub Pages — 4 registres A + CNAME `www`
-   (documentació oficial de GitHub Pages).
+Fet: repositori sota l'organització GitHub `AFA-Alejandra-Soler` (ja no és el pilot
+`afa-web-preview`), Pages CMS reinstal·lat i col·laboradors reconvidats, domini
+`afaalejandrasoler.es` configurat a Settings → Pages amb HTTPS forçat, i el workflow
+(`.github/workflows/build.yml`) amb `PREVIEW: "0"` — build de producció: `CNAME`, sense
+`noindex`, `robots.txt` permetent el rastreig i `sitemap.xml`.
+
+Falta (Jorge): donar d'alta el domini a Google Search Console i enviar-hi `sitemap.xml`.
+
+**SEO — on viu cada peça a `build/generar.py`**:
+- `robots.txt` — `escriure_robots()`, cridada des de `main()`. `Disallow: /` en `PREVIEW=1`,
+  `Allow: /` + `Sitemap:` en producció.
+- `sitemap.xml` — `generar_sitemap()` (NOMÉS en producció), llig `SITEMAP_ENTRIES` (llista
+  que `render_page()` omple ella mateixa amb cada pàgina que escriu de veres i que no porta
+  `noindex` — mai una llista de rutes inventada a banda) i genera un `<url>` per idioma amb
+  els seus `<xhtml:link alternate hreflang>`.
+- `404.html` — `pagina_404()` + `build_nav_html_abs()`. Pàgina ÚNICA i bilingüe a l'arrel
+  (l'únic lloc on GitHub Pages la busca); NO reutilitza `render_page()` perquè es servix des
+  de QUALSEVOL profunditat trencada — totes les seues rutes són absolutes (`/assets/...`,
+  `/index.html`) en lloc de relatives.
+- Open Graph (`og:title`, `og:description`, `og:image`, `og:url`, `og:locale`) — dins de
+  `render_page()`, junt al bloc `hreflang`. La imatge és sempre `assets/img/og-afa.jpg` (1200×630,
+  retall de la il·lustració de portada; el logo era massa menut per a WhatsApp/Facebook).
 
 ## Límits coneguts
 
