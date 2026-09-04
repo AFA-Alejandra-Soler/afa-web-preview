@@ -2,24 +2,38 @@ nom: Parkour
 empresa: R-evolution School
 activa: true
 cursos:
-- I3
-- I4
-- I5
-- P1
-- P2
-- P3
-- P4
-- P5
-- P6
-ph: ph-3
-imatge: assets/img/portades/parkour.jpg
+  - I3
+  - I4
+  - I5
+  - P1
+  - P2
+  - P3
+  - P4
+  - P5
+  - P6
+imatge: /assets/uploads/cms/captura-de-pantalla-2026-09-03-173717.png
 dossier: assets/uploads/2026/08/revolution-school-2026-27.pdf
 form: https://forms.gle/J4buiPL92qf6EcNs9
-nota: |-
-  Aquesta activitat la imparteix <strong>R-evolution School</strong> (C/ Dénia, 1). Comparteix dossier i formulari d'inscripció amb Escalada, Parkour i Teles Aèries — són la mateixa empresa, tres activitats.
-nota_es: |-
-  Esta actividad la imparte <strong>R-evolution School</strong> (C/ Dénia, 1). Comparte dossier y formulario de inscripción con Escalada, Parkour y Telas Aéreas — son la misma empresa, tres actividades.
-descripcio: |-
-  El parkour forma persones físicament i mentalment fortes, capaces de respondre davant d'una emergència i de ser útils a la societat ajudant altres persones de manera altruista. És una activitat física, una disciplina i una filosofia de vida que consisteix a desplaçar-se, mitjançant recorreguts, usant les habilitats del propi cos en qualsevol entorn d'una manera fluida i eficaç. Durant els entrenaments, utilitzen la imaginació i l'ajuda de tot l'equip per a crear i millorar els seus recorreguts, moviments o reptes.
-descripcio_es: |-
-  El parkour forma personas física y mentalmente fuertes, capaces de responder ante una emergencia y de ser útiles a la sociedad ayudando a otras personas de manera altruista. Es una actividad física, una disciplina y una filosofía de vida que consiste en desplazarse, mediante recorridos, usando las habilidades del propio cuerpo en cualquier entorno de una manera fluida y eficaz. Durante los entrenamientos, utilizan la imaginación y la ayuda de todo el equipo para crear y mejorar sus recorridos, movimientos o retos.
+descripcio: <p>El parkour forma persones físicament i mentalment fortes, capaces
+  de respondre davant d'una emergència i de ser útils a la societat ajudant
+  altres persones de manera altruista. És una activitat física, una disciplina i
+  una filosofia de vida que consisteix a desplaçar-se, mitjançant recorreguts,
+  usant les habilitats del propi cos en qualsevol entorn d'una manera fluida i
+  eficaç. Durant els entrenaments, utilitzen la imaginació i l'ajuda de tot
+  l'equip per a crear i millorar els seus recorreguts, moviments o reptes.</p>
+descripcio_es: <p>El parkour forma personas física y mentalmente fuertes,
+  capaces de responder ante una emergencia y de ser útiles a la sociedad
+  ayudando a otras personas de manera altruista. Es una actividad física, una
+  disciplina y una filosofía de vida que consiste en desplazarse, mediante
+  recorridos, usando las habilidades del propio cuerpo en cualquier entorno de
+  una manera fluida y eficaz. Durante los entrenamientos, utilizan la
+  imaginación y la ayuda de todo el equipo para crear y mejorar sus recorridos,
+  movimientos o retos.</p>
+nota: <p>Aquesta activitat la imparteix <strong>R-evolution School</strong> (C/
+  Dénia, 1). Comparteix dossier i formulari d'inscripció amb Escalada i Teles
+  Aèries — són la mateixa empresa, tres activitats.</p>
+nota_es: <p>Esta actividad la imparte <strong>R-evolution School</strong> (C/
+  Dénia, 1). Comparte dossier y formulario de inscripción con Escalada y Telas
+  Aéreas — son la misma empresa, tres actividades.</p>
+ph: ph-3
+es_municipal: false
