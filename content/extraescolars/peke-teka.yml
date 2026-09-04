@@ -2,24 +2,38 @@ nom: Peke-teka
 empresa: Kid Pam Pum — La Casita Musical
 activa: true
 cursos:
-- I3
-- I4
-- I5
-- P1
-- P2
-- P3
-- P4
-- P5
-- P6
-ph: ph-1
-imatge: assets/img/portades/peke-teka.jpg
+  - I3
+  - I4
+  - I5
+  - P1
+  - P2
+  - P3
+  - P4
+  - P5
+  - P6
+imatge: /assets/uploads/cms/captura-de-pantalla-2026-09-03-191343.png
 dossier: assets/uploads/2026/08/kid-pam-pum-musica-peketeka-2026-27.pdf
-form: null
-nota: |-
-  Aquesta activitat la imparteix <strong>Kid Pam Pum — La Casita Musical</strong> (C/ Gibraltar, 31): recullen l'alumnat al col·legi i les famílies el repleguen a la Casita Musical. Comparteix dossier amb Música i Peke-teka — són la mateixa escola, dos activitats.
-nota_es: |-
-  Esta actividad la imparte <strong>Kid Pam Pum — La Casita Musical</strong> (C/ Gibraltar, 31): recogen al alumnado en el colegio y las familias lo recogen en la Casita Musical. Comparte dossier con Música y Peke-teka — son la misma escuela, dos actividades.
-descripcio: |-
-  La Peketeka de Kid Pam Pum: tu tries, tu decideixes, tu gaudeixes. Ací els xiquets decideixen en tot moment què volen fer: interpretem les seues cançons favorites i juguen, creen i es diverteixen sense límits — triem i toquem les seues cançons preferides, accés il·limitat a la zona de joc (llit elàstic, jocs i més), i si toquen música guanyen Somriures que poden usar al Mercadet per a triar joguets, classes especials i sorpreses. Llibertat, creativitat i diversió en un ambient segur. Divendres, per a Infantil i Primària: Kid Pam Pum arreplega l'alumnat al col·legi a les 15:00 i les famílies el recullen a la Casita Musical a les 16:45.
-descripcio_es: |-
-  La Peketeka de Kid Pam Pum: tú eliges, tú decides, tú disfrutas. Aquí los niños deciden en todo momento qué quieren hacer: interpretamos sus canciones favoritas y juegan, crean y se divierten sin límites — elegimos y tocamos sus canciones preferidas, acceso ilimitado a la zona de juego (cama elástica, juegos y más), y si tocan música ganan Sonrisas que pueden usar en el Mercadillo para elegir juguetes, clases especiales y sorpresas. Libertad, creatividad y diversión en un ambiente seguro. Viernes, para Infantil y Primaria: Kid Pam Pum recoge al alumnado en el colegio a las 15:00 y las familias lo recogen en la Casita Musical a las 16:45.
+descripcio: "<p>La Peketeka de Kid Pam Pum: tu tries, tu decideixes, tu
+  gaudeixes. Ací els xiquets decideixen en tot moment què volen fer: interpretem
+  les seues cançons favorites i juguen, creen i es diverteixen sense límits —
+  triem i toquem les seues cançons preferides, accés il·limitat a la zona de joc
+  (llit elàstic, jocs i més), i si toquen música guanyen Somriures que poden
+  usar al Mercadet per a triar joguets, classes especials i sorpreses.
+  Llibertat, creativitat i diversió en un ambient segur.</p>"
+descripcio_es: "<p>La Peketeka de Kid Pam Pum: tú eliges, tú decides, tú
+  disfrutas. Aquí los niños deciden en todo momento qué quieren hacer:
+  interpretamos sus canciones favoritas y juegan, crean y se divierten sin
+  límites — elegimos y tocamos sus canciones preferidas, acceso ilimitado a la
+  zona de juego (cama elástica, juegos y más), y si tocan música ganan Sonrisas
+  que pueden usar en el Mercadillo para elegir juguetes, clases especiales y
+  sorpresas. Libertad, creatividad y diversión en un ambiente seguro.</p>"
+nota: "<p>Aquesta activitat la imparteix <strong>Kid Pam Pum — La Casita
+  Musical</strong> (C/ Gibraltar, 31): recullen l'alumnat al col·legi i les
+  famílies el repleguen a la Casita Musical. Comparteix dossier amb Música — són
+  la mateixa escola, dos activitats.</p>"
+nota_es: "<p>Esta actividad la imparte <strong>Kid Pam Pum — La Casita
+  Musical</strong> (C/ Gibraltar, 31): recogen al alumnado en el colegio y las
+  familias lo recogen en la Casita Musical. Comparte dossier con Música — son la
+  misma escuela, dos actividades.</p>"
+ph: ph-1
+es_municipal: false
