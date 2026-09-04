@@ -1,0 +1,32 @@
+nota: "Horaris del curs 2025-26. Els del curs 2026-27 es publicaran ací quan estiguen tancats."
+nota_es: "Horarios del curso 2025-26. Los del curso 2026-27 se publicarán aquí cuando estén cerrados."
+horari_general: assets/uploads/2026/01/Horari-i-espais-2025-2026xls.-Horari-2526-4_page-0001.jpg
+preus_municipals: assets/uploads/2025/09/Informacio-actv-municipals_-preus-i-cursos.pdf
+horaris_nivell:
+  - curs: "3 anys"
+    curs_es: "3 años"
+    imatge: assets/uploads/2026/01/Horari-i-espais-2025-2026xls.-3-anys_page-0001.jpg
+  - curs: "4 anys"
+    curs_es: "4 años"
+    imatge: assets/uploads/2026/01/Horari-i-espais-2025-2026xls._pages-to-jpg-0010.jpg
+  - curs: "5 anys"
+    curs_es: "5 años"
+    imatge: assets/uploads/2026/01/Horari-i-espais-2025-2026xls._pages-to-jpg-0011.jpg
+  - curs: "1er Primària"
+    curs_es: "1er Primaria"
+    imatge: assets/uploads/2026/01/Horari-i-espais-2025-2026xls._pages-to-jpg-0012.jpg
+  - curs: "2n Primària"
+    curs_es: "2º Primaria"
+    imatge: assets/uploads/2026/01/Horari-i-espais-2025-2026xls._pages-to-jpg-0013.jpg
+  - curs: "3er Primària"
+    curs_es: "3er Primaria"
+    imatge: assets/uploads/2026/01/Horari-i-espais-2025-2026xls._pages-to-jpg-0014.jpg
+  - curs: "4t Primària"
+    curs_es: "4º Primaria"
+    imatge: assets/uploads/2025/09/Horari-i-espais-2025-2026xls.-4rt-prim_page-0001.jpg
+  - curs: "5é Primària"
+    curs_es: "5º Primaria"
+    imatge: assets/uploads/2025/11/Horari-i-espais-2025-2026xls.-5e-prim_page-0001.jpg
+  - curs: "6é Primària"
+    curs_es: "6º Primaria"
+    imatge: assets/uploads/2025/11/Horari-i-espais-2025-2026xls.-6e-prim_page-0001.jpg
