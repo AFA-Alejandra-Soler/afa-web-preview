@@ -90,6 +90,8 @@ T = {
         "nav_mes_que_verd": "Més que verd",
         "nav_contacte": "Contacte",
         "nav_web_escola": "WEB de l'escola",
+        "nav_web_escola_web": "Web",
+        "nav_web_escola_autoritzacions": "Autoritzacions",
 
         "footer_afa_title": "AFA CEIP Alejandra Soler",
         "footer_russafa": "Russafa, València",
@@ -231,6 +233,8 @@ T = {
         "nav_mes_que_verd": "Más que verde",
         "nav_contacte": "Contacto",
         "nav_web_escola": "WEB del cole",
+        "nav_web_escola_web": "Web",
+        "nav_web_escola_autoritzacions": "Autorizaciones",
 
         "footer_afa_title": "AFA CEIP Alejandra Soler",
         "footer_russafa": "Russafa, Valencia",
@@ -742,7 +746,12 @@ NAV = [
     ]},
     {"key": "nav_contacte", "href": "contacte.html"},
     {"key": "nav_fes_membre", "href": "fes-te-de-lafa.html"},
-    {"key": "nav_web_escola", "href": "https://portal.edu.gva.es/46028430/", "extern": True},
+    # 04-09-2026 (Jorge): «WEB de l'escola» és un desplegable amb dos enllaços
+    # EXTERNS (tercer element True = extern → s'obrin en pestanya nova).
+    {"key": "nav_web_escola", "children": [
+        ("https://portal.edu.gva.es/46028430/", "nav_web_escola_web", True),
+        ("https://portal.edu.gva.es/46028430/autoritzacions/", "nav_web_escola_autoritzacions", True),
+    ]},
 ]
 
 FOOTER_LINKS_SECUNDARIS = [
@@ -750,20 +759,29 @@ FOOTER_LINKS_SECUNDARIS = [
     ("blog/index.html", "nav_blog"),
 ]
 
+_TARGET_EXTERN = ' target="_blank" rel="noreferrer noopener"'
+
+
+def _fill(c):
+    """Normalitza un fill de NAV: (href, clau) o (href, clau, extern) → (href, clau, extern)."""
+    return (c[0], c[1], bool(c[2]) if len(c) > 2 else False)
+
 
 def build_nav_html(lang, depth, active_href):
     parts = []
     for item in NAV:
         if "children" in item:
-            children = [(h, key) for h, key in item["children"] if href_visible(h)]
+            children = [_fill(c) for c in item["children"]]
+            children = [c for c in children if c[2] or href_visible(c[0])]
             if not children:
                 continue  # el grup es queda sense fills visibles → s'omet sencer
-            child_hrefs = [h for h, _ in children]
+            child_hrefs = [h for h, _, _ in children]
             parent_actiu = " actiu" if active_href in child_hrefs else ""
             children_html = "\n        ".join(
                 f'<li><a class="submenu-item{" actiu" if h == active_href else ""}" '
-                f'href="{rel(depth, h)}">{t(lang, key)}</a></li>'
-                for h, key in children
+                f'href="{h if extern else rel(depth, h)}"'
+                f'{_TARGET_EXTERN if extern else ""}>{t(lang, key)}</a></li>'
+                for h, key, extern in children
             )
             parts.append(f"""<div class="menu-item-parent">
         <button type="button" class="menu-item menu-toggle{parent_actiu}" aria-expanded="false" aria-haspopup="true" onclick="
@@ -1627,12 +1645,14 @@ def build_nav_html_abs(lang):
     parts = []
     for item in NAV:
         if "children" in item:
-            children = [(h, key) for h, key in item["children"] if href_visible(h)]
+            children = [_fill(c) for c in item["children"]]
+            children = [c for c in children if c[2] or href_visible(c[0])]
             if not children:
                 continue
             children_html = "\n        ".join(
-                f'<li><a class="submenu-item" href="/{h}">{t(lang, key)}</a></li>'
-                for h, key in children
+                f'<li><a class="submenu-item" href="{h if extern else "/" + h}"'
+                f'{_TARGET_EXTERN if extern else ""}>{t(lang, key)}</a></li>'
+                for h, key, extern in children
             )
             parts.append(f"""<div class="menu-item-parent">
         <button type="button" class="menu-item menu-toggle" aria-expanded="false" aria-haspopup="true" onclick="
