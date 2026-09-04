@@ -105,7 +105,11 @@ nav.menu-principal a.actiu {
   border-bottom-color: var(--morado);
 }
 
-/* ---------- Menú desplegable (AFA, Notícies, Projectes) ---------- */
+/* ---------- Menú desplegable (AFA, Notícies, Projectes) ----------
+   04-09-2026: el punt de tall passa de 780 a 1099 px. Entre 781 i 1099 px el menú
+   d'escriptori no cap en una línia (eixia en dues, sense botó per a plegar-lo —
+   mòbil apaïsat i tauletes), així que ara el botó «☰ Menú» s'usa fins a 1099 px
+   i els submenús van en acordió (plegats per defecte, un toc els obri/tanca). */
 .menu-item-parent { position: relative; }
 .menu-toggle {
   background: none;
@@ -127,7 +131,7 @@ nav.menu-principal a.actiu {
 .menu-item-parent:hover .caret, .menu-item-parent:focus-within .caret, .menu-toggle[aria-expanded="true"] .caret { transform: rotate(180deg); }
 .submenu { list-style: none; margin: 0; padding: 0; }
 
-@media (min-width: 781px) {
+@media (min-width: 1100px) {
   .submenu {
     position: absolute;
     top: 100%;
@@ -168,29 +172,38 @@ nav.menu-principal a.actiu {
   cursor: pointer;
 }
 
-@media (max-width: 780px) {
+@media (max-width: 1099px) {
   nav.menu-principal {
     display: none;
+    order: 3;                 /* la llista va DAVALL del botó «☰ Menú», no entre mig */
     width: 100%;
     flex-direction: column;
+    flex-wrap: nowrap;        /* amb max-height, «wrap» crearia columnes invisibles */
     align-items: flex-start;
     gap: 0;
     padding: .5rem 0 .8rem;
     border-top: 1px solid var(--linea);
     margin-top: .5rem;
   }
-  nav.menu-principal.obert { display: flex; }
+  nav.menu-principal.obert {
+    display: flex;
+    /* La capçalera és sticky: si el menú obert és més alt que la pantalla
+       (mòbil apaïsat), es desplaça per dins en lloc de quedar tallat. */
+    max-height: calc(100vh - 8.5rem);
+    overflow-y: auto;
+  }
   nav.menu-principal a { padding: .55rem 0; width: 100%; border-bottom: 1px solid var(--linea); }
   .nav-toggle { display: inline-flex; }
   .site-header .wrap { flex-wrap: wrap; }
   .menu-item-parent { width: 100%; }
   .menu-toggle { width: 100%; justify-content: space-between; padding: .55rem 0; border-bottom: 1px solid var(--linea); }
   .submenu {
-    display: block !important;
+    display: none;            /* plegat per defecte; el botó del pare el desplega */
     padding-left: 1rem;
     border-left: 2px solid var(--linea);
     margin: .2rem 0 .3rem .2rem;
   }
+  .submenu.obert { display: block; }
   .submenu li { margin: 0; }
   .submenu-item {
     display: block;
@@ -223,7 +236,7 @@ nav.menu-principal a.actiu {
 .lang-switch .lang-link.actiu { color: var(--morado-oscuro); background: var(--lila); }
 .lang-switch .lang-sep { color: var(--linea); }
 
-@media (max-width: 780px) {
+@media (max-width: 1099px) {
   .lang-switch { order: 0; margin-left: auto; }
   .nav-toggle { order: 2; }
 }
