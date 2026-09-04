@@ -38,10 +38,22 @@ intro4_es: <p>Para poder participar en las actividades extraescolares privadas
   través de Aulazon</a>.</p>
 boto_places: Vore places lliures del mes
 boto_places_es: Ver plazas libres del mes
-asteriscs_nota: "**Les activitats amb dos asteriscs, signifiquen que son
-  activitats municipals, i per tant, el preu és més reduït."
-asteriscs_nota_es: "**Las actividades con dos asteriscos significan que son
-  actividades municipales, y por tanto, el precio es más reducido."
+asteriscs_nota: >-
+  *Activitats que se realitzen fora del col·le i per tant se necessitarà
+  autoritzar a les empreses perquè recullen al alumnat i l'acompanyen a la
+  escola en qüestió. (Ho gestiona cada extraescolar)
+
+
+  **Les activitats amb dos asteriscs, signifiquen que son activitats municipals,
+  i per tant, el preu és més reduït.
+asteriscs_nota_es: >-
+  *Actividades que se realizan fuera del colegio y por tanto se necesitará
+  autorizar a las empresas para que recojan al alumnado y lo acompañen a la
+  escuela en cuestión. (Lo gestiona cada extraescolar)
+
+
+  **Las actividades con dos asteriscos significan que son actividades
+  municipales, y por tanto, el precio es más reducido.
 baixes_titol: Baixes
 baixes_titol_es: Bajas
 baixes_text: <p>Qualsevol baixa en alguna activitat s'ha de comunicar
