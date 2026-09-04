@@ -143,6 +143,7 @@ T = {
         "cursos_label": "Cursos:",
         "empresa_label": "Impartida per:",
         "pendent": "pendent de publicar",
+        "pagina_en_preparacio": "Aquesta pàgina està en preparació. Prompte estarà disponible.",
 
         "extra_h1": "Extraescolars 2026-2027",
         "extra_subtitle": "Tria l'activitat per a vore el seu dossier i inscriure't",
@@ -283,6 +284,7 @@ T = {
         "cursos_label": "Cursos:",
         "empresa_label": "Impartida por:",
         "pendent": "pendiente de publicar",
+        "pagina_en_preparacio": "Esta página está en preparación. Pronto estará disponible.",
 
         "extra_h1": "Extraescolares 2026-2027",
         "extra_subtitle": "Elige la actividad para ver su dosier e inscribirte",
@@ -386,6 +388,12 @@ def load_collection(subdir):
 
 
 _COS_ASSET_RE = re.compile(r'((?:href|src)=")(?:\.\./)*assets/')
+
+# Post-procés final de render_page() (04-09-2026): reescriu qualsevol
+# "/assets/..." absolut (deixat per cos_html() o pegat directament per la
+# junta des de Pages CMS) a la ruta relativa correcta de CADA pàgina — vore
+# el comentari a render_page(), just abans del return.
+_ASSET_ABS_RE = re.compile(r'(href|src)="/assets/')
 
 
 def cos_html(text):
@@ -625,6 +633,86 @@ def form_link_html(url, label, lang):
 
 
 # --------------------------------------------------------------------------
+# Visibilitat de pàgines/seccions (04-09-2026): dos interruptors independents
+# perquè la junta puga "amagar" contingut mentre el prepara, sense esborrar
+# res ni tocar codi:
+#   - `visible` (camp booleà per pàgina, a content/pagines/*.yml): si és
+#     False, la pàgina desapareix del menú i del peu i s'escriu com a STUB
+#     (mateixa capçalera/peu, cos = avís "en preparació"), mai un 404 — els
+#     enllaços ja compartits no trenquen.
+#   - `extraescolars_visibles` (content/web.yml): interruptor global de tota
+#     la secció Extraescolars (vore load_web() i pagina_extraescolars_stub()).
+# Absència del fitxer/camp = comportament d'abans (tot visible).
+# --------------------------------------------------------------------------
+def _es_fals(v):
+    """Interpreta com a "fals" el booleà False i també els textos escrits a mà
+    "false"/"no"/"0"/"off" (Pages CMS escriu booleans reals; editant el YAML a
+    mà des de GitHub pot arribar amb cometes). Qualsevol altra cosa = visible:
+    davant el dubte es publica, no s'amaga."""
+    if isinstance(v, str):
+        return v.strip().lower() in {"false", "no", "0", "off"}
+    return v is False or v == 0
+
+
+PAGINES_SLUGS = {"qui-som", "fes-te-de-lafa", "contacte", "mes-que-verd", "estatuts", "conciliacio"}
+
+_pagina_visible_cache = {}
+_web_cache = None
+
+
+def pagina_visible(slug):
+    """Torna False només si content/pagines/{slug}.yml existix i porta
+    `visible: false` explícit. Absència del camp (fitxes actuals de la
+    junta, que no el porten) = True. Cachejat perquè es consulta múltiples
+    voltes (nav, peu, home) per la mateixa pàgina."""
+    if slug not in _pagina_visible_cache:
+        try:
+            d = load_yaml(f"pagines/{slug}.yml") or {}
+        except FileNotFoundError:
+            d = {}
+        _pagina_visible_cache[slug] = not _es_fals(d.get("visible", True))
+    return _pagina_visible_cache[slug]
+
+
+def load_web():
+    """Carrega content/web.yml (interruptor global de la secció
+    Extraescolars). Si el fitxer no existix o està buit: secció visible i
+    avisos per defecte (el mateix text que porta el fitxer inicial)."""
+    global _web_cache
+    if _web_cache is None:
+        try:
+            w = load_yaml("web.yml") or {}
+        except FileNotFoundError:
+            w = {}
+        _web_cache = {
+            "extraescolars_visibles": not _es_fals(w.get("extraescolars_visibles", True)),
+            "extraescolars_avis": w.get("extraescolars_avis") or (
+                "Estem preparant la informació de les extraescolars del curs 2026-27. "
+                "Prompte estarà disponible."
+            ),
+            "extraescolars_avis_es": w.get("extraescolars_avis_es") or (
+                "Estamos preparando la información de las extraescolares del curso 2026-27. "
+                "Pronto estará disponible." if not w else None
+            ),
+        }
+    return _web_cache
+
+
+def href_visible(href):
+    """Torna False si `href` apunta a una pàgina de content/pagines/ marcada
+    `visible: false`, o a "extraescolars/index.html" i la secció sencera
+    està oculta (content/web.yml). Per a qualsevol altre href (junta, blog,
+    galeria...) torna sempre True. Font única per a nav, peu i home."""
+    if href == "extraescolars/index.html":
+        return load_web()["extraescolars_visibles"]
+    if href.endswith(".html") and "/" not in href:
+        slug = href[:-len(".html")]
+        if slug in PAGINES_SLUGS:
+            return pagina_visible(slug)
+    return True
+
+
+# --------------------------------------------------------------------------
 # Menú i plantilla comuna (idèntics als del clon original — no és contingut
 # editable per la junta, viu ací com a codi). Les etiquetes es tradueixen amb
 # `t(lang, clau)`; els `href` NO canvien amb l'idioma (l'arbre /es/ és un
@@ -661,12 +749,15 @@ def build_nav_html(lang, depth, active_href):
     parts = []
     for item in NAV:
         if "children" in item:
-            child_hrefs = [h for h, _ in item["children"]]
+            children = [(h, key) for h, key in item["children"] if href_visible(h)]
+            if not children:
+                continue  # el grup es queda sense fills visibles → s'omet sencer
+            child_hrefs = [h for h, _ in children]
             parent_actiu = " actiu" if active_href in child_hrefs else ""
             children_html = "\n        ".join(
                 f'<li><a class="submenu-item{" actiu" if h == active_href else ""}" '
                 f'href="{rel(depth, h)}">{t(lang, key)}</a></li>'
-                for h, key in item["children"]
+                for h, key in children
             )
             parts.append(f"""<div class="menu-item-parent">
         <button type="button" class="menu-item menu-toggle{parent_actiu}" aria-expanded="false" aria-haspopup="true" onclick="
@@ -679,6 +770,8 @@ def build_nav_html(lang, depth, active_href):
         else:
             href = item["href"]
             extern = item.get("extern")
+            if not extern and not href_visible(href):
+                continue
             full_href = href if extern else rel(depth, href)
             is_actiu = " actiu" if href == active_href else ""
             target_attrs = ' target="_blank" rel="noreferrer noopener"' if extern else ""
@@ -686,21 +779,36 @@ def build_nav_html(lang, depth, active_href):
     return "\n      ".join(parts)
 
 
-def render_page(*, lang, depth, page_path, active_href, title, meta_desc, body_html):
+def render_page(*, lang, depth, page_path, active_href, title, meta_desc, body_html, noindex=False):
     """`depth` = profunditat LOCAL de la pàgina dins del seu propi arbre
     (0 = arrel, 1 = blog/extraescolars...). `page_path` = ruta de la pàgina
     relativa a l'arrel de qualsevol dels dos arbres (p. ex. "index.html",
     "blog/2026-06-04-post.html") — el mateix camí existix a l'arrel (va) i a
-    `es/` (es), és la clau per a calcular la bessona d'idioma i el hreflang."""
+    `es/` (es), és la clau per a calcular la bessona d'idioma i el hreflang.
+    `noindex=True` força la meta robots encara que no siga build PREVIEW —
+    l'usen les pàgines/seccions ocultes (stub "en preparació")."""
     ad = depth + ROOT_OFFSET[lang]  # profunditat per a arribar a assets/ (només a l'arrel de dist/)
     css = rel(ad, "assets/css/style.css")
     logo = rel(ad, "assets/img/logo-afa.png")
     home = rel(depth, "index.html")
     nav_html = build_nav_html(lang, depth, active_href)
     footer_extra = "\n            ".join(
-        f'<li><a href="{rel(depth, href)}">{t(lang, key)}</a></li>' for href, key in FOOTER_LINKS_SECUNDARIS
+        f'<li><a href="{rel(depth, href)}">{t(lang, key)}</a></li>'
+        for href, key in FOOTER_LINKS_SECUNDARIS if href_visible(href)
     )
-    head_extra = '<meta name="robots" content="noindex, nofollow">' if PREVIEW else ""
+    footer_web_links = [
+        (h, key) for h, key in [
+            ("qui-som.html", "nav_lafa"),
+            ("extraescolars/index.html", "nav_extraescolars"),
+            ("conciliacio.html", "nav_conciliacio"),
+        ] if href_visible(h)
+    ]
+    footer_web_html = "\n          ".join(
+        f'<li><a href="{rel(depth, h)}">{t(lang, key)}</a></li>' for h, key in footer_web_links
+    )
+    contacte_li = (f'<li><a href="{rel(depth, "contacte.html")}">{t(lang, "footer_mes_contacte")}</a></li>'
+                   if href_visible("contacte.html") else "")
+    head_extra = '<meta name="robots" content="noindex, nofollow">' if (PREVIEW or noindex) else ""
 
     a_href = alt_href(lang, depth, page_path)
     html_lang = "es" if lang == "es" else "ca"
@@ -732,7 +840,7 @@ def render_page(*, lang, depth, page_path, active_href, title, meta_desc, body_h
       <a href="{cast_href}" class="lang-link{cast_cls}"{cast_onclick}>{t(lang, "lang_cast")}</a>
     </div>"""
 
-    return f"""<!DOCTYPE html>
+    html_out = f"""<!DOCTYPE html>
 <html lang="{html_lang}">
 <head>{head_extra}
 {pref_script}
@@ -778,15 +886,13 @@ def render_page(*, lang, depth, page_path, active_href, title, meta_desc, body_h
         <ul>
           <li>{t(lang, "footer_russafa")}</li>
           <li><a href="mailto:secretariaalejandrasoler@gmail.com">secretariaalejandrasoler@gmail.com</a></li>
-          <li><a href="{rel(depth, 'contacte.html')}">{t(lang, "footer_mes_contacte")}</a></li>
+          {contacte_li}
         </ul>
       </div>
       <div>
         <h4>{t(lang, "footer_web_title")}</h4>
         <ul>
-          <li><a href="{rel(depth, 'qui-som.html')}">{t(lang, "nav_lafa")}</a></li>
-          <li><a href="{rel(depth, 'extraescolars/index.html')}">{t(lang, "nav_extraescolars")}</a></li>
-          <li><a href="{rel(depth, 'conciliacio.html')}">{t(lang, "nav_conciliacio")}</a></li>
+          {footer_web_html}
           {footer_extra}
         </ul>
       </div>
@@ -807,6 +913,17 @@ def render_page(*, lang, depth, page_path, active_href, title, meta_desc, body_h
 </body>
 </html>
 """
+    # Fix rutes absolutes "/assets/..." dins del cos (04-09-2026): cos_html()
+    # i les rutes que escriu Pages CMS des dels camps `media` normalitzen
+    # sempre a "/assets/..." (absolut des de l'arrel del domini — vore
+    # cos_html()). En producció (dist/ a l'arrel del domini) això funciona,
+    # però en la preview (GitHub Pages en una SUBRUTA, /afa-web-preview/)
+    # trenca en 404. Ho reescrivim ací, en el HTML JA assemblat, a la ruta
+    # relativa correcta per a esta pàgina (`rel(ad, "assets/")` — la mateixa
+    # profunditat que ja s'usa per a css/logo). Enllaços externs i mailto:
+    # no es toquen (el regex només actua sobre "/assets/" literal).
+    html_out = _ASSET_ABS_RE.sub(lambda m: f'{m.group(1)}="{rel(ad, "assets/")}', html_out)
+    return html_out
 
 
 def write(relpath, html):
@@ -828,7 +945,7 @@ def portada_img_html(depth, imatge_path, alt, lang):
     `depth` ja ha de portar sumat ROOT_OFFSET[lang] (profunditat d'assets)."""
     if not imatge_path:
         return None
-    href = rel(depth, imatge_path)
+    href = local_asset_href(depth, imatge_path)
     if imatge_path.endswith(".png"):
         return f'<img class="portada-logo" src="{href}" alt="{t(lang, "portada_logo_alt_prefix")} {alt}" loading="lazy">'
     return f'<img src="{href}" alt="{alt}" loading="lazy">'
@@ -842,6 +959,32 @@ def portada_img_html(depth, imatge_path, alt, lang):
 def pagina_home(lang):
     ad = ROOT_OFFSET[lang]
     portada_href = local_asset_href(ad, "https://ampaalejandrasoler.es/wp-content/uploads/2022/09/Portada_Web_22_23.png")
+
+    # Tarjetes «accio»: s'omet la d'Extraescolars si la secció està oculta
+    # (content/web.yml) i la de Qui som si la pàgina està oculta (visible:
+    # false a content/pagines/qui-som.yml) — mateixa font que el menú/peu.
+    cards = []
+    if href_visible("extraescolars/index.html"):
+        cards.append(f"""    <a class="accio" href="extraescolars/index.html">
+      <h3>{t(lang, "home_card1_title")}</h3>
+      <p>{t(lang, "home_card1_desc")}</p>
+    </a>""")
+    cards.append(f"""    <a class="accio" href="blog/index.html">
+      <h3>{t(lang, "home_card2_title")}</h3>
+      <p>{t(lang, "home_card2_desc")}</p>
+    </a>""")
+    if href_visible("qui-som.html"):
+        cards.append(f"""    <a class="accio" href="qui-som.html">
+      <h3>{t(lang, "home_card3_title")}</h3>
+      <p>{t(lang, "home_card3_desc")}</p>
+    </a>""")
+    if href_visible("contacte.html"):
+        cards.append(f"""    <a class="accio" href="contacte.html">
+      <h3>{t(lang, "home_card4_title")}</h3>
+      <p>{t(lang, "home_card4_desc")}</p>
+    </a>""")
+    cards_html = "\n".join(cards)
+
     body = f"""
 <section class="hero">
   <div class="wrap">
@@ -858,22 +1001,7 @@ def pagina_home(lang):
 
 <section>
   <div class="grid-accions">
-    <a class="accio" href="extraescolars/index.html">
-      <h3>{t(lang, "home_card1_title")}</h3>
-      <p>{t(lang, "home_card1_desc")}</p>
-    </a>
-    <a class="accio" href="blog/index.html">
-      <h3>{t(lang, "home_card2_title")}</h3>
-      <p>{t(lang, "home_card2_desc")}</p>
-    </a>
-    <a class="accio" href="qui-som.html">
-      <h3>{t(lang, "home_card3_title")}</h3>
-      <p>{t(lang, "home_card3_desc")}</p>
-    </a>
-    <a class="accio" href="contacte.html">
-      <h3>{t(lang, "home_card4_title")}</h3>
-      <p>{t(lang, "home_card4_desc")}</p>
-    </a>
+{cards_html}
   </div>
 </section>
 
@@ -894,6 +1022,20 @@ def pagina_home(lang):
 def pagina_estatica(slug, lang):
     d = load_yaml(f"pagines/{slug}.yml")
     title = txt(d, "titol_pestanya", lang) or txt(d, "titol", lang)
+
+    if not pagina_visible(slug):
+        # STUB (04-09-2026): la pàgina existix igual (mateixa capçalera/peu i
+        # títol), però el cos és només l'avís "en preparació" — mai un 404,
+        # perquè enllaços ja compartits no trenquen.
+        body = f"""
+<div class="wrap"><section><h1>{txt(d, "titol", lang)}</h1><p class="nota">{t(lang, "pagina_en_preparacio")}</p></section></div>
+"""
+        return render_page(
+            lang=lang, depth=0, page_path=f"{slug}.html", active_href=f"{slug}.html",
+            title=title, meta_desc=txt(d, "meta_desc", lang), body_html=body,
+            noindex=True,
+        )
+
     body = f"""
 <div class="page-hero"><div class="wrap"><h1>{txt(d, "titol", lang)}</h1><p>{txt(d, "subtitol", lang)}</p></div></div>
 <div class="wrap">
@@ -1151,9 +1293,72 @@ def load_horaris():
     }
 
 
+_extra_textos_cache = None
+
+
+def load_extra_textos():
+    """Carrega content/extraescolars-textos.yml (04-09-2026): títol, subtítol,
+    els 4 paràgrafs d'introducció, el text del botó de places, la nota dels
+    asteriscs i l'apartat Baixes de la LANDING d'Extraescolars — abans fixos
+    al diccionari `T`, ara editables des de Pages CMS. Cachejat. Si el fitxer
+    no existix o està buit, torna {} i cada camp cau al seu valor fix de `T`
+    (vore pagina_extraescolars_landing) — mai la pàgina a mitges."""
+    global _extra_textos_cache
+    if _extra_textos_cache is None:
+        try:
+            _extra_textos_cache = load_yaml("extraescolars-textos.yml") or {}
+        except FileNotFoundError:
+            _extra_textos_cache = {}
+    return _extra_textos_cache
+
+
+_NOTA_P_RE = re.compile(r"<p>(.*)</p>", re.S)
+
+
 def pagina_extraescolars_landing(activitats, lang):
     ad = 1 + ROOT_OFFSET[lang]
     h = load_horaris()
+    et = load_extra_textos()
+
+    # Textos de la landing (04-09-2026): camp buit/fitxer absent → text fix
+    # de T (idèntic al comportament d'abans). `txt()` ja resol el fallback
+    # _es → valencià dins del propi YAML; l'`or` de fora resol YAML buit → T.
+    titol = txt(et, "titol", lang) or t(lang, "extra_h1")
+    subtitol = txt(et, "subtitol", lang) or t(lang, "extra_subtitle")
+    boto_places = txt(et, "boto_places", lang) or t(lang, "extra_btn_places")
+    asteriscs_nota = txt(et, "asteriscs_nota", lang) or t(lang, "extra_asteriscs_nota")
+    baixes_titol = txt(et, "baixes_titol", lang) or t(lang, "extra_baixes_h3")
+
+    def _intro_html(camp, clau_t):
+        """cos_html() ja envolta un paràgraf pla en <p>...</p> — EXACTAMENT
+        el mateix marcatge que hi havia fix ('<p>{t(...)}</p>'), i deixa
+        passar l'HTML inline (<a href...>) que porten intro2/intro4 —
+        verificat 0 diferències amb el contingut actual (docs/REGISTRO_TECNIC.md
+        04-09-2026)."""
+        valor = txt(et, camp, lang)
+        return cos_html(valor) if valor else f'<p>{t(lang, clau_t)}</p>'
+
+    intro1_html = _intro_html("intro1", "extra_intro1")
+    intro2_html = _intro_html("intro2", "extra_intro2")
+    intro3_html = _intro_html("intro3", "extra_intro3")
+    intro4_html = _intro_html("intro4", "extra_intro4")
+
+    # Baixes: el marcatge ORIGINAL és '<p class="nota">{text}</p>' (amb
+    # classe — a diferència dels intros), així que la classe es deixa FIXA
+    # ací i només s'hi insereix el contingut. Per al cas normal (un sol
+    # paràgraf, com el text migrat) cos_html() torna '<p>...</p>' — es lleva
+    # eixe embolcall per a no duplicar <p><p>...</p></p>; si en el futur la
+    # junta escriu diversos paràgrafs des del rich-text, es deixen tal qual
+    # dins de la mateixa caixa "nota" (no és HTML perfecte, però no trenca
+    # el navegador ni deixa la secció buida).
+    baixes_valor = txt(et, "baixes_text", lang)
+    if baixes_valor:
+        _html = cos_html(baixes_valor)
+        _m = _NOTA_P_RE.fullmatch(_html)
+        # Un sol paràgraf (cas normal) → <p class="nota">; blocs (títol, llista...) → <div class="nota">
+        baixes_html = (f'<p class="nota">{_m.group(1)}</p>' if _m else f'<div class="nota">{_html}</div>')
+    else:
+        baixes_html = f'<p class="nota">{t(lang, "extra_baixes_p")}</p>'
 
     def _card(a, fixa_final=False):
         nom = txt(a, "nom", lang)
@@ -1192,16 +1397,16 @@ def pagina_extraescolars_landing(activitats, lang):
     horaris_nota = txt(h, "nota", lang) if h["nota"] else t(lang, "extra_horaris_nota")
 
     body = f"""
-<div class="page-hero"><div class="wrap"><h1>{t(lang, "extra_h1")}</h1>
-<p>{t(lang, "extra_subtitle")}</p></div></div>
+<div class="page-hero"><div class="wrap"><h1>{titol}</h1>
+<p>{subtitol}</p></div></div>
 <div class="wrap">
 <section>
-<p>{t(lang, "extra_intro1")}</p>
-<p>{t(lang, "extra_intro2")}</p>
-<p>{t(lang, "extra_intro3")}</p>
-<p>{t(lang, "extra_intro4")}</p>
+{intro1_html}
+{intro2_html}
+{intro3_html}
+{intro4_html}
 <div class="botonera">
-  <a class="boton boton-secundari boton-petit" href="places-lliures.html">{t(lang, "extra_btn_places")}</a>
+  <a class="boton boton-secundari boton-petit" href="places-lliures.html">{boto_places}</a>
 </div>
 </section>
 
@@ -1218,7 +1423,7 @@ def pagina_extraescolars_landing(activitats, lang):
 <div class="recursos">
 {recursos_html}
 </div>
-<p class="nota">{t(lang, "extra_asteriscs_nota")}</p>
+<p class="nota">{asteriscs_nota}</p>
 <h3>{t(lang, "extra_horari_nivell_h3")}</h3>
 <div class="grid-horaris">
 {horaris_grid}
@@ -1226,8 +1431,8 @@ def pagina_extraescolars_landing(activitats, lang):
 </section>
 
 <section>
-<h3>{t(lang, "extra_baixes_h3")}</h3>
-<p class="nota">{t(lang, "extra_baixes_p")}</p>
+<h3>{baixes_titol}</h3>
+{baixes_html}
 </section>
 </div>
 """
@@ -1236,6 +1441,24 @@ def pagina_extraescolars_landing(activitats, lang):
         title=t(lang, "nav_extraescolars"),
         meta_desc=t(lang, "extra_meta_desc"),
         body_html=body,
+    )
+
+
+def pagina_extraescolars_stub(lang):
+    """Substitutiu de tota la secció Extraescolars quan
+    content/web.yml porta `extraescolars_visibles: false` — mai s'escriuen
+    ni la landing normal, ni places-lliures, ni cap fitxa (vore main())."""
+    web = load_web()
+    avis = txt(web, "extraescolars_avis", lang)
+    body = f"""
+<div class="wrap"><section><h1>{t(lang, "nav_extraescolars")}</h1><p class="nota">{avis}</p></section></div>
+"""
+    return render_page(
+        lang=lang, depth=1, page_path="extraescolars/index.html", active_href="extraescolars/index.html",
+        title=t(lang, "nav_extraescolars"),
+        meta_desc=t(lang, "extra_meta_desc"),
+        body_html=body,
+        noindex=True,
     )
 
 
@@ -1379,10 +1602,15 @@ def main():
         for p in posts:
             write(f"{prefix}blog/{p['_slug']}.html", pagina_blog_post(p, lang))
 
-        write(f"{prefix}extraescolars/index.html", pagina_extraescolars_landing(activitats, lang))
-        write(f"{prefix}extraescolars/places-lliures.html", pagina_places_lliures(lang))
-        for a in activitats:
-            write(f"{prefix}extraescolars/{a['_slug']}.html", pagina_activitat(a, lang))
+        if load_web()["extraescolars_visibles"]:
+            write(f"{prefix}extraescolars/index.html", pagina_extraescolars_landing(activitats, lang))
+            write(f"{prefix}extraescolars/places-lliures.html", pagina_places_lliures(lang))
+            for a in activitats:
+                write(f"{prefix}extraescolars/{a['_slug']}.html", pagina_activitat(a, lang))
+        else:
+            # Secció oculta (content/web.yml): NOMÉS s'escriu l'stub de
+            # l'índex — cap fitxa ni places-lliures (vore pagina_extraescolars_stub()).
+            write(f"{prefix}extraescolars/index.html", pagina_extraescolars_stub(lang))
 
     if not PREVIEW:
         with open(os.path.join(DIST, "CNAME"), "w", encoding="utf-8") as f:

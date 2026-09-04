@@ -7,6 +7,17 @@
 # Els fitxers pujats des del CMS (una foto nova, un dossier nou) es guarden a
 # `assets/uploads/cms/` — una carpeta A PART de `assets/uploads/YYYY/MM/`
 # (que és la migració de la web anterior, no es toca a mà).
+#
+# Orde del menú (04-09-2026): el menú lateral de Pages CMS es construix en
+# l'orde de declaració d'ESTA llista `content:` (verificat al codi font de
+# Pages CMS, `lib/config.ts`, funció `normalizeContentEntries()`: cada entrada
+# es converteix en un ítem pla de navegació amb `label`, en el mateix orde en
+# què apareix ací — reordenar només afecta el menú, no `name`/`path`/camps).
+# Les 4 seccions relacionades amb la pàgina Extraescolars porten el prefix
+# «Extraescolars / …» al label perquè es vegen juntes i identificables. Pages
+# CMS SÍ suporta grups plegables de veres (`type: group` + `items`, vore
+# `ContentGroupSchema` a lib/config-schema.ts i el sidebar) — s'ha preferit el
+# prefix al label perquè no exigix provar-ho abans en el repositori de proves.
 
 media:
   - name: cms
@@ -17,17 +28,19 @@ media:
 
 content:
   # --------------------------------------------------------------------
-  # Extraescolars — una fitxa per activitat (inclou "Activitats municipals").
+  # Extraescolars / Activitats — una fitxa per activitat (inclou "Activitats
+  # municipals"). 1a de les 4 seccions «Extraescolars / …» (activitats,
+  # places lliures, horaris, textos de la pàgina).
   # --------------------------------------------------------------------
   - name: extraescolars
-    label: Extraescolars
+    label: "Extraescolars / Activitats"
     type: collection
     path: content/extraescolars
     format: yaml
     filename: "{primary}.yml"
     view:
       primary: nom
-      sort: nom
+      sort: [nom]
     fields:
       - name: nom
         label: Nom de l'activitat
@@ -212,6 +225,283 @@ content:
           extensions: [pdf]
 
   # --------------------------------------------------------------------
+  # Extraescolars / Places lliures — fitxer únic (imatge mensual del
+  # calendari). 2a de les 4 seccions «Extraescolars / …».
+  # --------------------------------------------------------------------
+  - name: places-lliures
+    label: "Extraescolars / Places lliures"
+    type: file
+    path: content/places-lliures.yml
+    format: yaml
+    fields:
+      - name: mes_label
+        label: "Mes publicat (text, p. ex. «curs 2025-26 (juny)»)"
+        type: string
+        required: true
+
+      - name: mes_label_es
+        label: "Mes publicat (castellà, opcional)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
+
+      - name: imatge
+        label: "Imatge del calendari de places"
+        type: image
+        required: true
+        options:
+          media: cms
+
+      - name: pdf
+        label: "PDF del calendari (opcional, si n'hi ha en compte de foto)"
+        type: file
+        required: false
+        options:
+          media: cms
+          extensions: [pdf]
+
+  # --------------------------------------------------------------------
+  # Extraescolars / Horaris — NOMÉS el bloc «Horaris per curs» DINS la
+  # pàgina Extraescolars (imatge de l'horari general, PDF de preus de les
+  # activitats municipals i una imatge d'horari per nivell/curs). NO és la
+  # pàgina Extraescolars sencera: la resta dels seus textos (títol,
+  # paràgrafs d'introducció, botó, nota dels asteriscs, apartat Baixes) es
+  # gestionen a «Extraescolars / Textos de la pàgina» (extraescolars-textos.yml).
+  # 3a de les 4 seccions «Extraescolars / …».
+  # --------------------------------------------------------------------
+  - name: horaris
+    label: "Extraescolars / Horaris"
+    type: file
+    path: content/horaris.yml
+    format: yaml
+    fields:
+      - name: nota
+        label: "Nota sobre els horaris (p. ex. «Horaris del curs 2025-26...»)"
+        type: string
+        required: false
+
+      - name: nota_es
+        label: "Nota sobre els horaris (castellà, opcional)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
+
+      - name: horari_general
+        label: "Horari general — imatge"
+        type: image
+        required: false
+        options:
+          media: cms
+
+      - name: preus_municipals
+        label: "Activitats municipals: preus i cursos — PDF"
+        type: file
+        required: false
+        options:
+          media: cms
+          extensions: [pdf]
+
+      - name: horaris_nivell
+        label: "Horaris per nivell/curs (un per curs, en l'orde en què es mostren)"
+        type: object
+        list: true
+        fields:
+          - name: curs
+            label: "Curs (p. ex. «3 anys», «1er Primària»)"
+            type: string
+            required: true
+          - name: curs_es
+            label: "Curs (castellà, opcional)"
+            type: string
+            required: false
+            description: "Si es deixa buit, la web mostra el text en valencià."
+          - name: imatge
+            label: "Imatge de l'horari d'este curs"
+            type: image
+            required: true
+            options:
+              media: cms
+
+  # --------------------------------------------------------------------
+  # Extraescolars / Textos de la pàgina (04-09-2026) — títol, subtítol, els
+  # 4 paràgrafs d'introducció, el text del botó de "places lliures", la
+  # nota dels asteriscs (**) i l'apartat Baixes de la pàgina Extraescolars.
+  # NO inclou els textos de la secció «Horaris per curs» (van a
+  # «Extraescolars / Horaris»). 4a de les 4 seccions «Extraescolars / …».
+  # --------------------------------------------------------------------
+  - name: extraescolars-textos
+    label: "Extraescolars / Textos de la pàgina"
+    type: file
+    path: content/extraescolars-textos.yml
+    format: yaml
+    fields:
+      - name: titol
+        label: "Títol (H1)"
+        type: string
+
+      - name: titol_es
+        label: "Títol (castellà)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
+
+      - name: subtitol
+        label: "Subtítol"
+        type: string
+
+      - name: subtitol_es
+        label: "Subtítol (castellà)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
+
+      - name: intro1
+        label: "Paràgraf 1"
+        type: rich-text
+        options:
+          format: html
+          media: false
+          switcher: false
+
+      - name: intro1_es
+        label: "Paràgraf 1 (castellà)"
+        type: rich-text
+        required: false
+        options:
+          format: html
+          media: false
+          switcher: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
+
+      - name: intro2
+        label: "Paràgraf 2 (amb l'enllaç a la FDM)"
+        type: rich-text
+        options:
+          format: html
+          media: false
+          switcher: false
+
+      - name: intro2_es
+        label: "Paràgraf 2 (castellà, amb l'enllaç a la FDM)"
+        type: rich-text
+        required: false
+        options:
+          format: html
+          media: false
+          switcher: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
+
+      - name: intro3
+        label: "Paràgraf 3 (horaris)"
+        type: rich-text
+        options:
+          format: html
+          media: false
+          switcher: false
+
+      - name: intro3_es
+        label: "Paràgraf 3 (castellà, horaris)"
+        type: rich-text
+        required: false
+        options:
+          format: html
+          media: false
+          switcher: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
+
+      - name: intro4
+        label: "Paràgraf 4 (soci abans del 30 de setembre, enllaç Aulazon)"
+        type: rich-text
+        options:
+          format: html
+          media: false
+          switcher: false
+
+      - name: intro4_es
+        label: "Paràgraf 4 (castellà, soci abans del 30 de setembre, enllaç Aulazon)"
+        type: rich-text
+        required: false
+        options:
+          format: html
+          media: false
+          switcher: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
+
+      - name: boto_places
+        label: "Text del botó de places lliures"
+        type: string
+
+      - name: boto_places_es
+        label: "Text del botó de places lliures (castellà)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
+
+      - name: asteriscs_nota
+        label: "Nota dels asteriscs (**)"
+        type: string
+
+      - name: asteriscs_nota_es
+        label: "Nota dels asteriscs (castellà)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
+
+      - name: baixes_titol
+        label: "Títol de l'apartat Baixes"
+        type: string
+
+      - name: baixes_titol_es
+        label: "Títol de l'apartat Baixes (castellà)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
+
+      - name: baixes_text
+        label: "Text de l'apartat Baixes"
+        type: rich-text
+        options:
+          format: html
+          media: false
+          switcher: false
+
+      - name: baixes_text_es
+        label: "Text de l'apartat Baixes (castellà)"
+        type: rich-text
+        required: false
+        options:
+          format: html
+          media: false
+          switcher: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
+
+  # --------------------------------------------------------------------
+  # Configuració de la web — interruptor global de la secció Extraescolars
+  # (mentre s'estan preparant les fitxes del curs nou, per exemple).
+  # --------------------------------------------------------------------
+  - name: web
+    label: "Configuració de la web"
+    type: file
+    path: content/web.yml
+    format: yaml
+    fields:
+      - name: extraescolars_visibles
+        label: "Secció Extraescolars visible a la web"
+        type: boolean
+        default: true
+        description: "Desmarca-ho mentre s'estan preparant les fitxes del curs: desapareixen del menú, del peu i de la portada, i la pàgina Extraescolars mostra només l'avís de davall."
+
+      - name: extraescolars_avis
+        label: "Avís que es mostra quan la secció està oculta"
+        type: string
+
+      - name: extraescolars_avis_es
+        label: "Avís (castellà)"
+        type: string
+        required: false
+        description: "Si es deixa buit, la web mostra el text en valencià."
+
+  # --------------------------------------------------------------------
   # Junta AFA — una fitxa per membre.
   # --------------------------------------------------------------------
   - name: junta
@@ -223,7 +513,7 @@ content:
     exclude: ["_comissions.yml"]
     view:
       primary: nom
-      sort: ordre
+      sort: [ordre]
     fields:
       - name: nom
         label: Nom i cognoms
@@ -295,7 +585,7 @@ content:
     filename: "{year}-{month}-{day}-{primary}.yml"
     view:
       primary: titol
-      sort: data
+      sort: [data]
       order: desc
     fields:
       - name: titol
@@ -351,99 +641,6 @@ content:
           media: cms
 
   # --------------------------------------------------------------------
-  # Places lliures — fitxer únic (imatge mensual del calendari).
-  # --------------------------------------------------------------------
-  - name: places-lliures
-    label: "Places lliures (calendari mensual)"
-    type: file
-    path: content/places-lliures.yml
-    format: yaml
-    fields:
-      - name: mes_label
-        label: "Mes publicat (text, p. ex. «curs 2025-26 (juny)»)"
-        type: string
-        required: true
-
-      - name: mes_label_es
-        label: "Mes publicat (castellà, opcional)"
-        type: string
-        required: false
-        description: "Si es deixa buit, la web mostra el text en valencià."
-
-      - name: imatge
-        label: "Imatge del calendari de places"
-        type: image
-        required: true
-        options:
-          media: cms
-
-      - name: pdf
-        label: "PDF del calendari (opcional, si n'hi ha en compte de foto)"
-        type: file
-        required: false
-        options:
-          media: cms
-          extensions: [pdf]
-
-  # --------------------------------------------------------------------
-  # Horaris d'extraescolars — secció «Horaris per curs» de la pàgina
-  # Extraescolars: imatge de l'horari general, PDF de preus de les activitats
-  # municipals i una imatge d'horari per nivell/curs.
-  # --------------------------------------------------------------------
-  - name: horaris
-    label: "Horaris d'extraescolars (pàgina Extraescolars)"
-    type: file
-    path: content/horaris.yml
-    format: yaml
-    fields:
-      - name: nota
-        label: "Nota sobre els horaris (p. ex. «Horaris del curs 2025-26...»)"
-        type: string
-        required: false
-
-      - name: nota_es
-        label: "Nota sobre els horaris (castellà, opcional)"
-        type: string
-        required: false
-        description: "Si es deixa buit, la web mostra el text en valencià."
-
-      - name: horari_general
-        label: "Horari general — imatge"
-        type: image
-        required: false
-        options:
-          media: cms
-
-      - name: preus_municipals
-        label: "Activitats municipals: preus i cursos — PDF"
-        type: file
-        required: false
-        options:
-          media: cms
-          extensions: [pdf]
-
-      - name: horaris_nivell
-        label: "Horaris per nivell/curs (un per curs, en l'orde en què es mostren)"
-        type: object
-        list: true
-        fields:
-          - name: curs
-            label: "Curs (p. ex. «3 anys», «1er Primària»)"
-            type: string
-            required: true
-          - name: curs_es
-            label: "Curs (castellà, opcional)"
-            type: string
-            required: false
-            description: "Si es deixa buit, la web mostra el text en valencià."
-          - name: imatge
-            label: "Imatge de l'horari d'este curs"
-            type: image
-            required: true
-            options:
-              media: cms
-
-  # --------------------------------------------------------------------
   # Pàgines estàtiques — qui-som, fes-te-de-lafa, contacte, mes-que-verd,
   # estatuts. NO inclou "index" (portada) ni "galeria": fora d'abast v1.
   # --------------------------------------------------------------------
@@ -462,6 +659,12 @@ content:
     view:
       primary: titol
     fields:
+      - name: visible
+        label: "Visible a la web (desmarca-ho mentre la pàgina està en preparació)"
+        type: boolean
+        default: true
+        description: "Si està desmarcat, la pàgina desapareix del menú i del peu, i la seua adreça mostra un avís «pàgina en preparació» en lloc del contingut."
+
       - name: titol
         label: "Títol (H1 de la pàgina)"
         type: string

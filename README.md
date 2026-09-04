@@ -19,6 +19,10 @@ content/            ← TOT el contingut editable, en YAML (esta és la part que
   places-lliures.yml ← fitxer únic (imatge del calendari mensual)
   horaris.yml        ← fitxer únic (secció "Horaris per curs" d'Extraescolars: horari
                          general, PDF de preus municipals i horari per nivell/curs)
+  extraescolars-textos.yml ← fitxer únic (04-09-2026: títol, subtítol, paràgrafs
+                         d'introducció, botó de places, nota dels asteriscs i
+                         apartat Baixes de la LANDING d'Extraescolars)
+  web.yml             ← fitxer únic (interruptor global "Extraescolars visible", 04-09-2026)
 assets/              ← imatges, PDFs, CSS. Les pujades noves de l'editor van a assets/uploads/cms/
 build/
   generar.py         ← el generador: llig content/+assets/ i escriu dist/
@@ -69,6 +73,62 @@ la línia «Cursos» de la fitxa; buit = es veu sempre), `dossier_label`/`dossie
 (la fitxa mostra «Formulari d'inscripció: pendent de publicar»). Els dossiers 26-27
 estan a `assets/uploads/2026/08/`. Crèdits de les portades genèriques: vore
 `sitio/README.md` del projecte (§ Crèdits d'imatges).
+
+**Ocultar una pàgina mentre la prepares (des del 04-09-2026)**: a Pàgines → obri la pàgina →
+interruptor **«Visible a la web»** → posa'l en No → **Save**. La pàgina desapareix del menú i
+del peu, i qui obri la seua adreça (o l'enllaç antic) veu un avís «Aquesta pàgina està en
+preparació» en lloc del contingut a mitges — mai un error 404. Per a tornar-la a publicar:
+el mateix interruptor en Sí.
+
+**Les 4 seccions «Extraescolars / …» del menú de Pages CMS (des del 04-09-2026)**: l'orde
+del menú lateral és l'orde de declaració del bloc `content:` de `.pages.yml` (verificat al
+codi font de Pages CMS, `lib/config.ts`, `normalizeContentEntries()` — cada entrada es
+converteix en un ítem de navegació amb el seu `label`, en eixe mateix orde). Pages CMS SÍ
+suporta grups plegables (`type: group` + `items`); s'ha preferit el prefix «Extraescolars / …»
+al label perquè es vegen juntes sense haver de provar abans la configuració de grup. Les 4 seccions, en orde, i què edita cadascuna:
+1. **Extraescolars / Activitats** (`extraescolars`) — les fitxes d'activitats (com sempre).
+2. **Extraescolars / Places lliures** (`places-lliures`) — el calendari mensual de plaçes.
+3. **Extraescolars / Horaris** (`horaris`) — NOMÉS el bloc «Horaris per curs» de la pàgina
+   (imatge de l'horari general, PDF de preus municipals, horari per nivell/curs).
+4. **Extraescolars / Textos de la pàgina** (`extraescolars-textos`, NOU) — la resta de textos
+   fixos de la landing: títol (H1), subtítol, els 4 paràgrafs d'introducció, el text del botó
+   «Vore places lliures del mes», la nota dels asteriscs (**) i l'apartat Baixes (títol +
+   text). Fitxer `content/extraescolars-textos.yml`; `build/generar.py` → `load_extra_textos()`.
+   Camp buit (o fitxer sencer absent) → cau al text fix original (mai la pàgina a mitges).
+   Els paràgrafs (`intro1`..`intro4`, `baixes_text`) són `rich-text` (com `cos` a Pàgines):
+   poden portar un `<a href="...">` (p. ex. l'enllaç a la Fundació Esportiva Municipal del
+   paràgraf 2, o a Aulazon del paràgraf 4) — `cos_html()` els processa igual que qualsevol
+   altre camp llarg. L'apartat Baixes es reinserix DINS d'un `<p class="nota">` fix al codi
+   (no editable): si el text és un sol paràgraf (el cas normal), es lleva l'embolcall `<p>`
+   que afig `cos_html()` per a no duplicar `<p class="nota"><p>...</p></p>`.
+
+**Ocultar la secció Extraescolars sencera (des del 04-09-2026)**: **«Configuració de la
+web»** → interruptor **«Secció Extraescolars visible a la web»** → No → **Save**. Desapareix
+del menú, del peu i de la portada; la pàgina Extraescolars mostra només l'avís del camp
+**«Avís que es mostra quan la secció està oculta»** (i la versió castellana, opcional — si es
+deixa buit es mostra el text en valencià). Útil mentre es preparen les fitxes d'un curs nou:
+cap fitxa antiga es veu, però tampoc cal esborrar-les.
+
+**Enllaçar un PDF/imatge des d'un text (des del 04-09-2026)**: els camps de text llarg
+(«Contingut de la pàgina», «Descripció», «Nota»...) porten `media: false` (no es pot inserir
+imatges inline), però SÍ tenen el botó d'enllaç (🔗) de la barra que ix en seleccionar text —
+verificat al codi font de Pages CMS (`components/ui/editor/index.tsx`): l'extensió `Link` es
+carrega sempre, independentment de `media`. **Important — no hi ha cap botó "copiar ruta" a
+la secció Mitjans** (verificat a `components/media/media-view.tsx` i `file-options.tsx`: el
+menú ⋮ de cada fitxer només té "Rename", "Delete" i "View on GitHub"). El flux real:
+1. Vés a **Mitjans** (menú lateral) → navega a la carpeta on vulgues → **Upload** → tria el
+   fitxer.
+2. Pages CMS li posa un nom "segur" automàticament (minúscules, sense accents ni espais —
+   els espais es tornen guions; l'extensió es manté). Ex.: `Informació preus.pdf` es guarda
+   com `informacio-preus.pdf`. La ruta final és sempre `/assets/uploads/cms/<eixe-nom>`.
+3. Torna al camp de text, selecciona la paraula que vulgues enllaçar, clica el botó 🔗, i
+   escriu a mà `/assets/uploads/cms/<nom-del-fitxer>` (seguint el patró del pas 2) → prem
+   Intro o el ✓ per a aplicar.
+4. Si no estàs segura del nom exacte: al fitxer de Mitjans, menú ⋮ → **View on GitHub** —
+   s'obri la pàgina del fitxer a github.com; la ruta és tot el que ix després de `blob/main/`
+   a l'adreça del navegador.
+
+> ⚠️ **La ruta ha de començar per la barra `/`** (`/assets/uploads/cms/nom.pdf`). Sense la barra inicial (`assets/uploads/...`, que és com apareix a GitHub) l'editor rebutja l'enllaç **en silenci**: prems Enter o el ✓ i no passa res. És una limitació de l'editor de text (TipTap): només accepta adreces que comencen per `http(s)://`, `/`, `#` o `mailto:`. Verificat el 04-09-2026 en el codi font (regex `isAllowedUri`). Després d'enllaçar, recorda **Desar** la pàgina.
 
 **Horaris d'extraescolars, editables des del 04-09-2026**: la secció «Horaris per curs» de
 la pàgina Extraescolars (imatge de l'horari general, PDF de preus de les activitats
