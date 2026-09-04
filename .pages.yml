@@ -658,9 +658,10 @@ content:
     # només editar el seu contingut (per això es bloquegen les operacions).
     view:
       primary: titol
+      fields: [titol]
     fields:
       - name: visible
-        label: "Visible a la web (desmarca-ho mentre la pàgina està en preparació)"
+        label: "Visible a la web"
         type: boolean
         default: true
         description: "Si està desmarcat, la pàgina desapareix del menú i del peu, i la seua adreça mostra un avís «pàgina en preparació» en lloc del contingut."
