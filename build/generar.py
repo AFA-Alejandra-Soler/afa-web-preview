@@ -1365,6 +1365,12 @@ def pagina_extraescolars_landing(activitats, lang):
     subtitol = txt(et, "subtitol", lang) or t(lang, "extra_subtitle")
     boto_places = txt(et, "boto_places", lang) or t(lang, "extra_btn_places")
     asteriscs_nota = txt(et, "asteriscs_nota", lang) or t(lang, "extra_asteriscs_nota")
+    # 04-09-2026: el camp és un quadre de text multilínia al CMS (type: text);
+    # els salts de línia que escriga la junta ixen com <br> dins del mateix
+    # paràgraf (el text no passa per markdown perquè comença per «**»).
+    asteriscs_nota = "<br>\n".join(
+        l.rstrip() for l in asteriscs_nota.replace("\r\n", "\n").strip().split("\n")
+    )
     baixes_titol = txt(et, "baixes_titol", lang) or t(lang, "extra_baixes_h3")
 
     def _intro_html(camp, clau_t):

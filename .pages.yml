@@ -439,13 +439,14 @@ content:
 
       - name: asteriscs_nota
         label: "Nota dels asteriscs (**)"
-        type: string
+        type: text
+        description: "Pots fer salts de línia (Retorn): a la web ixen tal qual, dins del mateix paràgraf."
 
       - name: asteriscs_nota_es
         label: "Nota dels asteriscs (castellà)"
-        type: string
+        type: text
         required: false
-        description: "Si es deixa buit, la web mostra el text en valencià."
+        description: "Si es deixa buit, la web mostra el text en valencià. Admet salts de línia."
 
       - name: baixes_titol
         label: "Títol de l'apartat Baixes"
