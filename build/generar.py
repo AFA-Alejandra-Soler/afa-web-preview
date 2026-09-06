@@ -172,6 +172,7 @@ T = {
         "extra_horaris_h2": "Horaris per curs",
         "extra_horaris_nota": "Horaris del curs 2025-26. Els del curs 2026-27 es publicaran ací quan estiguen tancats.",
         "extra_horari_general_label": "Horari general",
+        "extra_horari_general_hint": "Toca o fes clic sobre l'horari per a vore'l a mida completa.",
         "extra_horaris_municipals_label": "Horaris activitats municipals",
         "extra_asteriscs_nota": ("**Les activitats amb dos asteriscs, signifiquen que son activitats municipals, i "
                                   "per tant, el preu és més reduït."),
@@ -315,6 +316,7 @@ T = {
         "extra_horaris_h2": "Horarios por curso",
         "extra_horaris_nota": "Horarios del curso 2025-26. Los del curso 2026-27 se publicarán aquí cuando estén cerrados.",
         "extra_horari_general_label": "Horario general",
+        "extra_horari_general_hint": "Toca o haz clic sobre el horario para verlo a tamaño completo.",
         "extra_horaris_municipals_label": "Horarios actividades municipales",
         "extra_asteriscs_nota": ("**Las actividades con dos asteriscos significan que son actividades "
                                   "municipales, y por tanto, el precio es más reducido."),
@@ -1299,7 +1301,8 @@ HORARIS_NIVELL = [
 def load_horaris():
     """Carrega content/horaris.yml (editable des de Pages CMS). Torna un
     dict amb:
-      nota / nota_es: string o None (None = usar el text fix t(lang, "extra_horaris_nota"))
+      nota / nota_es: TÍTOL de l'apartat d'horaris des del 07-09-2026 («Horaris del curs
+        2026-27»), string o None (None = títol fix t(lang, "extra_horaris_h2"))
       horari_general / preus_municipals: string (URL o ruta local) o None (sense enllaç)
       horaris_nivell: llista de tuples (url, curs_va, curs_es)
 
@@ -1449,15 +1452,33 @@ def pagina_extraescolars_landing(activitats, lang):
         for url, nv, nes in h["horaris_nivell"]
     )
 
-    recursos = []
+    # 07-09-2026 (petició de Jorge): l'horari general ja NO és un enllaç
+    # «📄 Horari general» dins de .recursos — es mostra EN GRAN, a tot l'ample
+    # de la pantalla (classe .horari-general-gran, ix del .wrap de 62rem), i
+    # és clicable per a obrir-lo a mida completa (al mòbil el quadre es llig
+    # menut). El camp `nota` de content/horaris.yml passa a ser el TÍTOL de
+    # l'apartat («Horaris del curs 2026-27»); buit → títol fix «Horaris per
+    # curs». Tot el bloc d'horaris va ara DAMUNT del botó de places lliures
+    # i de les fitxes (abans anava davall).
+    horaris_titol = txt(h, "nota", lang) if h["nota"] else t(lang, "extra_horaris_h2")
     if h["horari_general"]:
-        recursos.append(asset_link(h["horari_general"], t(lang, "extra_horari_general_label"), ad))
+        _hg = local_asset_href(ad, h["horari_general"])
+        horari_general_html = (
+            f'<a class="horari-general-gran" href="{_hg}" target="_blank" rel="noreferrer noopener">'
+            f'<img src="{_hg}" alt="{t(lang, "extra_horari_general_label")}"></a>\n'
+            f'<p class="nota horari-general-hint">{t(lang, "extra_horari_general_hint")}</p>'
+        )
+    else:
+        horari_general_html = ""
+
+    recursos = []
     if h["preus_municipals"]:
         recursos.append(asset_link(h["preus_municipals"], t(lang, "extra_horaris_municipals_label"), ad))
-    recursos_html = "\n".join(recursos)
+    recursos_html = ('<div class="recursos">\n' + "\n".join(recursos) + "\n</div>") if recursos else ""
 
-    horaris_nota = txt(h, "nota", lang) if h["nota"] else t(lang, "extra_horaris_nota")
-
+    # Orde de la pàgina (07-09-2026): intro → HORARIS (títol, horari general
+    # en gran, nota dels asteriscs, PDF municipals, horari per nivell) →
+    # botó de places lliures → filtre + fitxes → Baixes.
     body = f"""
 <div class="page-hero"><div class="wrap"><h1>{titol}</h1>
 <p>{subtitol}</p></div></div>
@@ -1467,28 +1488,26 @@ def pagina_extraescolars_landing(activitats, lang):
 {intro2_html}
 {intro3_html}
 {intro4_html}
-<div class="botonera">
-  <a class="boton boton-secundari boton-petit" href="places-lliures.html">{boto_places}</a>
-</div>
 </section>
 
-<section>
-{filtre_cursos_html(lang)}
-<div class="grid-extraescolars">
-{grid}
-</div>
-</section>
-
-<section>
-<h2>{t(lang, "extra_horaris_h2")}</h2>
-<p class="nota">{horaris_nota}</p>
-<div class="recursos">
-{recursos_html}
-</div>
+<section class="horaris">
+<h2>{horaris_titol}</h2>
+{horari_general_html}
 <p class="nota">{asteriscs_nota}</p>
+{recursos_html}
 <h3>{t(lang, "extra_horari_nivell_h3")}</h3>
 <div class="grid-horaris">
 {horaris_grid}
+</div>
+</section>
+
+<section>
+<div class="botonera">
+  <a class="boton boton-secundari boton-petit" href="places-lliures.html">{boto_places}</a>
+</div>
+{filtre_cursos_html(lang)}
+<div class="grid-extraescolars">
+{grid}
 </div>
 </section>
 

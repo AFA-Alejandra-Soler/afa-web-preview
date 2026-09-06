@@ -425,6 +425,25 @@ section + section { margin-top: 2rem; }
 /* Variant d'una sola imatge gran i ampliable (places lliures) */
 .horari-item-gran { max-width: 640px; margin: 1rem 0 0; }
 
+/* ---------- Horari general EN GRAN (landing extraescolars, 07-09-2026) ----------
+   Ix del .wrap (62rem) i ocupa tot l'ample de la finestra, en web i mòbil. A
+   partir de 1400px es queda centrat a eixe ample perquè el JPG (1216px) no es
+   veja borrós. `overflow-x: clip` al body evita la barra horitzontal que 100vw
+   provoca en navegadors amb barra de desplaçament clàssica (Windows). */
+body { overflow-x: clip; }
+.horari-general-gran {
+  display: block;
+  width: 100vw;
+  max-width: 1400px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 1rem 0 .4rem;
+  background: #fff;
+}
+.horari-general-gran img { display: block; width: 100%; height: auto; }
+.horari-general-hint { font-size: .85rem; text-align: center; margin: 0 0 1.2rem; }
+
 /* ---------- Galeria (fotos d'instal·lacions) ---------- */
 .grid-galeria {
   display: grid;

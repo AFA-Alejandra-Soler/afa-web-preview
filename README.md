@@ -147,6 +147,16 @@ web (no torna a mostrar l'antic); si es lleva TOTA la llista d'horaris per nivel
 fitxer encara no s'ha tocat mai, la web mostra els valors originals de la migració
 (`build/generar.py`, funció `load_horaris()`) perquè un oblit mai deixe la secció buida.
 
+**Horaris DALT de les fitxes i horari general EN GRAN (07-09-2026, petició de Jorge)**: l'orde
+de la pàgina Extraescolars és ara intro (4 paràgrafs) → **«Horaris del curs 2026-27»** (títol =
+camp *Títol de l'apartat d'horaris* de `content/horaris.yml`; buit → «Horaris per curs») →
+horari general a **tot l'ample de la pantalla** (web i mòbil, tope 1400 px; clicable per a
+obrir-lo a mida completa) → nota dels asteriscs → PDF de preus municipals → horari per
+nivell/curs → botó «Vore places lliures del mes» → filtre + fitxes → Baixes. L'horari general ja
+no ix com a enllaç «📄 Horari general». La imatge pujada el 4-set es va retallar (era un A4 amb
+la meitat inferior en blanc); si la junta en puja una altra des de l'editor, convé que siga
+només el quadre (sense pàgina en blanc davall) perquè a tot l'ample es veuria el buit.
+
 ## Diferències conegudes amb el clon original (`sitio/`, `preview-github/`)
 
 Verificat amb diff estructural (espais/salts de línia entre etiquetes normalitzats,

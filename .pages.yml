@@ -276,12 +276,12 @@ content:
     format: yaml
     fields:
       - name: nota
-        label: "Nota sobre els horaris (p. ex. «Horaris del curs 2025-26...»)"
+        label: "Títol de l'apartat d'horaris (p. ex. «Horaris del curs 2026-27»)"
         type: string
         required: false
 
       - name: nota_es
-        label: "Nota sobre els horaris (castellà, opcional)"
+        label: "Títol de l'apartat d'horaris (castellà, opcional)"
         type: string
         required: false
         description: "Si es deixa buit, la web mostra el text en valencià."
@@ -290,6 +290,7 @@ content:
         label: "Horari general — imatge"
         type: image
         required: false
+        description: "Es mostra en gran, a tot l'ample de la pantalla, davall del títol de l'apartat; les famílies poden fer-hi clic per a vore'l a mida completa."
         options:
           media: cms
 
