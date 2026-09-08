@@ -11,6 +11,15 @@ name: Build i publica a GitHub Pages
 # AFA-Alejandra-Soler), amb el domini afaalejandrasoler.es configurat a
 # Settings → Pages i HTTPS forçat. Per això PREVIEW="0": build de producció,
 # indexable, amb sitemap.xml i robots.txt permetent el rastreig.
+#
+# 08-09-2026 — AVÍS SI FALLA (jobs avisa-si-falla / tanca-avis, al final):
+# els commits de la junta els firma el bot de Pages CMS, i GitHub només avisa
+# per correu a qui dispara el workflow → quan el build fallava NO s'assabentava
+# NINGÚ. Eixe dia la junta va estar 5 hores editant (junta, extraescolars
+# visibles, horaris) sense que res es publicara, fins que va arribar per
+# WhatsApp. Ara, si build o deploy fallen, s'obri una issue assignada a Jorge
+# (li arriba per correu) i es tanca sola quan torna a publicar-se bé.
+# Requerix Issues activades al repositori (Settings → General → Features).
 
 on:
   push:
@@ -64,3 +73,61 @@ jobs:
       - name: Publica a GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Si el build o la publicació han fallat: obri una issue (o comenta en la
+  # que ja estiga oberta) perquè Jorge reba un correu. El text del commit
+  # entra per variable d'entorn (mai interpolat dins del script) per seguretat.
+  avisa-si-falla:
+    if: ${{ failure() }}
+    needs: [build, deploy]
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      COMMIT_URL: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}
+      COMMIT_MSG: ${{ github.event.head_commit.message }}
+      ETIQUETA: build-fallit
+      ASSIGNAT: j0rj0
+    steps:
+      - name: Obri (o actualitza) la issue «la web no s'ha publicat»
+        run: |
+          gh label create "$ETIQUETA" --color B60205 --description "El build de la web ha fallat: els canvis del CMS no es publiquen" --force
+          {
+            echo "L'últim canvi guardat des de l'editor **NO s'ha publicat** a la web: el build ha fallat."
+            echo
+            echo "- Canvi que ho ha disparat: $COMMIT_URL"
+            echo "- Missatge del commit: \`${COMMIT_MSG:-(sense missatge)}\`"
+            echo "- Registre de l'error (pestanya «Genera el lloc»): $RUN_URL"
+            echo
+            echo "La web segueix mostrant l'última versió que es va publicar bé. Els canvis guardats al CMS NO es perden: quan s'arregle la causa i el build torne a passar, es publicaran tots de colp."
+            echo
+            echo "@$ASSIGNAT"
+          } > cos.md
+          NUM=$(gh issue list --label "$ETIQUETA" --state open --json number --jq '.[0].number // empty' || true)
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --body-file cos.md
+          else
+            gh issue create --title "La web NO s'ha publicat: el build ha fallat" --body-file cos.md --label "$ETIQUETA" --assignee "$ASSIGNAT"
+          fi
+
+  # Quan torna a publicar-se bé, tanca la issue d'avís si n'hi havia.
+  tanca-avis:
+    if: ${{ success() }}
+    needs: [deploy]
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      ETIQUETA: build-fallit
+    steps:
+      - name: Tanca la issue «la web no s'ha publicat» si estava oberta
+        run: |
+          for NUM in $(gh issue list --label "$ETIQUETA" --state open --json number --jq '.[].number' || true); do
+            gh issue close "$NUM" --comment "Resolt: la web s'ha tornat a publicar correctament ($RUN_URL)."
+          done
