@@ -376,6 +376,13 @@ def txt(d, campo, lang):
     return d.get(campo)
 
 
+def nom_activitat(a, lang):
+    """Nom d'una fitxa d'extraescolar en l'idioma demanat; si la junta l'ha
+    deixat buit (no hauria: és `required` al CMS, però un YAML tocat a mà pot
+    arribar sense), cau al slug del fitxer — mai None (08-09-2026)."""
+    return txt(a, "nom", lang) or a.get("_slug") or "?"
+
+
 # --------------------------------------------------------------------------
 # Utilidades de contingut (YAML + passthrough HTML/markdown)
 # --------------------------------------------------------------------------
@@ -1115,24 +1122,43 @@ def pagina_estatica(slug, lang):
 def pagina_junta(lang):
     ad = ROOT_OFFSET[lang]
     membres = load_collection("junta")
-    membres.sort(key=lambda m: m.get("ordre", 999))
-    comissions = load_yaml("junta/_comissions.yml")["comissions"]
+    # `ordre` buit o no numèric (Pages CMS pot deixar-lo a null) → al final.
+    membres.sort(key=lambda m: m["ordre"] if isinstance(m.get("ordre"), (int, float)) else 999)
+    comissions = (load_yaml("junta/_comissions.yml") or {}).get("comissions") or []
 
     membres_html = []
     for m in membres:
-        img = local_asset_href(ad, m["imatge"])
-        email_html = (f'<p class="fitxa-meta"><a href="mailto:{m["email"]}">{m["email"]}</a></p>'
-                      if m.get("email") else "")
+        # 08-09-2026: Pages CMS NO escriu els camps que la junta deixa buits
+        # (ni `imatge`, ni `email`, ni `carrec_es`...). Pilar va llevar les
+        # fotos de la junta des de l'editor i el build va caure amb
+        # KeyError('imatge') durant 5 hores: la web es va quedar congelada i
+        # cap canvi (junta, extraescolars visibles, horaris) es publicava.
+        # REGLA: tot camp que no siga `required: true` a .pages.yml es llig
+        # amb .get() i té un comportament raonable quan falta. Sense foto →
+        # cercle amb les inicials (mateix criteri que les fitxes
+        # d'extraescolars sense portada).
         # 'nom' (nom i cognoms de la persona) NO es tradueix — dada personal.
+        nom = str(m.get("nom") or m["_slug"]).strip()
+        if m.get("imatge"):
+            visual = f'<img src="{local_asset_href(ad, m["imatge"])}" alt="" width="100" height="100" loading="lazy">'
+        else:
+            visual = f'<div class="placeholder-img junta-inicials" aria-hidden="true">{initials(nom)}</div>'
+        email = str(m.get("email") or "").strip()
+        email_html = f'<p class="fitxa-meta"><a href="mailto:{email}">{email}</a></p>' if email else ""
+        carrec = str(txt(m, "carrec", lang) or "").strip()
+        nom_html = f"{carrec}: <strong>{nom}</strong>" if carrec else f"<strong>{nom}</strong>"
         membres_html.append(f"""<div class="wp-media-text">
-  <img src="{img}" alt="" width="100" height="100" loading="lazy">
-  <div><p>{txt(m, "carrec", lang)}: <strong>{m['nom']}</strong></p>{email_html}</div>
+  {visual}
+  <div><p>{nom_html}</p>{email_html}</div>
 </div>""")
     membres_html = "\n".join(membres_html)
 
     # 'contacte' (nom de pila de la persona voluntària) NO es tradueix.
     comissions_html = "\n".join(
-        f'<li><strong>{txt(c, "nom", lang)}</strong> — {t(lang, "junta_contacte_prefix")}{c["contacte"]}</li>' for c in comissions
+        f'<li><strong>{txt(c, "nom", lang)}</strong>'
+        + (f' — {t(lang, "junta_contacte_prefix")}{c["contacte"]}' if c.get("contacte") else "")
+        + "</li>"
+        for c in comissions if txt(c, "nom", lang)
     )
 
     body = f"""
@@ -1168,7 +1194,7 @@ def pagina_blog_index(posts, lang):
     cards = []
     for p in posts:
         cards.append(f"""<a class="post-card" href="{p['_slug']}.html">
-  <time datetime="{p['data']}">{txt(p, "data_label", lang)}</time>
+  <time datetime="{p.get('data') or ''}">{txt(p, "data_label", lang)}</time>
   <h3>{txt(p, "titol", lang)}</h3>
 </a>""")
     cards_html = "\n".join(cards)
@@ -1206,7 +1232,7 @@ def pagina_blog_post(p, lang):
     body = f"""
 <div class="wrap">
 <article>
-<p class="fitxa-meta"><time datetime="{p['data']}">{data_label}</time> · AFA CEIP Alejandra Soler</p>
+<p class="fitxa-meta"><time datetime="{p.get('data') or ''}">{data_label}</time> · AFA CEIP Alejandra Soler</p>
 <h1>{titol}</h1>
 <div class="post-cos">
 {cos_html(cos)}
@@ -1426,12 +1452,12 @@ def pagina_extraescolars_landing(activitats, lang):
         baixes_html = f'<p class="nota">{t(lang, "extra_baixes_p")}</p>'
 
     def _card(a, fixa_final=False):
-        nom = txt(a, "nom", lang)
+        nom = nom_activitat(a, lang)
         empresa = txt(a, "empresa", lang) or ""
         img_html = portada_img_html(ad, a.get("imatge"), alt=nom, lang=lang)
         # El bloc municipal mostra "FDM" (com el clon original), no les inicials
         inicials = "FDM" if fixa_final else initials(nom)
-        visual = img_html if img_html else f'<div class="placeholder-img {a["ph"]}">{inicials}</div>'
+        visual = img_html if img_html else f'<div class="placeholder-img {a.get("ph") or "ph-1"}">{inicials}</div>'
         return f"""<a class="card-extra" href="{a['_slug']}.html"{card_attrs(a, _clau_alfabetica(nom), fixa_final=fixa_final)}>
   {visual}
   <div class="nom">{nom}<small class="empresa">{empresa}</small></div>
@@ -1442,7 +1468,7 @@ def pagina_extraescolars_landing(activitats, lang):
     # una empresa, és un bloc apart), clon fiel del comportament original. El
     # desplegable de la landing pot reordenar-les per edat al navegador
     # (vore filtre_cursos_html).
-    cards = [_card(a) for a in sorted(activitats, key=lambda a: _clau_alfabetica(txt(a, "nom", lang)))]
+    cards = [_card(a) for a in sorted(activitats, key=lambda a: _clau_alfabetica(nom_activitat(a, lang)))]
     grid = "\n".join(cards)
 
     horaris_grid = "\n".join(
@@ -1545,9 +1571,11 @@ def pagina_extraescolars_stub(lang):
 
 def pagina_activitat(a, lang):
     ad = 1 + ROOT_OFFSET[lang]
-    nom = txt(a, "nom", lang)
+    nom = nom_activitat(a, lang)
 
-    resources = [asset_link(a["dossier"], txt(a, "dossier_label", lang) or t(lang, "activitat_dossier_label"), ad)]
+    resources = []
+    if a.get("dossier"):
+        resources.append(asset_link(a["dossier"], txt(a, "dossier_label", lang) or t(lang, "activitat_dossier_label"), ad))
     if a.get("dossier2"):
         resources.append(asset_link(a["dossier2"], txt(a, "dossier2_label", lang) or t(lang, "activitat_dossier2_label"), ad))
     # Activitats municipals (FDM): la inscripció és per PDF (full + bonificació + preus),
@@ -1569,7 +1597,7 @@ def pagina_activitat(a, lang):
     descripcio_html = f'<div class="descripcio">{cos_html(descripcio)}</div>' if descripcio else ""
 
     fitxa_img_html = portada_img_html(ad, a.get("imatge"), alt=nom, lang=lang)
-    fitxa_visual = fitxa_img_html if fitxa_img_html else f'<div class="placeholder-img {a["ph"]}">{initials(nom)}</div>'
+    fitxa_visual = fitxa_img_html if fitxa_img_html else f'<div class="placeholder-img {a.get("ph") or "ph-1"}">{initials(nom)}</div>'
 
     body = f"""
 <div class="wrap">
@@ -1608,8 +1636,13 @@ def pagina_activitat(a, lang):
 
 def pagina_places_lliures(lang):
     ad = 1 + ROOT_OFFSET[lang]
-    d = load_yaml("places-lliures.yml")
-    img_href = local_asset_href(ad, d["imatge"])
+    d = load_yaml("places-lliures.yml") or {}
+    img_href = local_asset_href(ad, d.get("imatge"))
+    # Sense imatge (camp buidat a mà): s'omet el calendari, no cau el build.
+    imatge_html = (f"""<a class="horari-item horari-item-gran" href="{img_href}" target="_blank" rel="noreferrer noopener">
+  <img class="imatge-doc" src="{img_href}" alt="{t(lang, "places_alt")}" loading="lazy">
+  <span>{t(lang, "places_click_ampliar")}</span>
+</a>""" if img_href else "")
     body = f"""
 <div class="wrap">
 <section>
@@ -1618,12 +1651,9 @@ def pagina_places_lliures(lang):
 
 <p>{t(lang, "places_intro")}</p>
 
-<h2>{t(lang, "places_ultim_h2_prefix")}{txt(d, "mes_label", lang)}</h2>
+<h2>{t(lang, "places_ultim_h2_prefix")}{txt(d, "mes_label", lang) or ""}</h2>
 <p class="nota">{t(lang, "places_nota")}</p>
-<a class="horari-item horari-item-gran" href="{img_href}" target="_blank" rel="noreferrer noopener">
-  <img class="imatge-doc" src="{img_href}" alt="{t(lang, "places_alt")}" loading="lazy">
-  <span>{t(lang, "places_click_ampliar")}</span>
-</a>
+{imatge_html}
 
 <h3>{t(lang, "places_llegenda_h3")}</h3>
 <ul>
@@ -1833,7 +1863,7 @@ def main():
     shutil.copytree(ASSETS_SRC, os.path.join(DIST, "assets"))
 
     posts = load_collection("blog")
-    posts.sort(key=lambda p: p["data"], reverse=True)
+    posts.sort(key=lambda p: str(p.get("data") or ""), reverse=True)
 
     activitats_totes = load_collection("extraescolars")
     activitats_actives = [a for a in activitats_totes if a.get("activa", True)]

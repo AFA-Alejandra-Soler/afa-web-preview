@@ -575,6 +575,14 @@ td { padding: .55rem .7rem; border-bottom: 1px solid var(--linea); vertical-alig
   padding-bottom: 1.1rem;
 }
 .wp-media-text img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex: 0 0 auto; }
+/* Membre sense foto (08-09-2026: la junta va llevar les fotos des del CMS): cercle
+   morat amb les inicials, mateix criteri que les fitxes d'extraescolars sense portada. */
+.wp-media-text .placeholder-img {
+  width: 72px; height: 72px; border-radius: 50%; flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--morado), var(--morado-oscuro));
+  color: #fff; font-family: var(--font-titulos); font-weight: 700; font-size: 1.15rem; letter-spacing: .02em;
+}
 .wp-media-text p { margin: 0; }
 .wp-media-text .fitxa-meta { margin-top: .2rem; }
 
