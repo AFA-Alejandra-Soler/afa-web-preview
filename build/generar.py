@@ -1142,7 +1142,10 @@ def pagina_junta(lang):
         if m.get("imatge"):
             visual = f'<img src="{local_asset_href(ad, m["imatge"])}" alt="" width="100" height="100" loading="lazy">'
         else:
-            visual = f'<div class="placeholder-img junta-inicials" aria-hidden="true">{initials(nom)}</div>'
+            # `ph-1` = el mateix sistema de colors deterministes (.ph-1…6) que
+            # usen les fitxes d'extraescolars; el CSS de mida/forma viu en
+            # `.wp-media-text .placeholder-img`.
+            visual = f'<div class="placeholder-img ph-1" aria-hidden="true">{initials(nom)}</div>'
         email = str(m.get("email") or "").strip()
         email_html = f'<p class="fitxa-meta"><a href="mailto:{email}">{email}</a></p>' if email else ""
         carrec = str(txt(m, "carrec", lang) or "").strip()
