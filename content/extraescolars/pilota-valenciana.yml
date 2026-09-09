@@ -14,7 +14,7 @@ descripcio: "<p>Les Escoles Esportives Municipals (EEDD) són el programa de
   promoció esportiva de la Fundació Esportiva Municipal de València, organitzat
   amb les federacions esportives: activitat voluntària, complementària de
   l'Educació Física, en horari no lectiu, a les instal·lacions del col·legi i
-  d'octubre a maig. L'activitat s'imparteix  en duess sessions setmanals d'una
+  d'octubre a maig. L'activitat s'imparteix en duess sessions setmanals d'una
   hora i grups de 12 a 20. Horari del curs 2026-27: dimarts i dijous de 17:30 a
   18:30.</p>"
 descripcio_es: "<p>Las Escuelas Deportivas Municipales (EEDD) son el programa de
@@ -34,7 +34,15 @@ nota: "<p>Activitat de les <strong>Escoles Esportives Municipals</strong>
   finals de gener), excepte les famílies amb beca, en un únic termini. Totes les
   activitats municipals comparteixen dossier, full d'inscripció i full de
   preus.</p>"
-nota_es: <p></p>
+nota_es: '<p>Actividad de las <strong>Escuelas Deportivas Municipales</strong>
+  (Fundació Esportiva Municipal de València): precio reducido y bonificación
+  para las familias beneficiarias de la beca de comedor.
+  <strong>Inscripción</strong>: hay que rellenar la hoja de inscripción (PDF) y
+  enviarla, junto con el justificante de pago, a <a
+  href="mailto:extraescolarsalejandrasoler@gmail.com">extraescolarsalejandrasoler@gmail.com</a>.
+  El pago se hace en dos plazos (inicio de octubre y finales de enero), excepto
+  las familias con beca, en un único plazo. Todas las actividades municipales
+  comparten dossier, hoja de inscripción y hoja de precios.</p>'
 es_municipal: false
 inscripcio_pdf: /assets/uploads/cms/inscripcion-municipales-26-27-1-1.pdf
 bonificacio: /assets/uploads/cms/sol-bonificiacionmunicipales-26-27-1-3.pdf
