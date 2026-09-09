@@ -8,7 +8,7 @@ cursos:
   - P5
   - P6
 dossier: /assets/uploads/cms/dossier-eedd-2026-27-comprimit-1.pdf
-dossier_label: "Les Escoles Esportives Municipals (EEDD) són el programa de
+descripcio: "<p>Les Escoles Esportives Municipals (EEDD) són el programa de
   promoció esportiva de la Fundació Esportiva Municipal de València, organitzat
   amb les federacions esportives: activitat voluntària, complementària de
   l'Educació Física, en horari no lectiu, a les instal·lacions del col·legi i
@@ -16,9 +16,11 @@ dossier_label: "Les Escoles Esportives Municipals (EEDD) són el programa de
   esportiu educatiu, pensat per a Infantil: desenvolupament de l'esquema
   corporal a través del joc i el moviment, en dos sessions setmanals d'una hora
   i grups de 12 a 20. Horari del curs 2025-26: dilluns i dimecres de 16:30 a
-  17:30."
-descripcio: <p></p>
+  17:30.</p>"
 descripcio_es: <p></p>
 nota: <p></p>
 nota_es: <p></p>
 es_municipal: false
+inscripcio_pdf: /assets/uploads/cms/inscripcion-municipales-26-27-1-1.pdf
+bonificacio: /assets/uploads/cms/sol-bonificiacionmunicipales-26-27-1-3.pdf
+info_preus: /assets/uploads/cms/informacio-actv-municipals-preus-i-cursos-26-27-1-6.pdf
