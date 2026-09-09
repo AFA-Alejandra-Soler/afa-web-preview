@@ -1,0 +1,24 @@
+nom: Pilota valenciana
+nom_es: Pelota valenciana
+empresa: EEDDMM
+activa: true
+cursos:
+  - P3
+  - P4
+  - P5
+  - P6
+dossier: /assets/uploads/cms/dossier-eedd-2026-27-comprimit-1.pdf
+dossier_label: "Les Escoles Esportives Municipals (EEDD) són el programa de
+  promoció esportiva de la Fundació Esportiva Municipal de València, organitzat
+  amb les federacions esportives: activitat voluntària, complementària de
+  l'Educació Física, en horari no lectiu, a les instal·lacions del col·legi i
+  d'octubre a maig. L'Activitat Física Base és el primer pas de l'itinerari
+  esportiu educatiu, pensat per a Infantil: desenvolupament de l'esquema
+  corporal a través del joc i el moviment, en dos sessions setmanals d'una hora
+  i grups de 12 a 20. Horari del curs 2025-26: dilluns i dimecres de 16:30 a
+  17:30."
+descripcio: <p></p>
+descripcio_es: <p></p>
+nota: <p></p>
+nota_es: <p></p>
+es_municipal: false
