@@ -823,6 +823,7 @@ def render_page(*, lang, depth, page_path, active_href, title, meta_desc, body_h
     ad = depth + ROOT_OFFSET[lang]  # profunditat per a arribar a assets/ (només a l'arrel de dist/)
     css = rel(ad, "assets/css/style.css")
     logo = rel(ad, "assets/img/logo-afa.png")
+    favicon = rel(ad, "assets/img/favicon.png")
     home = rel(depth, "index.html")
     nav_html = build_nav_html(lang, depth, active_href)
     footer_extra = "\n            ".join(
@@ -905,7 +906,7 @@ def render_page(*, lang, depth, page_path, active_href, title, meta_desc, body_h
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{titol_complet}</title>
 <meta name="description" content="{meta_desc}">
-<link rel="icon" href="{logo}">
+<link rel="icon" href="{favicon}">
 <link rel="alternate" hreflang="ca" href="{abs_va}">
 <link rel="alternate" hreflang="es" href="{abs_es}">
 <link rel="alternate" hreflang="x-default" href="{abs_va}">
@@ -1732,6 +1733,7 @@ def pagina_404():
     idioma + enllaç a la portada VA i a la portada ES. Meta robots noindex."""
     css = "/assets/css/style.css"
     logo = "/assets/img/logo-afa.png"
+    favicon = "/assets/img/favicon.png"
     nav_html = build_nav_html_abs("va")
     body = f"""
 <div class="wrap">
@@ -1754,7 +1756,7 @@ def pagina_404():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pàgina no trobada / Página no encontrada · AFA CEIP Alejandra Soler</title>
-<link rel="icon" href="{logo}">
+<link rel="icon" href="{favicon}">
 <link rel="stylesheet" href="{css}">
 </head>
 <body>
