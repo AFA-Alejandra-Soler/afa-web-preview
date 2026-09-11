@@ -5,7 +5,7 @@ preus_municipals: /assets/uploads/cms/informacio-actv-municipals-preus-i-cursos-
 horaris_nivell:
   - curs: 3 anys
     curs_es: 3 años
-    imatge: /assets/uploads/cms/Horaris/3-anyspage-0001.jpg
+    imatge: /assets/uploads/cms/Horaris/3-anys.jpg
   - curs: 4 anys
     curs_es: 4 años
     imatge: /assets/uploads/cms/Horaris/4-anyspage-0001.jpg
