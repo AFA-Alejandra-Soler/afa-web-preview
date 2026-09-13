@@ -10,7 +10,7 @@ cursos:
   - P5
   - P6
 imatge: /assets/uploads/cms/acting-in-english-circular-logo-1.png
-dossier: assets/uploads/2026/08/acting-in-english-2026-27.pdf
+dossier: /assets/uploads/cms/ajsl-acting-in-english-dossier-2026-27.pdf
 form: https://forms.gle/uG21btMLS4DMgbxK7
 descripcio: "<p>Aprendre anglès practicant-lo. Les classes d'anglès d'Acting in
   English ofereixen una alternativa dinàmica a l'aprenentatge tradicional de
@@ -28,13 +28,13 @@ descripcio_es: "<p>Aprender inglés practicándolo. Las clases de inglés de Act
   retos adaptados al nivel de cada grupo.</p>"
 nota: "<p>Aquesta activitat la imparteix l'acadèmia <strong>Acting in
   English</strong>. Comparteix dossier i formulari d'inscripció amb Acting i Cor
-  — són la mateixa acadèmia, tres activitats. </p><p>Esta activitat es realitza
+  — són la mateixa acadèmia, tres activitats.</p><p>Esta activitat es realitza
   en la pròpia acadèmia (C/ Cadis, 29): recullen l'alumnat al pati del cole i
   l'acompanyen.</p>"
 nota_es: "<p>Esta actividad la imparte la academia <strong>Acting in
   English</strong>. Comparte dossier y formulario de inscripción con Acting y
-  Cor — son la misma academia, tres actividades. </p><p>Esta actividad se
-  realiza en la propia academia (C/ Cadis, 29): recogen al alumnado en el patio
-  del cole y lo acompañan.</p>"
+  Cor — son la misma academia, tres actividades.</p><p>Esta actividad se realiza
+  en la propia academia (C/ Cadis, 29): recogen al alumnado en el patio del cole
+  y lo acompañan.</p>"
 ph: ph-2
 es_municipal: false
