@@ -1,7 +1,7 @@
 nom: Pre-esport
 nom_es: Predeporte
 empresa: Fundació Esportiva Municipal (Escoles Esportives)
-activa: true
+activa: false
 cursos:
   - P1
   - P2
