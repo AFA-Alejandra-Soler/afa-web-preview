@@ -13,7 +13,7 @@ horaris_nivell:
     curs_es: 5 años
     imatge: /assets/uploads/cms/Horaris/5-anyspage-0001.jpg
   - curs: 1er Primària
-    curs_es: 1er Primaria
+    curs_es: "1er Primaria "
     imatge: /assets/uploads/cms/Horaris/1r-primpage-0001.jpg
   - curs: 2n Primària
     curs_es: 2º Primaria
