@@ -1,38 +1,31 @@
+visible: true
 titol: Fes-te membre de l'AFA
 titol_es: Hazte miembro del AFA
 subtitol: Quota anual i com pagar-la
 subtitol_es: Cuota anual y cómo pagarla
-meta_desc: 'Com fer-se soci/sòcia de l''AFA CEIP Alejandra Soler: quota anual de 36 € per família via
-  Aulazon.'
-meta_desc_es: 'Cómo hacerse socio/socia del AFA CEIP Alejandra Soler: cuota anual de 36 € por familia
-  a través de Aulazon.'
-cos: |-
-  <p>Fer-te <strong>família sòcia de l'AFA del CEIP Alejandra Soler o renovar la teua quota per al
-  curs 2026/27</strong> és molt fàcil. <strong>Tens fins al 30 d'octubre!</strong></p>
-  <div class="caja caja-lila">
-    <p><strong>1.</strong> Fes clic en este enllaç d'Aulazon i segueix els passos per abonar la quota en línia:</p>
-    <div class="botonera">
-      <a class="boton" href="https://www.aulazon.es/categoria-producto/colegios/ceip-alejandra-soler/ampa-afa-ceip-alejandra-soler/" target="_blank" rel="noreferrer noopener">Anar a Aulazon</a>
-    </div>
-    <p><strong>Quota anual per família: 36 €*</strong></p>
-  </div>
-  <p class="nota">*Solament es paga una quota anual per família, independentment del nombre de
-  fills i filles matriculats en el centre.</p>
-  <div class="avis">
-    <p><strong>Important:</strong> ja no s'admeten els pagaments de quota per transferència.</p>
-  </div>
-cos_es: |-
-  <p>Hacerte <strong>familia socia del AFA del CEIP Alejandra Soler o renovar tu cuota para el
-  curso 2026/27</strong> es muy fácil. <strong>¡Tienes hasta el 30 de octubre!</strong></p>
-  <div class="caja caja-lila">
-    <p><strong>1.</strong> Haz clic en este enlace de Aulazon y sigue los pasos para abonar la cuota en línea:</p>
-    <div class="botonera">
-      <a class="boton" href="https://www.aulazon.es/categoria-producto/colegios/ceip-alejandra-soler/ampa-afa-ceip-alejandra-soler/" target="_blank" rel="noreferrer noopener">Ir a Aulazon</a>
-    </div>
-    <p><strong>Cuota anual por familia: 36 €*</strong></p>
-  </div>
-  <p class="nota">*Solo se paga una cuota anual por familia, independientemente del número de
-  hijos e hijas matriculados en el centro.</p>
-  <div class="avis">
-    <p><strong>Importante:</strong> ya no se admiten los pagos de cuota por transferencia.</p>
-  </div>
+meta_desc: "Com fer-se soci/sòcia de l'AFA CEIP Alejandra Soler: quota anual de
+  36 € per família via Aulazon."
+meta_desc_es: "Cómo hacerse socio/socia del AFA CEIP Alejandra Soler: cuota
+  anual de 36 € por familia a través de Aulazon."
+cos: "<p>Fer-te <strong>família sòcia de l'AFA del CEIP Alejandra Soler o
+  renovar la teua quota per al curs 2026/27</strong> és molt fàcil. <strong>Tens
+  fins al 30 de desembre!</strong></p><p><strong>1.</strong> Fes clic en este
+  enllaç d'Aulazon i segueix els passos per abonar la quota en línia:</p><p><a
+  target=\"_blank\" rel=\"noreferrer noopener\" class=\"boton\"
+  href=\"https://www.aulazon.es/categoria-producto/colegios/ceip-alejandra-sole\
+  r/ampa-afa-ceip-alejandra-soler/\">Anar a Aulazon</a></p><p><strong>Quota
+  anual per família: 36 €*</strong></p><p>*Solament es paga una quota anual per
+  família, independentment del nombre de fills i filles matriculats en el
+  centre.</p><p><strong>Important:</strong> ja no s'admeten els pagaments de
+  quota per transferència.</p>"
+cos_es: '<p>Hacerte <strong>familia socia del AFA del CEIP Alejandra Soler o
+  renovar tu cuota para el curso 2026/27</strong> es muy fácil. <strong>¡Tienes
+  hasta el 30 de diciembre!</strong></p><p><strong>1.</strong> Haz clic en este
+  enlace de Aulazon y sigue los pasos para abonar la cuota en línea:</p><p><a
+  target="_blank" rel="noreferrer noopener" class="boton"
+  href="https://www.aulazon.es/categoria-producto/colegios/ceip-alejandra-soler/ampa-afa-ceip-alejandra-soler/">Ir
+  a Aulazon</a></p><p><strong>Cuota anual por familia: 36
+  €*</strong></p><p>*Solo se paga una cuota anual por familia,
+  independientemente del número de hijos e hijas matriculados en el
+  centro.</p><p><strong>Importante:</strong> ya no se admiten los pagos de cuota
+  por transferencia.</p>'
